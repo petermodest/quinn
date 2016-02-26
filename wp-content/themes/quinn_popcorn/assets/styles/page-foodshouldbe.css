@@ -1,0 +1,407 @@
+/*--------------------------------------------------------------
+/*  FOOD SHOULD BE
+-------------------------------------------------------------- */
+/* ------------------ FRONTPAGE --------------------- */
+#fsb-header {
+  background: #5ab3d1;
+  padding: 180px 0 100px 0;
+}
+#fsb-header #fsb-header-inner {
+  max-width: 950px;
+  width: 90%;
+  margin: 0 auto;
+}
+#fsb-header .fp-fsb-supertitle {
+  font-size: 51px;
+  line-height: 51px;
+  font-weight: 700;
+  color: white;
+  line-height: 0;
+}
+#fsb-header .fp-fsb-title {
+  font-size: 141px;
+  font-weight: 700;
+  color: white;
+  line-height: 141px;
+  padding: 30px 0 40px;
+  text-transform: uppercase;
+}
+#fsb-header .fp-fsb-title span {
+  opacity: .5;
+}
+#fsb-header form {
+  border-bottom: 5px solid white;
+}
+#fsb-header #fsb-input {
+  font-size: 80px;
+  background: transparent;
+  color: white;
+  width: 700px;
+  float: left;
+}
+#fsb-header #fsb-input::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+#fsb-header #fsb-input:-moz-placeholder {
+  /* Firefox 18- */
+  color: rgba(255, 255, 255, 0.4);
+}
+#fsb-header #fsb-input::-moz-placeholder {
+  /* Firefox 19+ */
+  color: rgba(255, 255, 255, 0.4);
+}
+#fsb-header #fsb-input:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+#fsb-header #fsb-submit {
+  padding: 30px;
+  width: 250px;
+  border: none;
+  background: url("http://dev.quinnpopcorn.com/wp-content/themes/quinn_popcorn//assets/images/fsb-bluearrow.png") no-repeat 165px center;
+  background-size: 52px 87px;
+  background-color: white;
+  cursor: pointer;
+}
+#fsb-header #fsb-submit.thinking .spinner {
+  display: block;
+}
+#fsb-header #fsb-submit.thinking .next_text {
+  display: none;
+}
+#fsb-header #fsb-submit .spinner {
+  width: 80px;
+  height: 80px;
+  display: none;
+  background: url("http://dev.quinnpopcorn.com/wp-content/themes/quinn_popcorn//assets/images/fsb-spinner.gif") no-repeat;
+}
+#fsb-header #fsb-submit .next_text {
+  font-size: 22px;
+  font-weight: 700;
+  color: #5ab3d1;
+  width: 110px;
+  text-align: left;
+  display: block;
+}
+#fsb-header #fsb-submit:hover .next_text {
+  color: #aad8e7;
+}
+#fsb-header #fsb-submit:focus {
+  outline: none;
+}
+/* ------------------ LANDING PAGE --------------------- */
+.page-template-foodshouldbe {
+  background: #5ab3d1;
+}
+.page-template-foodshouldbe #wrapper {
+  width: 100%;
+  margin: -80px 0 0 0;
+}
+.page-template-foodshouldbe #fsb-wrapper {
+  margin-bottom: 50px;
+  /* Keeps instagram and twitter lined up */
+}
+.page-template-foodshouldbe #fsb-wrapper *,
+.page-template-foodshouldbe #fsb-wrapper *:before,
+.page-template-foodshouldbe #fsb-wrapper *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.page-template-foodshouldbe #fsb-wrapper .fsb-section {
+  margin: 0;
+  display: block;
+}
+.page-template-foodshouldbe #fsb-wrapper .fsb-section .fsb-section-inner {
+  width: 960px;
+  margin: 0 auto;
+}
+.page-template-foodshouldbe #fsb-wrapper .fsb-bluesection {
+  background: #5ab3d1;
+}
+.page-template-foodshouldbe #fsb-wrapper .fsb-whitesection {
+  background: white;
+}
+.page-template-foodshouldbe #fsb-wrapper .fsb-firstsection {
+  padding-top: 120px;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-title {
+  font-size: 89px;
+  line-height: 89px;
+  font-weight: 900;
+  color: white;
+  text-transform: uppercase;
+  width: 100%;
+  text-align: center;
+  word-break: break-all;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-title span {
+  opacity: .5;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-congrat p {
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  padding: 50px 0 70px 0;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-social-boxes {
+  padding-bottom: 25px;
+  display: block;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-social-boxes li {
+  width: 300px;
+  margin-right: 30px;
+  float: left;
+  padding: 0;
+  display: block;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-social-boxes li .fsb-social-icon {
+  width: 100%;
+  height: 70px;
+  display: block;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-social-boxes li#fsb-twitter .fsb-social-icon {
+  background: url("http://dev.quinnpopcorn.com/wp-content/themes/quinn_popcorn//assets/images/fsb-twitter.svg") no-repeat center top;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-social-boxes li#fsb-facebook .fsb-social-icon {
+  background: url("http://dev.quinnpopcorn.com/wp-content/themes/quinn_popcorn//assets/images/fsb-facebook.svg") no-repeat center top;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-social-boxes li#fsb-instagram .fsb-social-icon {
+  background: url("http://dev.quinnpopcorn.com/wp-content/themes/quinn_popcorn//assets/images/fsb-instagram.svg") no-repeat center top;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-social-boxes li:last-child {
+  margin: 0;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-social-boxes li .fsb-social-whitebox {
+  background: white;
+  padding: 30px;
+  display: block;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-social-boxes li .fsb-social-whitebox h3,
+.page-template-foodshouldbe #fsb-wrapper #fsb-social-boxes li .fsb-social-whitebox input,
+.page-template-foodshouldbe #fsb-wrapper #fsb-social-boxes li .fsb-social-whitebox textarea {
+  font-size: 25px;
+  color: #5ab3d1;
+  width: 250px;
+  font-weight: 900;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-social-boxes li .fsb-social-whitebox p {
+  color: #5ab3d1;
+  font-size: 17px;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-social-boxes li button {
+  width: 100%;
+  border-radius: 0;
+  background: #5ab3d1;
+  color: white;
+  padding: 10px;
+  font-size: 25px;
+  font-weight: 900;
+  cursor: pointer;
+  border: 5px solid white;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-social-boxes li button:hover {
+  background: #2b7e9a;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-social-boxes li button:focus {
+  outline: none;
+}
+.page-template-foodshouldbe #fsb-wrapper .viewmore {
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  width: 100%;
+  display: block;
+  text-align: right;
+  padding-bottom: 50px;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-tweets-wrapper {
+  display: block;
+  float: left;
+  width: 630px;
+  padding-bottom: 50px;
+  margin-top: 80px;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-tweets-wrapper h3 {
+  width: 100%;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  padding-bottom: 10px;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-tweets-wrapper #fsb-tweets ul {
+  border-top: 1px solid white;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-tweets-wrapper #fsb-tweets ul li {
+  padding: 20px 0;
+  color: white;
+  border-bottom: 1px solid white;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-tweets-wrapper #fsb-tweets ul li a {
+  color: white;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-tweets-wrapper #fsb-tweets ul li .fsb-tweet-credit {
+  font-size: 17px;
+  width: 100%;
+  text-align: right;
+  font-weight: bold;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-tweets-wrapper #fsb-tweets ul li .fsb-tweet-credit a {
+  text-decoration: none;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-tweets-wrapper #fsb-tweets ul li .fsb-tweet-credit a:hover {
+  text-decoration: underline;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-tweets-wrapper #fsb-tweets ul li p {
+  font-size: 20px;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-instagram-wrapper {
+  margin-left: 660px;
+  width: 300px;
+  margin-top: -80px;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-instagram-wrapper #fsb-instagram-stream {
+  color: white;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-instagram-wrapper #fsb-instagram-stream ul li {
+  list-style: none;
+  padding: 10px;
+  background: white;
+  margin-bottom: 10px;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-instagram-wrapper #fsb-instagram-stream ul li h3 {
+  padding-top: 10px;
+  font-weight: 900;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-instagram-wrapper #fsb-instagram-stream ul li a {
+  color: #5ab3d1;
+  text-decoration: none;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-instagram-wrapper #fsb-instagram-stream ul li img {
+  width: 280px;
+  height: auto;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-video {
+  background: white;
+  padding: 80px 0;
+  display: block;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-video h2 {
+  color: #5ab3d1;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 80px;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-video #video-holder {
+  width: 960px;
+  height: 400px;
+  display: block;
+  background: #000;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-jumble {
+  width: 100%;
+  background: #5ab3d1;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-jumble h2 {
+  color: white;
+  width: 100%;
+  text-align: center;
+  margin: 50px 0;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-jumble #fsb-jumble-inner {
+  width: 960px;
+  height: 800px;
+  display: block;
+}
+.page-template-foodshouldbe #fsb-wrapper #fsb-jumble #fsb-jumble-inner svg {
+  width: 960px;
+  height: 800px;
+}
+/* ------------------ FRONTPAGE --------------------- */
+@media only screen and (max-device-width: 480px) {
+  #fsb-header {
+    padding: 180px 0 100px 0;
+  }
+  #fsb-header #fsb-header-inner {
+    max-width: 950px;
+    width: 90%;
+    margin: 0 auto;
+  }
+  #fsb-header .fp-fsb-supertitle {
+    font-size: 51px;
+    line-height: 51px;
+    width: 100%;
+    text-align: center;
+  }
+  #fsb-header .fp-fsb-title {
+    font-size: 138px;
+    line-height: 141px;
+  }
+  #fsb-header #fsb-input {
+    font-size: 80px;
+    width: 500px;
+    float: left;
+  }
+  #fsb-header #fsb-submit {
+    float: right;
+  }
+}
+/*!
+ * jQCloud
+ * Copyright 2011 Luca Ongaro (http://www.lucaongaro.eu)
+ * Copyright 2013 Daniel White (http://www.developerdan.com)
+ * Copyright 2014 Damien "Mistic" Sorel (http://www.strangeplanet.fr)
+ * Licensed under MIT (http://opensource.org/licenses/MIT)
+ */
+/* layout */
+div.jqcloud {
+  overflow: hidden;
+  position: relative;
+  color: white !important;
+}
+div.jqcloud span {
+  padding: 0;
+  color: white !important;
+}
+/* fonts */
+div.jqcloud {
+  font-weight: 900;
+  font-size: 25px;
+  color: white !important;
+}
+div.jqcloud a {
+  color: white !important;
+  font-size: inherit;
+  text-decoration: none;
+}
+div.jqcloud span.w10 {
+  font-size: 550%;
+}
+div.jqcloud span.w9 {
+  font-size: 500%;
+}
+div.jqcloud span.w8 {
+  font-size: 450%;
+}
+div.jqcloud span.w7 {
+  font-size: 400%;
+}
+div.jqcloud span.w6 {
+  font-size: 350%;
+}
+div.jqcloud span.w5 {
+  font-size: 300%;
+}
+div.jqcloud span.w4 {
+  font-size: 250%;
+}
+div.jqcloud span.w3 {
+  font-size: 200%;
+}
+div.jqcloud span.w2 {
+  font-size: 150%;
+}
+div.jqcloud span.w1 {
+  font-size: 100%;
+}

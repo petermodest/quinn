@@ -1,0 +1,541 @@
+@import (reference) "variables.less";
+
+/*--------------------------------------------------------------
+/*  COMMON (Typography / Header / Footer)
+-------------------------------------------------------------- */
+
+
+@font-face {
+    font-family: 'din_engschrift_stdregular';
+    src: url('@{root}assets/fonts/din/dinengschriftstd-webfont.eot');
+    src: url('@{root}assets/fonts/din/dinengschriftstd-webfont.eot?#iefix') format('embedded-opentype'),
+         url('@{root}assets/fonts/din/dinengschriftstd-webfont.woff') format('woff'),
+         url('@{root}assets/fonts/din/dinengschriftstd-webfont.ttf') format('truetype'),
+         url('@{root}assets/fonts/din/dinengschriftstd-webfont.svg#din_engschrift_stdregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'architects-daughter';
+    src: url('@{root}assets/fonts/architects-daughter/architectsdaughter-webfont.eot');
+    src: url('@{root}assets/fonts/architects-daughter/architectsdaughter-webfont.eot?#iefix') format('embedded-opentype'),
+         url('@{root}assets/fonts/architects-daughter/architectsdaughter-webfont.woff') format('woff'),
+         url('@{root}assets/fonts/architects-daughter/architectsdaughter-webfont.ttf') format('truetype'),
+         url('@{root}assets/fonts/architects-daughter/architectsdaughter-webfont.svg#architectsdaughter') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+#sidebar h3,
+.blog-entry-title,
+.blog-category-title,
+.block-view-post h3,
+.link-block-view li a .block-info-state h3,
+#sidebar-blockview h3,
+#wrapper #product-info h1,
+#product-scroll-titles h2,
+#product-scroll-titles a,
+#product-callout,
+#view-nutrition-info,
+#product-media p,
+#product-foot li,
+#product-farmtobag #f2b-quote,
+#product-farmtobag a,
+#product-farmtobag input,
+#product-farmtobag .type-or,
+#product-reinvented,
+#product-farmtobag h1,
+#product-callout h2,
+#reinvented-scroll h2,
+#reinvented-scroll #section-foot a,
+#reinvented-scroll .foot-or,
+.fp-reimagine-header h1,
+.reimagine-1 h1,
+.reimagine-section .subtitle {
+font-family: 'din_engschrift_stdregular', sans-serif !important;
+}
+
+#mainmenu-header ul,
+#mainmenu-mobile ul,
+h2,
+#slidecaption h2,
+#frontpage-wrapper,
+#product-media h3,
+#reinvented-scroll p,
+#fp-fsb,
+#fsb-wrapper p,
+.reimagine-section .section-inner h3 {
+  font-family: 'Whitney A', 'Whitney B';
+  font-weight: 300;
+  font-style: normal;
+}
+
+
+#fsb-header,
+#fsb-submit,
+#fsb-wrapper h1,
+#fsb-wrapper h2,
+#fsb-wrapper h3,
+#fsb-wrapper h4,
+#fsb-wrapper #fsb-congrat p,
+#fsb-wrapper input,
+#fsb-wrapper textarea,
+#fsb-wrapper button,
+#product-farmtobag h2,
+#product-farmtobag h2 a,
+div.jqcloud,
+.page-reviews .block-info-state p,
+.reimagine-section h1,
+.reimagine-section h2,
+.reimagine-section h3,
+.reimagine-section ul
+{
+  font-family: 'Whitney Cond A', 'Whitney Cond B';
+  font-style: normal;
+}
+
+p, ul, h4, input, textarea,
+#mainmenu-header ul li:hover ul li,
+#slideshow-controls #slidecaption p,
+#slideshow-controls #post-link {
+  font-family: 'Lucida Sans', sans-serif;
+}
+
+#fsb-header input {
+  font-family: 'architects-daughter', sans-serif;
+
+}
+
+
+p, input, textarea, ul {
+  font-size: 14px;
+}
+
+h1 {
+  font-size: 33px;
+  font-weight: normal;
+}
+
+h2, .blog-entry-title,
+.blog-category-title {
+  font-size: 38px;
+}
+
+h2#respond {
+  font-size: 25px;
+
+}
+
+h3 {
+  font-size: 25px;
+  font-weight: 100;
+}
+
+h4 {
+  font-size: 18px;
+  font-weight: normal;
+}
+
+/* ================================== */
+/*!          POSITIONING             */
+/* ================================== */
+
+#wrapper,
+#footer-contentwrap,
+#header-centering {
+  margin: 0 auto;
+  width: 960px;
+}
+
+#blog-list-view {
+  margin-top: 70px;
+}
+
+
+/*! ==========   HEADER   ============ */
+
+.header-wrapper#header-desktop {
+
+  height: 70px;
+  width: 100%;
+  display: block;
+
+
+  #quinn-logo {
+    background: url("@{images}logo.png") no-repeat;
+    width: 140px;
+    height: 58px;
+    display: block;
+    position: relative;
+    z-index: 100;
+    margin-top: -20px; /* not sure why I need this */
+  }
+
+  #mainmenu-header{
+
+    ul {
+      margin-left: 140px;
+      position: relative;
+      z-index: 200;
+
+      & > li {margin-left: 10px;} /* snacks */
+      & > li + li {margin-left: -180px;} /* mission / -150 w/out iframe*/
+      & > li + li + li {margin-left: -120px;} /* backstage / -100 */
+      & > li + li + li + li  {margin-left: -70px;} /* connect / -50 */
+      & > li + li + li + li + li  {margin-left: -78px;} /* buy / -75 */
+
+      li {
+
+        float: left;
+        text-transform: uppercase;
+        font-size: 24px;
+        display: block;
+
+        a[title="snacks"]{ width: 260px;}
+        a[title="mission"]{ width: 200px;}
+        a[title="backstage"]{ width: 190px;}
+        a[title="connect"]{ width: 180px;}
+        a[title="buy"]{ width: 100px;}
+
+        a {
+          padding: 15px 25px;
+          text-decoration: none;
+          color: white;
+          display: block;
+        }
+
+        &:hover, &:hover ul, &:hover ul li:hover a {
+          background: rgba(33,33,33,0.75);
+        }
+
+        &:hover ul li{
+          background: none;
+        }
+
+        ul {
+          display: none;
+          position: absolute;
+          margin-left: 0px;
+
+        }
+
+        &:hover ul {
+          display: block;
+
+          li {
+            float: none;
+            margin-left: 0px;
+            font-size: 17px;
+            text-transform: none;
+          }
+        }
+
+        &:hover ul li a {
+          display: block;
+        }
+      }
+    }
+  }
+
+
+  .mainmenu-black #mainmenu-header ul li {
+
+    &:hover {
+      a { color: white; }
+    }
+
+    a {
+      color: black;
+      &:hover { color: white; }
+    }
+
+    ul li a { color: white; }
+
+    &:hover, &:hover ul, &:hover ul li:hover a {
+      background: rgba(33,33,33,0.7);
+    }
+  }
+}
+
+#mobile-header-padding {
+  height: 100px;
+  display: block;
+  display: none;
+}
+.header-wrapper#header-mobile {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 550;
+  background: rgba(0, 0, 0, 0.8);
+
+  #quinn-logo {
+      background: url("@{images}logo-white.svg") no-repeat center center;
+      width: 250px;
+      height: 90px;
+      display: block;
+      position: relative;
+      z-index: 100;
+    }
+
+  #minicart-iframe {
+    position: absolute;
+    top: 10px;
+    right: 100px;
+  }
+
+  #mobile-menu-trigger {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    background: url("@{images}mobile-trigger-lg.svg") no-repeat left top;
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+
+    &.mobile-trigger-active {
+      background: url("@{images}mobile-trigger-lg.svg") no-repeat right top;
+    }
+  }
+
+  #mainmenu-mobile{
+    padding-top: 30px;
+    display: none;
+    ul {
+      li {
+        padding: 15px 15px 15px 45px;
+        a{
+          font-size: 50px;
+          color: white;
+          text-decoration: none;
+
+          &:hover {
+            border-bottom: 1px solid white;
+          }
+        }
+      }
+    }
+  }
+
+
+}
+
+
+/*! ==========   FOOTER   ============ */
+
+.footer {
+  background: white;
+  width: 100%;
+  position: relative;
+  z-index: 3;
+  padding-top: 20px;
+}
+
+.page-template-frontpage-blocks .footer {
+  margin-top: 80px;
+}
+
+
+#husk-logo {
+  display: block;
+  background: url("@{images}husk-logo.png") no-repeat;
+  width: 62px;
+  height: 91px;
+  float: left;
+  margin-right: 20px;
+}
+
+#mainmenu-footer ul {
+
+  li {
+
+    float: left;
+    text-transform: uppercase;
+    font-size: 15px;
+
+    a {
+      color: black;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    ul {
+
+      margin:10px 20px 0 0;
+
+       li {
+
+        font-size: 11px;
+        padding-bottom: 1px;
+        float: none;
+        text-transform: lowercase;
+
+      }
+    }
+  }
+}
+
+/* =========== SOCIAL (footer & sidebar ) ==========*/
+
+
+.social-buttons {
+
+  position: absolute;
+  z-index: 999;
+  margin: 100px 0 0 650px;
+
+  a {
+    width: 32px;
+    height: 28px;
+    display: block;
+    opacity: .5;
+
+    &:hover {
+      opacity: 1;
+      }
+
+    &#instagram-button {
+      background: url("@{images}icon-instagram.png") no-repeat;
+      float: left;
+      }
+
+    &#facebook-button {
+      background: url("@{images}icon-facebook.png") no-repeat;
+      float: left;
+      margin-left: 8px;
+      }
+
+    &#twitter-button {
+      background: url("@{images}icon-twitter.png") no-repeat;
+      margin: 3px 0 0 60px;
+      }
+
+  }
+}
+
+
+#newsletter-box {
+  background: #cae8f2;
+  width: 190px;
+  display: block;
+  margin-left: 770px;
+  padding: 15px;
+  margin-top: -20px;
+}
+
+#newsletter-box p {
+  margin: 10px 0;
+  font-size: 12px;
+}
+
+#newsletter-box #newsletter-button{
+  background: url("@{images}icon-mail.png") no-repeat;
+  color: black;
+  padding-left: 45px;
+  text-decoration: none;
+  height: 23px;
+  display: block;
+  opacity: .7;
+  margin-left: 20px;
+
+}
+
+
+#newsletter-box #newsletter-button:hover {
+  opacity: 1;
+}
+
+/*!  HOMEPAGE STICKY FOOTER - http://css-tricks.com/snippets/css/sticky-footer/*/
+//
+// html, body, #wrapper { height: 100%; }
+//
+// body > #wrapper {height: auto; min-height: 100%;}
+//
+// #main { padding-bottom: 270px; }  /* must be same height as the footer */
+//
+// #home-footer {
+//   position: absolute;
+//   border-top: 1px solid #e6e6e6;
+//   height: 270px;
+//   clear:both;
+// }
+
+/* CLEAR FIX*/
+
+.clearfix:after {content: ".";
+display: block;
+height: 0;
+clear: both;
+visibility: hidden;}
+
+.clearfix {display: inline-block;}
+
+/* Hides from IE-mac */
+
+* html .clearfix { height: 1%;}
+.clearfix {display: block;}
+
+/* End hide from IE-mac */
+/* end sticky footer */
+
+
+
+/*! ==================  SUPERSIZED  ============ */
+
+/*
+
+Supersized - Fullscreen Slideshow jQuery Plugin
+Version : 3.2.7
+Site  : www.buildinternet.com/project/supersized
+
+Author  : Sam Dunn
+Company : One Mighty Roar (www.onemightyroar.com)
+License : MIT License / GPL License
+
+*/
+
+* { margin:0; padding:0; }
+body { background:white; height:100%; }
+img { border:none; }
+
+#supersized-loader { position:absolute; top:50%; left:50%; z-index:0; width:60px; height:60px; margin:-30px 0 0 -30px; text-indent:-999em; background:url("@{images}progress.gif") no-repeat center center;}
+
+#supersized {  display:block; position:fixed; left:0; top:0; overflow:hidden; z-index:-999; height:100%; width:100%; }
+#supersized img { width:auto; height:auto; position:relative; display:none; outline:none; border:none; }
+#supersized.speed img { -ms-interpolation-mode:nearest-neighbor; image-rendering: -moz-crisp-edges; } /*Speed*/
+#supersized.quality img { -ms-interpolation-mode:bicubic; image-rendering: optimizeQuality; }     /*Quality*/
+
+#supersized li { display:block; list-style:none; z-index:-30; position:fixed; overflow:hidden; top:0; left:0; width:100%; height:100%; background:white; }
+#supersized a { width:100%; height:100%; display:block; }
+#supersized li.prevslide { z-index:-20; }
+#supersized li.activeslide { z-index:-10; }
+#supersized li.image-loading { background:white url(../img/progress.gif) no-repeat center center; width:100%; height:100%; }
+#supersized li.image-loading img{ visibility:hidden; }
+#supersized li.prevslide img, #supersized li.activeslide img{ display:inline; }
+
+
+
+
+
+/* ================================== */
+/*!            MINCART               */
+/* ================================== */
+
+#minicart-iframe {
+  border: none;
+  float: right;
+  top: 0;
+  position: relative;
+  z-index: 999;
+}

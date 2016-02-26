@@ -1,0 +1,568 @@
+/* RESET
+http://meyerweb.com/eric/tools/css/reset/ - v2.0 | 20110126 - License: none (public domain)
+*/
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+body{line-height:1}
+ol,ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:none}
+table{border-collapse:collapse;border-spacing:0}
+.clearboth{clear: both;}
+.floatright{float: right;}
+/* ----------  END RESET  ---------- */
+
+
+
+/* ----------  COLORS  ---------- */
+
+body {
+	background: #e5e5e5;
+}
+
+.whitesection {
+	background: white;
+}
+
+@brightblue : #3498db;
+@darkblue : #34495e;
+@bordergray : #e7e7e7;
+@orange : #e67e22;
+
+/* ----------  FONTS  ---------- */
+
+body, input, select, textarea {
+	font-family: 'Lato', sans-serif;
+}
+
+.allcaps {
+	text-transform: uppercase;
+}
+
+/* ----------  POSITIONING  ---------- */
+
+
+#content-wrapper {
+	max-width: 960px;
+	width: 90%;
+	margin: 0 auto;
+	
+	#sidebar {
+		float: left;
+		min-width: 170px;
+		width: 10%;
+		
+		li {
+			margin-bottom: 15px;
+		}
+		
+		#quinn-logo {
+			background: url(images/quinn.png) no-repeat;
+			width: 161px;
+			height: 82px;
+		}
+	}
+	
+	#main-content {
+		margin-left: 200px;
+	
+		.section-header {
+			background: @brightblue;
+			padding: 30px;
+			color: white;
+			
+			&.farmtobag {
+				background: url(images/farmtobag.png) no-repeat right center @brightblue;;
+			}
+			
+			h2 {
+				font-size: 40px;
+				font-weight: bold;
+				text-transform: capitalize;
+			}
+			
+			h3 {
+				margin-top: 10px;
+			}
+		}
+	}
+}
+.common-button {
+	background: @brightblue;
+	border-radius: 5px;
+	color: white;
+	text-align: center;
+	display: block;
+	text-decoration: none;
+	cursor: pointer;
+	border: none;
+
+}
+
+.short-button {
+	.common-button();
+	padding: 5px 15px;
+	float: right;
+	font-size: 13px;
+	
+	&:hover {
+		background: @darkblue;	
+	}
+	
+	&.add-ingredient {
+		margin-top: -10px;	
+	}
+	
+	&.logout-button {
+		float: none;
+		background: #bdbdbd;
+		
+		&:hover {
+			background: gray;
+		}
+	}
+}
+
+.big-button {
+	.common-button();
+	padding: 10px 20px;
+	font-size: 15px;
+	font-weight: 900;
+	
+	&:hover {
+		background: @darkblue;	
+	}
+		
+}
+
+.btn-smallgray {
+	border: none;
+	background: none;
+	color: #9e9e9e;
+	margin-top: 10px;
+	padding: 0 10px 0 0;
+	cursor: pointer;
+	
+	&:hover {
+		color: black;
+	}
+}
+
+#add-batch {
+	.big-button ();
+	background: @darkblue;	
+	float: right;
+}
+
+.section {
+	margin: 10px;
+	border: 1px solid blue;
+}
+
+
+#login-screen {
+	
+	#login-screen-wrapper {
+		
+		background: url(images/login.png) no-repeat;
+		width: 183px;
+		margin: 0 auto;
+		margin-top: 100px;
+		padding-top: 150px;
+		
+		#login-wrapper {
+			
+			input[type="text"], input[type="password"] {
+				font-size: 18px;
+				width: 100%;
+				padding: 10px;
+				border: 1px solid gray;
+				margin-bottom: 5px;
+			}
+		}
+		
+		.big-button {
+			display: block;
+			float: none;
+			width: 100%;
+		}
+	}
+	
+}
+
+.featured-pagelink {
+
+	background: url(images/document.png);
+	width: 9px;
+	height: 11px;
+	float: right;
+	border: none;
+	padding: 0;
+	margin-right: 10px;
+	opacity: .5;
+	cursor: pointer;
+	
+	&:hover {
+		opacity: 1;
+	}
+	
+
+	
+}
+
+.whitesection {
+	margin-top: 15px;
+	padding: 30px;
+	background: white;
+	box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+	
+	h3 {
+		color: @orange;
+		font-size: 13px;
+		text-transform: uppercase;
+		font-weight: 900;
+	}
+
+	ul {
+	
+		margin-top: 10px;
+		margin-bottom: 0;
+		
+		li {
+			border-top: 1px solid @bordergray;
+			padding: 10px 0;
+			text-overflow: ellipsis;
+			
+			.name-trim {
+				width: 550px;
+				display: inline-block;
+			  white-space: nowrap;
+			  overflow: hidden;
+					}
+			
+			.name-gray {
+				color: #b7b7b7;
+			}
+			
+			.edit-link, .remove-batch-supplier, .delete-supplier, .delete-farm {
+				float: right;
+				margin-left: 15px;
+				text-decoration: none;
+				color: #aaaaaa;
+				background: none;
+				border: none;
+				padding: none;
+				cursor: pointer;
+				font-size: 13px;
+				
+				&:hover {
+					color: black;
+				}
+			}
+			
+			.delete-supplier, .delete-farm {
+				margin-top: 10px;
+
+				&:hover {
+					color: red;
+				}
+			}
+
+
+			.featured-btn {
+				background: @bordergray;
+				height: 10px;
+				width: 10px;
+				display: block;
+				border: none;
+				border-radius: 15px;
+				cursor: pointer;
+				
+			}
+
+			
+			.frontpage-featured {
+
+				.featured-btn;
+				margin: 0 8px 0 -20px;
+
+				display: inline-block;
+												
+				&:hover {
+					background: @orange;
+				}
+				
+				&:focus {
+					outline: none;
+				}
+				
+				&.featured {
+					background: @orange;
+					
+				}
+				
+			}
+			
+			
+			.featured-supplier {
+				
+				.featured-btn;
+				float: right;
+						
+				&:hover {
+					background: @brightblue;
+				}
+				
+				&:focus {
+					outline: none;
+				}
+				
+				&.featured {
+					background: @brightblue;
+					
+				}
+			}
+			
+			
+			
+			ul{
+
+				li {
+					padding-left: 30px;	
+
+					&:last-child {
+						padding-bottom: 0;
+					}
+					
+				}
+			
+			}
+			
+		}
+		
+
+		label {
+			position: absolute;
+			color: #9a9a9a;
+		}
+		
+		select, textarea, input[type='text'] {
+			margin-left: 130px;
+			border: 1px solid @bordergray;
+			
+			&:focus {
+				outline: none;
+				border-color: black;
+			}
+		}
+
+		
+		input[type='text'], textarea {
+			padding: 5px;
+			width: 70%;
+			margin-left: 130px;
+			
+		} 
+		
+		input[name="city"]{
+			width: 280px;
+			display: inline;
+			text-transform: capitalize;
+		}
+
+		select[name="state"]{
+			margin: 0;
+			margin-left: 15px;
+			margin-right: 15px;
+		}
+
+
+		input[type='submit'] {
+			.big-button;
+		} 
+
+		.select_farm {
+			li {
+				padding-left: 30px;
+			}
+		}
+		
+		.location {
+			margin-bottom: 5px;
+		}
+
+		.location-template {
+			display: none;
+		}
+		
+		.location-tally {
+			display: none;
+		}
+	}
+	
+
+	.blue-ui {
+		padding: 1px 0 0 0;
+		width: 20px;
+		height: 19px;
+		border-radius: 20px;
+		text-align: center;
+		display: inline-block;
+		background: #c1c1c1;
+		color: white;
+		margin: 1px;
+		cursor: pointer;
+		text-decoration: none;
+		
+		&:hover {
+			background: @brightblue;
+		}
+	}
+		
+}
+
+
+
+
+.supplier-select {
+	background: #f1f1f1;
+	border-left: 1px solid @bordergray;
+	border-right: 1px solid @bordergray;
+
+	.supplier-list {
+		margin: 7px 0 0 15px;
+		padding: 0;
+	}
+	
+	.batch-add-supplier {
+		margin-right: 15px;
+	}
+}
+
+#select_flavor {
+	float: right;
+}
+
+
+#id_range {
+	float: right;
+	width: 300px;
+	padding: 5px;
+	font-size: 18px;
+	margin-top: -10px;
+}
+
+/*---------- flavors.php ----------*/
+
+#flavor-list {
+	padding-top: 10px;
+	li {
+	
+		.flavor-name {
+		
+		}
+
+		.edit-flavor-name {
+			float: right;
+			margin-top: -1px;
+		}
+
+	}
+}
+
+/* --------- batches.php --------- */
+
+#batch-list {
+
+	li {
+		border-top: none;
+		
+				
+		.batchnumber {
+			font-size: 40px;
+			font-weight: 900;
+			border-left: 20px solid transparent;
+			margin-left: -50px;
+			padding-left: 30px;
+			width: 200px;
+			
+			&#featured-batch {
+				color: @orange;
+				border-left: 20px solid @orange;
+			}
+			
+			&:hover {
+				cursor: pointer;
+				color: gray;
+				border-left: 20px solid gray;
+			}
+		}
+		
+		.id_range {
+		
+			float: right;
+			margin-right: 10px;
+
+			input {
+				border-radius: 5px;
+				padding: 3px 5px;			
+				background: none;
+				border: 1px solid @bordergray;
+				background: transparent;
+				border: none;
+				font-size: 13px;
+				width: 450px;
+				text-align: right;
+				
+				&:focus {
+					outline: none;
+					background: @bordergray;
+				}
+			}
+			
+		}
+		
+		.batch_parts {
+			border-bottom: 1px solid @bordergray;
+
+			li {
+				padding-left: 0;
+				border-top: 1px solid @bordergray;
+				
+			}
+		}
+	}
+}
+
+#add_summary {
+
+	h2 {
+		font-size: 20px;
+		margin-bottom: 20px;
+	}
+	
+	ul {
+		
+		margin-bottom: 30px;
+		border-bottom: 1px solid @bordergray;
+		
+		li {
+			font-size: 12px;
+			strong {
+				font-weight: bold;
+				color: #bfbfbf;
+			}
+		
+			&:nth-child(odd) {
+		   background-color: #ffffe6;
+			}
+			
+		}
+	}
+	
+	.big-button {
+		margin-left: 15px;
+	}
+}
+

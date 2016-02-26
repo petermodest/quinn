@@ -1,0 +1,7 @@
+#mainmenu-header ul,
+h2, #sidebar h3,
+.blog-entry-title,
+.block-view-post h3,
+#sidebar-blockview h3 {
+font-family: 'league-gothic', sans-serif;
+}

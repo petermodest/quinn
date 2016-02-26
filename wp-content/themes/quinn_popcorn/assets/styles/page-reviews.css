@@ -1,0 +1,9 @@
+/*--------------------------------------------------------------
+/*  PAGE - REVIEWS
+-------------------------------------------------------------- */
+.page-reviews .block-info-state {
+  text-align: center;
+}
+.page-reviews .block-info-state p {
+  font-size: 22px;
+}

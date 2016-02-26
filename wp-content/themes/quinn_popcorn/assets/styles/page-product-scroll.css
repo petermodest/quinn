@@ -1,0 +1,274 @@
+/*--------------------------------------------------------------
+/*  PAGE - PRODUCT SCROLL
+-------------------------------------------------------------- */
+#product-json {
+  display: none;
+}
+#product-scroll * *,
+#product-scroll * *:before,
+#product-scroll * *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#product-scroll #product-scroll-titles {
+  padding-top: 85px;
+}
+#product-scroll #product-scroll-titles ul li {
+  border: 5px solid white;
+  margin-bottom: 10px;
+  padding: 20px 50px;
+  margin-left: -5px;
+  display: table;
+  cursor: pointer;
+}
+#product-scroll #product-scroll-titles ul li:hover .title-buttons,
+#product-scroll #product-scroll-titles ul li.active_product .title-buttons {
+  display: block;
+}
+#product-scroll #product-scroll-titles ul li:hover.text_black h2,
+#product-scroll #product-scroll-titles ul li.active_product.text_black h2,
+#product-scroll #product-scroll-titles ul li:hover.text_black a,
+#product-scroll #product-scroll-titles ul li.active_product.text_black a {
+  color: black;
+}
+#product-scroll #product-scroll-titles ul li .title-buttons {
+  float: left;
+  padding-top: 27px;
+  display: none;
+}
+#product-scroll #product-scroll-titles ul li .title-buttons .back-to-top {
+  display: none;
+}
+#product-scroll #product-scroll-titles ul li .title-buttons a {
+  color: white;
+  font-size: 30px;
+  text-decoration: none;
+  padding-left: 40px;
+  display: block;
+  float: left;
+}
+#product-scroll #product-scroll-titles ul li .title-buttons a:hover {
+  text-decoration: underline;
+}
+#product-scroll #product-scroll-titles ul li h2 {
+  text-transform: uppercase;
+  color: white;
+  font-size: 70px;
+  font-weight: bold;
+  float: left;
+}
+#product-scroll #product-scroll-titles ul li.sticky {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  min-height: 70px;
+  background: transparent !important;
+  border: transparent !important;
+}
+#product-scroll #product-scroll-titles ul li.sticky h2 {
+  display: none;
+}
+#product-scroll #product-scroll-titles ul li.sticky .title-buttons {
+  position: absolute;
+  right: 20px;
+  padding-top: 7px;
+}
+#product-scroll #product-scroll-titles ul li.sticky .title-buttons .clickformore,
+#product-scroll #product-scroll-titles ul li.sticky .title-buttons .product-downarrow {
+  display: none;
+}
+#product-scroll #product-scroll-titles ul li.sticky .title-buttons .back-to-top {
+  display: block;
+}
+#product-scroll #product-callout .scroll-pane-content {
+  margin-left: 100px;
+  width: 45%;
+}
+#product-scroll #product-callout .scroll-pane-content h2 {
+  font-size: 75px;
+  line-height: 75px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+#product-scroll #product-reinvented {
+  background: url("http://dev.quinnpopcorn.com/wp-content/themes/quinn_popcorn//assets/images/product-reinvented-img.jpg") #5ab3d1 no-repeat center bottom;
+  background-size: contain;
+}
+#product-scroll #product-reinvented h1 {
+  font-size: 90px;
+  color: white;
+  line-height: 0;
+}
+#product-scroll #product-reinvented h1 span {
+  width: 50px;
+  height: 70px;
+  background: white;
+  display: inline-block;
+  margin-right: 30px;
+}
+#product-scroll #product-reinvented h2 {
+  padding: 20px 0 0 80px;
+  color: white;
+  font-weight: lighter;
+}
+#product-scroll #product-reinvented h2 a {
+  color: #fbfc38;
+}
+#product-scroll #slider-product-ingredients {
+  background: url("http://dev.quinnpopcorn.com/wp-content/themes/quinn_popcorn//assets/images/product-ingredient-bg.png") center center no-repeat;
+  background-size: cover;
+}
+#product-scroll #slider-product-ingredients .product-ingredients-wrapper {
+  width: 60%;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: -250px;
+}
+#product-scroll #slider-product-ingredients .product-ingredients-wrapper .product-ingredients-title {
+  width: 100%;
+  margin-bottom: 10px;
+}
+#product-scroll #slider-product-ingredients .product-ingredients-wrapper img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+#product-scroll #slider-product-ingredients .product-ingredients-wrapper #view-nutrition-info {
+  border: 5px solid white;
+  display: block;
+  padding: 10px 0;
+  margin-top: 10px;
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+  text-align: center;
+}
+#product-scroll #slider-product-ingredients .product-ingredients-wrapper #view-nutrition-info:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+#product-scroll #product-farmtobag {
+  background: url("http://dev.quinnpopcorn.com/wp-content/themes/quinn_popcorn//assets/images/product-f2b-bag.png") #5ab3d1 no-repeat 10% 400px;
+  background-size: 50%;
+}
+#product-scroll #product-farmtobag h1 {
+  font-size: 90px;
+  color: white;
+  line-height: 0;
+}
+#product-scroll #product-farmtobag h1 span {
+  width: 50px;
+  height: 70px;
+  background: white;
+  display: inline-block;
+  margin-right: 30px;
+}
+#product-scroll #product-farmtobag h2 {
+  padding: 20px 0 0 80px;
+  color: white;
+  font-weight: lighter;
+}
+#product-scroll #product-farmtobag h2 a {
+  color: white;
+}
+#product-scroll #product-farmtobag #f2b-form {
+  padding-bottom: 100px;
+}
+#product-scroll #product-farmtobag #f2b-form form .f2b-logo {
+  background: url("http://dev.quinnpopcorn.com/wp-content/themes/quinn_popcorn//assets/images/product-f2b-logo.png") no-repeat right center;
+  width: 200px;
+  height: 150px;
+  float: right;
+  margin: 50px 150px 30px ;
+  background-size: contain;
+  padding: 30px 0 0 450px;
+}
+#product-scroll #product-farmtobag #f2b-form form .f2b-arrow {
+  background: url("http://dev.quinnpopcorn.com/wp-content/themes/quinn_popcorn//assets/images/product-f2b-arrow.png") no-repeat left center;
+  width: 80%;
+  float: right;
+  height: 150px;
+  background-size: cover;
+}
+#product-scroll #product-farmtobag #f2b-form form .f2b-arrow-inner {
+  padding: 30px 30px 0 0;
+  float: right;
+}
+#product-scroll #product-farmtobag #f2b-form form {
+  width: 100%;
+  margin: 0 auto;
+}
+#product-scroll #product-farmtobag #f2b-form form input,
+#product-scroll #product-farmtobag #f2b-form form a,
+#product-scroll #product-farmtobag #f2b-form form .type-or {
+  font-size: 25px;
+}
+#product-scroll #product-farmtobag #f2b-form form input[type='text'] {
+  border: 1px solid black;
+  padding: 10px 20px;
+  width: 140px;
+  float: left;
+}
+#product-scroll #product-farmtobag #f2b-form form input[type='submit'],
+#product-scroll #product-farmtobag #f2b-form form a {
+  border: 1px solid black;
+  padding: 10px;
+  color: black;
+  background: white;
+  margin-left: -1px;
+}
+#product-scroll #product-farmtobag #f2b-form form input[type='submit']:hover,
+#product-scroll #product-farmtobag #f2b-form form a:hover {
+  background: yellow;
+  cursor: pointer;
+}
+#product-scroll #product-farmtobag #f2b-form form a {
+  text-decoration: none;
+}
+#product-scroll #product-farmtobag #f2b-form form .type-or {
+  padding: 20px 20px;
+}
+#product-scroll #product-foot {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+#product-scroll #product-foot ul {
+  margin-top: -50px;
+  display: table;
+  margin: 0 auto;
+}
+#product-scroll #product-foot ul li {
+  float: left;
+  padding-top: 150px;
+  margin: 0 15px;
+}
+#product-scroll #product-foot ul li.foot-btn {
+  width: 184px;
+  background: url("http://dev.quinnpopcorn.com/wp-content/themes/quinn_popcorn//assets/images/product-foot.png") no-repeat;
+}
+#product-scroll #product-foot ul li.foot-btn a {
+  background: #58b4cd;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 32px;
+  text-decoration: none;
+  display: block;
+}
+#product-scroll #product-foot ul li.foot-btn a:hover {
+  background: #389eba;
+}
+#product-scroll #product-foot ul li#foot-or {
+  padding: 100px 30px;
+  font-size: 32px;
+}
+#product-scroll #product-foot ul li#buy-online {
+  background-position: -306px 0;
+}
+#product-scroll #product-foot ul li#see-reviews {
+  background-position: -630px 0;
+}

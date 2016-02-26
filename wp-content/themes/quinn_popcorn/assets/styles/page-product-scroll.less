@@ -1,0 +1,326 @@
+@import (reference) "variables.less";
+
+/*--------------------------------------------------------------
+/*  PAGE - PRODUCT SCROLL
+-------------------------------------------------------------- */
+
+#product-json { display: none; }
+
+#product-scroll {
+
+  * { .box_fix(); }
+
+  #product-scroll-titles {
+    padding-top: 85px;
+  }
+
+  #product-scroll-titles ul li {
+    border: 5px solid white;
+    margin-bottom: 10px;
+    padding: 20px 50px;
+    margin-left: -5px;
+    display: table;
+    cursor: pointer;
+
+    &:hover, &.active_product {
+      .title-buttons {
+        display: block;
+      }
+    }
+
+    &:hover, &.active_product  {
+      &.text_black {
+        h2, a {
+          color: black;
+        }
+      }
+    }
+  }
+
+  #product-scroll-titles ul li .title-buttons {
+
+    float: left;
+    padding-top: 27px;
+    display: none;
+
+    .back-to-top {
+      display: none;
+    }
+  }
+
+  #product-scroll-titles ul li .title-buttons a {
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+    padding-left: 40px;
+    display: block;
+    float: left;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+  }
+  #product-scroll-titles ul li h2 {
+      text-transform: uppercase;
+      color: white;
+      font-size: 70px;
+      font-weight: bold;
+      float: left;
+
+    }
+
+  #product-scroll-titles ul li.sticky {
+
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: 70px;
+    background: transparent !important;
+    border: transparent !important;
+
+      h2 { display: none; }
+
+      .title-buttons {
+        position: absolute;
+        right: 20px;
+        padding-top: 7px;
+
+        .clickformore, .product-downarrow {
+          display: none;
+        }
+
+        .back-to-top {
+          display: block;
+        }
+      }
+  }
+  #product-callout {
+    .scroll-pane-content {
+      margin-left: 100px;
+      width: 45%;
+
+      h2 {
+        font-size: 75px;
+        line-height: 75px;
+        margin-bottom: 10px;
+        text-align: left;
+      }
+    }
+  }
+  #product-reinvented {
+
+    background: url("@{images}product-reinvented-img.jpg") @blue no-repeat center bottom;
+
+    background-size: contain;
+
+
+
+    h1 {
+      font-size: 90px;
+      color: white;
+      line-height: 0;
+    }
+
+
+    h1 span {
+      width: 50px;
+      height: 70px;
+      background: white;
+      display: inline-block;
+      margin-right: 30px;
+    }
+    h2 {
+      padding: 20px 0 0 80px;
+      color: white;
+      font-weight: lighter;
+      a {
+        color: @yellow;
+      }
+    }
+
+
+  }
+
+  #slider-product-ingredients {
+
+    background: url("@{images}product-ingredient-bg.png") center center no-repeat;
+    background-size:cover;
+
+    .product-ingredients-wrapper {
+      width: 60%;
+      max-width: 600px;
+      margin: 0 auto;
+      margin-top: -250px; // two hours of searching. I have no idea why this needs to happen.
+
+      .product-ingredients-title {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      #view-nutrition-info {
+        border: 5px solid white;
+        display: block;
+        padding: 10px 0;
+        margin-top: 10px;
+        color: white;
+        text-decoration: none;
+        font-size: 25px;
+        text-align: center;
+
+        &:hover {
+          background: rgba(255,255,255,0.4);
+        }
+      }
+    }
+  }
+
+  #product-farmtobag {
+    background: url("@{images}product-f2b-bag.png") @blue no-repeat 10% 400px;
+    background-size: 50%;
+
+
+
+    h1 {
+      font-size: 90px;
+      color: white;
+      line-height: 0;
+    }
+
+    h1 span {
+      width: 50px;
+      height: 70px;
+      background: white;
+      display: inline-block;
+      margin-right: 30px;
+    }
+    h2 {
+      padding: 20px 0 0 80px;
+      color: white;
+      font-weight: lighter;
+      a {
+        color: white;
+      }
+    }
+    #f2b-form { padding-bottom: 100px; } // pushes content up from arrow
+
+    #f2b-form form .f2b-logo{
+      background: url("@{images}product-f2b-logo.png") no-repeat right center;
+      width: 200px;
+      height: 150px;
+      float: right;
+      margin: 50px 150px 30px ;
+      background-size: contain;
+      padding: 30px 0 0 450px;
+    }
+    #f2b-form form .f2b-arrow{
+      background: url("@{images}product-f2b-arrow.png") no-repeat left center;
+      width: 80%;
+      float: right;
+      height: 150px;
+      background-size: cover;
+    }
+    #f2b-form form .f2b-arrow-inner{
+      padding: 30px 30px 0 0;
+      float: right;
+    }
+    #f2b-form form {
+      width: 100%;
+      margin: 0 auto;
+
+      input, a, .type-or {
+        font-size: 25px;
+      }
+
+      input[type='text'] {
+        border: 1px solid black;
+        padding: 10px 20px;
+        width: 140px;
+        float: left;
+      }
+
+      input[type='submit'], a {
+        border: 1px solid black;
+        padding: 10px;
+        color: black;
+        background: white;
+        margin-left: -1px;
+
+        &:hover {
+          background: yellow;
+          cursor: pointer;
+        }
+      }
+
+      a { text-decoration: none; }
+      .type-or { padding: 20px 20px; }
+
+    }
+
+  }
+
+  #product-foot {
+
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+
+    ul {
+      margin-top: -50px;
+      display: table;
+      margin: 0 auto;
+
+      li {
+        float: left;
+        padding-top: 150px;
+        margin: 0 15px;
+
+        &.foot-btn {
+          width: 184px;
+          background: url("@{images}product-foot.png") no-repeat;
+
+
+          a {
+            background: #58b4cd;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 32px;
+            text-decoration: none;
+            display: block;
+
+            &:hover {
+              background: darken(#58b4cd, 10%);
+            }
+          }
+
+        }
+
+        &#foot-or {
+          padding: 100px 30px;
+          font-size: 32px;
+
+        }
+
+        &#buy-online {
+          background-position: -306px 0;
+        }
+
+        &#see-reviews {
+          background-position: -630px 0;
+        }
+      }
+
+    }
+  }
+
+}

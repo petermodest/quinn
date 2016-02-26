@@ -1,0 +1,98 @@
+@import (reference) "variables.less";
+
+
+/*--------------------------------------------------------------
+/*  PAGE - DEFAULT/STANDARD
+-------------------------------------------------------------- */
+
+
+#reinvented-scroll {
+
+  .reinvented-section{
+
+    background-size: cover;
+    background-repeat: none;
+
+    .section-content {
+      text-align: center;
+      color: white;
+      width: 100%;
+      position: absolute;
+      bottom: 150px;
+
+      h2 { font-size: 60px; }
+
+      p {
+        font-size: 23px;
+        text-align: center;
+        padding-bottom: 0px;
+        color: white;
+        font-weight: 400;
+        width: 90%;
+        max-width: 650px;
+        margin: 0 auto;
+
+        a {
+          color: white;
+        }
+      }
+    }
+  }
+
+  #section-1 {
+    background-size: auto !important;
+  }
+
+  #section-2 {
+
+    .section-content {
+      #purepop-title {
+        background: url("@{images}reinvented-purepop.png") center center no-repeat;
+        width: 100%;
+        height: 61px;
+        display: block;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  #section-foot {
+
+    ul {
+      display: table;
+      margin: 0 auto;
+      margin-top: -100px;
+
+      li {
+        float: left;
+        padding-top: 150px;
+        width: 164px;
+        background: url("@{images}reinvented-foot.png") no-repeat;
+        margin: 0 20px;
+
+        a {
+          background: #58b4cd;
+          color: white;
+          padding: 10px 0;
+          text-align: center;
+          font-size: 32px;
+          text-decoration: none;
+          display: block;
+
+          &:hover {
+            background: darken(#58b4cd, 10%);
+          }
+        }
+
+        &#buy-online {
+          background-position: -306px 0;
+        }
+
+        &#flavors {
+          background-position: -615px 0;
+        }
+      }
+    }
+  }
+
+}

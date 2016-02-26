@@ -1,0 +1,222 @@
+/*--------------------------------------------------------------
+/*  FRONTPAGE (v1)
+-------------------------------------------------------------- */
+#frontpage-wrapper-shim {
+  display: block;
+}
+#frontpage-wrapper {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  right: 0;
+  color: black;
+  overflow: hidden;
+}
+#frontpage-wrapper a {
+  color: black;
+}
+#frontpage-wrapper .fp-text {
+  margin-top: -160px;
+  margin-left: 50px;
+  margin-bottom: 50px;
+}
+#frontpage-wrapper .fp-text .fp-title,
+#frontpage-wrapper .fp-text .fp-supertitle {
+  background: white;
+  text-transform: uppercase;
+  display: inline-block;
+}
+#frontpage-wrapper .fp-text .fp-supertitle {
+  position: absolute;
+  margin-top: -50px;
+  font-size: 14px;
+  padding: 10px;
+}
+#frontpage-wrapper .fp-text .fp-title,
+#frontpage-wrapper .fp-text .fp-checkitout {
+  margin-top: -11px;
+}
+#frontpage-wrapper .fp-text .fp-title {
+  font-size: 48px;
+  padding: 20px 10px 10px 10px;
+  line-height: 48px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#frontpage-wrapper .fp-text .fp-checkitout {
+  background: white;
+  padding: 22px 30px 23px 30px;
+  position: absolute;
+  margin-left: 5px;
+  text-decoration: none;
+}
+#frontpage-wrapper .fp-text .fp-checkitout:hover {
+  background: yellow;
+}
+#frontpage-wrapper #fp-main {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+#frontpage-wrapper #fp-main .fp-image {
+  width: 100%;
+  height: 730px;
+}
+#frontpage-wrapper .fp-section {
+  width: 50%;
+  float: left;
+  overflow: hidden !important;
+}
+#frontpage-wrapper .fp-section .fp-text {
+  margin-top: -200px;
+  overflow: hidden;
+}
+#frontpage-wrapper .fp-section .fp-text .fp-title {
+  position: relative;
+}
+#frontpage-wrapper .fp-section .fp-image {
+  border-top: 5px solid white;
+  width: 100%;
+  height: 530px;
+}
+#frontpage-wrapper .fp-section .fp-color-overlay {
+  width: 50%;
+  border-top: 5px solid white;
+  height: 520px;
+  position: absolute;
+  opacity: .65;
+  z-index: 0;
+}
+#frontpage-wrapper .fp-section:nth-child(odd) .fp-color-overlay {
+  margin-left: -5px;
+}
+#frontpage-wrapper .fp-section:nth-child(2n+2) {
+  padding-left: 5px ;
+  margin-left: -5px;
+  background: white;
+}
+#frontpage-wrapper .fp-section .fp-checkitout {
+  position: relative;
+  display: inline-block;
+  clear: both;
+  margin: 0;
+}
+/*--------------------------------------------------------------
+/*  FRONTPAGE (v2 - large tile version)
+-------------------------------------------------------------- */
+/*! ==========   COLUMNS   ============ */
+.three-column-wrapper {
+  width: 960px;
+  display: block;
+}
+.three-column-wrapper .column-1,
+.three-column-wrapper .column-2,
+.three-column-wrapper .column-3 {
+  width: 300px;
+  float: left;
+}
+.three-column-wrapper .column-2 {
+  margin-left: 20px;
+}
+.three-column-wrapper .column-3 {
+  margin-left: 20px;
+}
+.two-column-wrapper {
+  width: 960px;
+  display: block;
+}
+.two-column-wrapper .column-1 {
+  float: left;
+  width: 470px;
+}
+.two-column-wrapper .column-2 {
+  margin-left: 490px;
+}
+/*! ============  HOMEPAGE SLIDESHOW   ============= */
+#slideshow-controls-wrapper {
+  position: absolute;
+  width: 100%;
+}
+#slideshow-controls-wrapper #slideshow-controls {
+  position: relative;
+  z-index: 100;
+  width: 80%;
+  min-width: 960px;
+  margin: 0 auto;
+  height: 180px;
+  margin-top: -270px;
+  /* =========  THUMBNAILS */
+}
+#slideshow-controls-wrapper #slideshow-controls #slidecaption {
+  float: left;
+}
+#slideshow-controls-wrapper #slideshow-controls #h2-title-bg,
+#slideshow-controls-wrapper #slideshow-controls #slidecaption p,
+#slideshow-controls-wrapper #slideshow-controls #post-link {
+  background: white;
+}
+#slideshow-controls-wrapper #slideshow-controls #slidecaption h2 {
+  font-size: 55px;
+  text-transform: uppercase;
+  position: relative;
+  margin: 0 0 0 5px;
+  padding: 10;
+  z-index: 100;
+  white-space: nowrap;
+}
+#slideshow-controls-wrapper #slideshow-controls #h2-title-bg {
+  position: absolute;
+  top: 0;
+  margin: 10px 0 0 0;
+  z-index: 99;
+  width: 400px;
+  height: 55px;
+}
+#slideshow-controls-wrapper #slideshow-controls #slidecaption p,
+#slideshow-controls-wrapper #slideshow-controls #post-link {
+  margin-top: -5px;
+}
+#slideshow-controls-wrapper #slideshow-controls #slidecaption p {
+  padding: 10px 10px 0 10px;
+  font-size: 12px;
+  width: 250px;
+  display: block;
+  height: 45px;
+  margin: 0px 0 0 335px;
+}
+#slideshow-controls-wrapper #slideshow-controls #post-link {
+  position: absolute;
+  text-decoration: none;
+  font-size: 12px;
+  padding: 20px 20px 0 20px;
+  margin: 0 0 0 300px;
+  color: black;
+  height: 35px;
+  background: white;
+}
+#slideshow-controls-wrapper #slideshow-controls #post-link:hover {
+  color: #2da1c9;
+}
+#slideshow-controls-wrapper #slideshow-controls #thumb-tray {
+  float: left;
+}
+#slideshow-controls-wrapper #slideshow-controls #thumb-tray li {
+  float: left;
+  margin-left: 1px;
+}
+#slideshow-controls-wrapper #slideshow-controls #thumb-tray #thumb-list li {
+  margin: 0;
+}
+#slideshow-controls-wrapper #slideshow-controls #thumb-tray #thumb-list li.current-thumb img {
+  background: #2da1c9;
+}
+#slideshow-controls-wrapper #slideshow-controls #thumb-tray #thumb-list li img {
+  background: white;
+  width: 60px;
+  padding: 10px;
+  height: auto;
+}
+body #slideshow-controls #thumb-tray #thumb-list .current-thumb img {
+  background: rgba(77, 181, 224, 0.9);
+}
