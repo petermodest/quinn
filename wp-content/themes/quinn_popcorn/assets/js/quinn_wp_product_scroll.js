@@ -7,14 +7,17 @@ var ProductScroll = {
 		this.cacheElements();
 		this.bindEvents();
 		this.drawTitles();
-
-		if (this.scrollType == 'microwave')
-		{
-			this.selectFlavor(this.convertToSlug('vermont maple &amp; sea salt'));
-		}
-		if (this.scrollType == 'popped')
-		{
-			this.selectFlavor(this.convertToSlug('kale &amp; sea salt'));
+				
+		if( $('#product-scroll-titles li[data-slug="' + window.location.hash.split('#').join('') + '"]').length > 0 ) {
+			this.selectFlavor( window.location.hash.split('#').join('') );
+		} else {
+			if (this.scrollType === 'microwave') {
+				this.selectFlavor(this.convertToSlug('vermont maple &amp; sea salt'));
+			} else if (this.scrollType === 'popped') {
+				this.selectFlavor(this.convertToSlug('kale &amp; sea salt'));
+			} else if (this.scrollType === 'pretzels') {
+				this.selectFlavor(this.convertToSlug('touch of honey'));
+			}
 		}
 
 		this.stickyNav();
@@ -23,7 +26,6 @@ var ProductScroll = {
 		{
 			ProductScroll.scrollShim();
 		});
-
 	},
 
 	currentPane: 0,
@@ -46,14 +48,14 @@ var ProductScroll = {
 		var t = this,
 		 	 product_title = this.$product_title.selector;
 
-		$(document).on('mouseover', product_title, function(event){
+		$(document).on('mouseover', product_title, function(){
 
 			var color = '#' + $(this).attr('data-hover-color');
 			$(this).css({'background-color':  color, 'border-color' : color});
 
 		});
 
-		$(document).on('mouseout', product_title, function(event){
+		$(document).on('mouseout', product_title, function(){
 
 			if ( $(this).hasClass("active_product") ) {
 
@@ -65,7 +67,7 @@ var ProductScroll = {
 			}
 		});
 
-		$(document).on('click', product_title, function(event){
+		$(document).on('click', product_title, function(){
 
 			$('.active_product')
 				.css({
@@ -98,21 +100,21 @@ var ProductScroll = {
 
 			var blackwhite = '';
 
-			if (product.text_color == 'ffffff') {
+			if (product.text_color === 'ffffff') {
 				blackwhite = 'text_white';
 			}
 
-			if (product.text_color == '000000') {
+			if (product.text_color === '000000') {
 				blackwhite = 'text_black';
 			}
 
 		// BOX vs BAG switch
 
-			if (ProductScroll.scrollType == 'microwave') {
+			if (ProductScroll.scrollType === 'microwave') {
 				noun = "BOX";
 			}
 
-			if (ProductScroll.scrollType == 'popped'){
+			if (ProductScroll.scrollType === 'popped' || ProductScroll.scrollType === 'pretzels'){
 				noun = "BAG";
 			}
 

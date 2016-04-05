@@ -22,6 +22,7 @@ var reimagine = {
 	bindEvents: function(){
 
 		$(document).on('click', $('.js-playvideo').selector, function(event){
+			$(this).closest('.section-inner').addClass('show-vid');
 			$(".video-intro").hide();
 			$(".video-container").fadeIn();
 				$('video').get(0).play();

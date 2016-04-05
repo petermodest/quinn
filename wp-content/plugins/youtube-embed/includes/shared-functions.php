@@ -22,7 +22,10 @@ function ye_extract_id( $id ) {
 
 	// Convert and trim video ID characters
 
-	$id = trim( str_replace( '&#8211;', '--', str_replace( '&#215;', 'x', strip_tags( $id ) ) ) );
+	$replacement_from = array( '&#8211;', '&#8212;', '&#215;' );
+	$replacement_to = array( '--', '---', 'x' );
+
+	$id = trim( strip_tags( str_replace( $replacement_from, $replacement_to, $id ) ) );
 
 	// Check if it's the full URL, as found in address bar
 
@@ -224,7 +227,7 @@ function ye_get_shortcode() {
 function ye_set_shortcode() {
 
 	$shortcode = get_option( 'youtube_embed_shortcode' );
-	
+
 	// If an array, transform to new format
 
 	if ( is_array( $shortcode ) ) {
@@ -338,7 +341,7 @@ function ye_get_profile( $profile ) {
 	} else {
 		$options[ 'default' ] = false;
 	}
-	
+
 	// Remove added slashes from template XHTML
 
 	if ( isset( $options[ 'template' ] ) ) { $options[ 'template' ] = stripslashes( $options[ 'template' ] );	}

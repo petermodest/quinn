@@ -1,10 +1,10 @@
-<?php
+<?
 /*
 Template Name: Contact - Wholesale
 */
 ?>
 
-<?php
+<?
 
 if(isset($_POST['submitted'])) {
 	if(trim($_POST['contactName']) === '') {
@@ -50,72 +50,67 @@ if(isset($_POST['submitted'])) {
 
 } ?>
 
-<?php get_header(); ?>
+<? get_header() ?>
 
+	<? if( have_posts() ) : ?>
+		<? while( have_posts()) : ?>
+			<? the_post() ?>
 
+			<div id="contact-wrapper" class="row">
+				<div class="inner">
 
-			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-
-<div id="contact-sidebar">
-						<img id="contact-image" src="<?php echo site_url('/') . "wp-content/quinn-images/contact-images/" . get_post_meta($post->ID, "contact_image", true); ?>.jpg" />
-
-</div>
-	<div id="contact-rightside">
-
-
-
-				<div <?php post_class() ?> id="post-<?php the_ID(); ?>">
-				<h2 class="entry-title"><?php the_title(); ?></h2>
-					<div class="entry-content">
-						<?php if(isset($emailSent) && $emailSent == true) { ?>
-							<div class="thanks">
-								<p>Thanks, your email was sent successfully.</p>
+					<div id="contact-rightside" class="col span-8 right">
+						<div <? post_class() ?> id="post-<? the_ID(); ?>">
+							<h2 class="entry-title"><? the_title(); ?></h2>
+							<div class="entry-content">
+								<? if( isset( $emailSent ) && $emailSent == true ) : ?>
+									<div class="thanks">
+										<p>Thanks, your email was sent successfully.</p>
+									</div>
+								<? else : ?>
+									<? the_content() ?>
+									<? if( isset( $hasError ) || isset( $captchaError ) ) : ?>
+										<p class="error">Sorry, an error occurred.</p>
+									<? endif ?>
+		
+									<form action="<? the_permalink() ?>" id="contactForm" method="post">
+										<ul class="contactform">
+											<li>
+												<input type="text" placeholder="Name" name="contactName" id="contactName" value="<? if(isset($_POST['contactName'])) echo $_POST['contactName'];?>" class="required requiredField form-text" />
+												<? if( $nameError != '' ) : ?>
+													<span class="error"><?= $nameError ?></span>
+												<? endif ?>
+											</li>
+											<li>
+												<input type="text" placeholder="Email" name="email" id="email" value="<? if(isset($_POST['email']))  echo $_POST['email'];?>" class="required requiredField email form-text" />
+												<? if( $emailError != '' ) : ?>
+													<span class="error"><?= $emailError ?></span>
+												<? endif ?>
+											</li>
+											<li>
+												<textarea placeholder="Message" name="comments" id="commentsText" rows="10" cols="70" class="required requiredField form-textarea"><? if(isset($_POST['comments'])) { if(function_exists('stripslashes')) { echo stripslashes($_POST['comments']); } else { echo $_POST['comments']; } } ?></textarea>
+												<? if($commentError != '') : ?>
+													<span class="error"><?= $commentError ?></span>
+												<? endif ?>
+											</li>
+				
+											<li>
+												<input type="submit" class="form-submit floatright" value="submit" />
+											</li>
+										</ul>
+										<input type="hidden" name="submitted" id="submitted" value="true" />
+									</form>
+								<? endif ?>
 							</div>
-						<?php } else { ?>
-							<?php the_content(); ?>
-							<?php if(isset($hasError) || isset($captchaError)) { ?>
-								<p class="error">Sorry, an error occured.<p>
-							<?php } ?>
+						</div><!-- .entry-content -->
+					</div><!-- .post -->
 
-						<form action="<?php the_permalink(); ?>" id="contactForm" method="post">
-							<ul class="contactform">
-							<li>
+					<div id="contact-sidebar" class="col span-4">
+						<img id="contact-image" src="<? echo site_url('/') . "wp-content/quinn-images/contact-images/" . get_post_meta($post->ID, "contact_image", true); ?>.jpg" />
+					</div>
+				</div>
+			</div>
+		<? endwhile ?>
+	<? endif ?>
 
-								<input type="text" placeholder="Name" name="contactName" id="contactName" value="<?php if(isset($_POST['contactName'])) echo $_POST['contactName'];?>" class="required requiredField form-text" />
-								<?php if($nameError != '') { ?>
-									<span class="error"><?=$nameError;?></span>
-								<?php } ?>
-							</li>
-
-							<li>
-
-								<input type="text" placeholder="Email" name="email" id="email" value="<?php if(isset($_POST['email']))  echo $_POST['email'];?>" class="required requiredField email form-text" />
-								<?php if($emailError != '') { ?>
-									<span class="error"><?=$emailError;?></span>
-								<?php } ?>
-							</li>
-
-								<textarea placeholder="Message" name="comments" id="commentsText" rows="10" cols="70" class="required requiredField form-textarea"><?php if(isset($_POST['comments'])) { if(function_exists('stripslashes')) { echo stripslashes($_POST['comments']); } else { echo $_POST['comments']; } } ?></textarea>
-								<?php if($commentError != '') { ?>
-									<span class="error"><?=$commentError;?></span>
-								<?php } ?>
-							</li>
-
-							<li>
-								<input type="submit" class="form-submit floatright" value="submit" />
-							</li>
-						</ul>
-						<input type="hidden" name="submitted" id="submitted" value="true" />
-					</form>
-				<?php } ?>
-				</div><!-- .entry-content -->
-			</div><!-- .post -->
-
-				<?php endwhile; endif; ?>
-		</div><!-- #content -->
-	</div><!-- #container -->
-
-	<div class="clearboth"></div>
-
-
-<?php get_footer(); ?>
+<? get_footer(); ?>

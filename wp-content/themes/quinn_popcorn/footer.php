@@ -12,9 +12,9 @@
 			<a id="nextslide"></a>
 		<?php } // close is_page('Frontpage'))  ?>
 	
-<div id="home-footer" class="footer">
+<div id="home-footer" class="row no-padding footer">
 
-	<div id="footer-contentwrap">
+	<div id="footer-contentwrap" class="row-inner">
 
 		<div id="husk-logo"></div>
 
@@ -30,7 +30,7 @@
 
 			<h4>QUINN NEWSLETTER</h4>
 			<p>No junk! Just deals, reviews, and news from us at Quinn.	</p>
-			<a href="http://www.quinnsnacks.com/connect/quinn-popcorn-newsletter/" id="newsletter-button">Check it out</a>
+			<a href="/connect/quinn-popcorn-newsletter/" id="newsletter-button">Check it out</a>
 
 	</div> <!-- #newsletter-box -->
 	</div> <!-- #footer-contentwrap -->

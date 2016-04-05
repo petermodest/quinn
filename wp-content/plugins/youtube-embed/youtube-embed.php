@@ -3,7 +3,7 @@
 Plugin Name: YouTube Embed
 Plugin URI: https://wordpress.org/plugins/youtube-embed/
 Description: Embed YouTube Videos in WordPress
-Version: 4.3.3
+Version: 4.3.4
 Author: Coded Art
 Author URI: http://codedart.co
 Text Domain: youtube-embed
@@ -19,7 +19,7 @@ Domain Path: /languages
 * @since	2.0
 */
 
-define( 'youtube_embed_version', '4.3.3' );
+define( 'youtube_embed_version', '4.3.4' );
 
 $functions_dir = plugin_dir_path( __FILE__ ) . 'includes/';
 

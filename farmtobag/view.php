@@ -38,7 +38,7 @@ if (isset($_GET['id'])) {
 				<h1>BATCH <span>#<?php echo $batch_number; ?></span></h1>
 				<div id="checkanotherbatch_wrapper">
 					<div id="checkanotherbatch">
-						<a href="http://www.quinnsnacks.com/farmtobag" >&larr; check another batch</a>
+						<a href="/farmtobag" >&larr; check another batch</a>
 					</div>
 				</div>
 			</div>

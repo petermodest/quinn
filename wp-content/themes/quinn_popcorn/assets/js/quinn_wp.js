@@ -1,13 +1,5 @@
 jQuery(document).ready(function() {
 
-/*
-	MAIN MENU DROPDOWN
-*/
-	$('#mainmenu-header > ul > li > a').each(function() {
-		// apply width of title to the sub-menu items
-		$(this).parent().find('.sub-menu li a').css({'width': $(this).width()});
-
-	});
 
 /*
 	MAIN MENU MOBILE TRIGGER
@@ -61,6 +53,7 @@ jQuery(document).ready(function() {
 		var boxSize = (winWidth/4 - 8);
 		var boxCount = 0;
 
+/*
 			$('.block-view-post').each(function() {
 
 				$(this).css({
@@ -95,6 +88,7 @@ jQuery(document).ready(function() {
 			}
 
 			$('#block-view-shim').css({'height': shimHeight});
+*/
 
 	}
 

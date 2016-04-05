@@ -36,7 +36,6 @@ Template Name: Store Locator Fullscreen
 
 #big_locator {
 	padding:0;
-	margin:20px 0;
 	position: absolute;
 	width: 100%;
 	height: 800px;

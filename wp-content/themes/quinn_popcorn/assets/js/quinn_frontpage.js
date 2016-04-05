@@ -1,24 +1,28 @@
 $(document).ready(function() {
-
-
-  function resizeTitle(){
-
-    var outerWidth = $('.js-reimagine-title').width();
-    var newSize = outerWidth / 10.5;
-
-    $('.js-reimagine-title h1').css({
-      fontSize: newSize
-    });
-
-  }
-
-
-  $(window).on('resize', function() {
-
-    if ( $(window).width() < 1200 )
-      resizeTitle();
-    });
-
-resizeTitle();
-
+		
+	$(window).on('resize', function() {
+		resizeTitle();
+	});
+	
 });
+
+$(window).load(function(){
+	resizeTitle();
+})
+
+function resizeTitle(){
+	var $section = $('#fp-main');
+	var $titleOuter = $section.find('.fp-reimagine-inner');
+	var $title = $titleOuter.find('h1');
+	
+	var outerWidth = $titleOuter.width();
+	var sectionHeight = $section.height();
+	var titleHeight = $title.height()
+
+	$titleOuter.css({
+		paddingTop: ( ( sectionHeight - titleHeight ) / 2 )
+	})
+	
+	$('.load-hidden').removeClass('load-hidden');
+	
+}

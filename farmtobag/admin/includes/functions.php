@@ -239,7 +239,7 @@ function showBatchSuppliers($type, $content, $batch_part_id, $featured_parts) {
 function getInfoLink($name) {
 
 		$slug = strtolower(str_replace(" ", "-", $name));
-		$link = "http://www.quinnsnacks.com/suppliers/" . $slug;
+		$link = "/suppliers/" . $slug;
 	
 	return $link;
 }

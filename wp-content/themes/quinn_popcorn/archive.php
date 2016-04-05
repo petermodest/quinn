@@ -1,68 +1,61 @@
-<?php get_header(); ?>
-<?php get_sidebar(); ?>
-
-
-<div id="blog-list-view" class="blog-content" role="main">
-<div class="search-cat-content">
-
-		<?php if (have_posts()) : 
+<? get_header(); ?>
+	
+<div id="blog-list-view" class="row blog-content" role="main">
+	<div class="inner">
+		<div class="col span-9 right search-cat-content">
 		
-		query_posts($query_string . '&showposts=99');
-
-		
-		?>
-
-
- 	  <?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
- 	  <?php /* If this is a category archive */ if (is_category()) { ?>
-		<h3 class="blog-category-title">In <i><?php single_cat_title(); ?></i></h3>
- 	  <?php /* If this is a tag archive */ } elseif( is_tag() ) { ?>
-		<h3 class="blog-category-title">Posts Tagged &#8216;<?php single_tag_title(); ?>&#8217;</h3>
- 	  <?php /* If this is a daily archive */ } elseif (is_day()) { ?>
-		<h3 class="blog-category-title">Archive for <?php the_time('F jS, Y'); ?></h3>
- 	  <?php /* If this is a monthly archive */ } elseif (is_month()) { ?>
-		<h3 class="blog-category-title">Archive for <?php the_time('F, Y'); ?></h3>
- 	  <?php /* If this is a yearly archive */ } elseif (is_year()) { ?>
-		<h3 class="blog-category-title">Archive for <?php the_time('Y'); ?></h3>
-	  <?php /* If this is an author archive */ } elseif (is_author()) { ?>
-		<h3 class="blog-category-title">Author Archive</h3>
- 	  <?php /* If this is a paged archive */ } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) { ?>
-		<h3 class="blog-category-title">Blog Archives</h3>
- 	  <?php } ?>
-
-
-		<?php while (have_posts()) : the_post(); ?>
+			<? if( have_posts() ) : ?>
+				<? query_posts($query_string . '&showposts=99') ?>	
+				<? $post = $posts[0] ?>
 				
-<div class="search_left">
-
-<h3 class="blog-entry-title" id="post-<?php the_ID(); ?>"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
-<small><?php the_time('l, F jS, Y') ?></small>
-
-</div>
-<div class="search_right">
-<?php the_excerpt('Read the rest of this entry &raquo;'); ?>
-
-</div><!-- search_right -->
-
-<br />
+				<h3 class="blog-category-title">
+					<? if( is_category() ) : ?>
+						In <i><? single_cat_title() ?></i>
+					<? elseif( is_tag() ) : ?>
+						Posts Tagged &#8216;<? single_tag_title() ?>&#8217;
+					<? elseif( is_day() ) : ?>
+						Archive for <? the_time('F jS, Y') ?>
+					<? elseif( is_month() ) : ?>
+						Archive for <? the_time('F, Y') ?>
+					<? elseif( is_year() ) : ?>
+						Archive for <? the_time('Y') ?>
+					<? elseif( is_author() ) : ?>
+						Author Archive
+					<? elseif( isset( $_GET['paged'] ) && ! empty( $_GET['paged'] ) ) : ?>
+						Blog Archives
+					<? endif ?>
+				</h3>
+			
+				<? while( have_posts() ) : ?>
+					<? the_post() ?>
 				
-
-		<?php endwhile; ?>
-
-		<div class="navigation">
-			<div class="alignleft"><?php next_posts_link('&laquo; Older Entries') ?></div>
-			<div class="alignright"><?php previous_posts_link('Newer Entries &raquo;') ?></div>
+					<div class="search_left">
+				
+						<h3 class="blog-entry-title" id="post-<? the_ID(); ?>"><a href="<? the_permalink() ?>" rel="bookmark" title="Permanent Link to <? the_title_attribute(); ?>"><? the_title(); ?></a></h3>
+						<small><? the_time( 'l, F jS, Y' ) ?></small>
+				
+					</div>
+					<div class="search_right">
+						<? the_excerpt( 'Read the rest of this entry &raquo;' ); ?>
+					</div><!-- search_right -->
+				
+					<br />
+					
+				<? endwhile; ?>
+			
+				<div class="navigation">
+					<div class="alignleft"><? next_posts_link( '&laquo; Older Entries' ) ?></div>
+					<div class="alignright"><? previous_posts_link( 'Newer Entries &raquo;' ) ?></div>
+				</div>
+			
+			<? else : ?>
+				<h3 class="blog-category-title">No Posts Found</h3>
+			
+			<? endif; ?>
 		</div>
-
-	<?php else : ?>
-
-		<h3 class="blog-category-title">No Posts Found</h3>
-
-
-	<?php endif; ?>
+		
+		<? get_sidebar(); ?>
 	</div>
+</div>
 
-	</div>
-
-
-<?php get_footer(); ?>
+<? get_footer(); ?>

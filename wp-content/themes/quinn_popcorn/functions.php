@@ -3,6 +3,11 @@
 
 // ====================================================
 // add thumbnail (featured image) functionality
+function print_a( $data ) {
+	echo '<pre>';
+	print_r( $data );
+	echo '</pre>';
+}
 
 if ( function_exists( 'add_theme_support' ) ) {
 	add_theme_support( 'post-thumbnails' );
@@ -160,7 +165,7 @@ function fields_in_feed($content) {
 
         if ($imageName != null) {
 
-	        $output = 'http://www.quinnsnacks.com/wp-content/quinn-images/blogpost-covers/' . $imageName . '/' . $imageName .'-med.jpg';
+	        $output = '/wp-content/quinn-images/blogpost-covers/' . $imageName . '/' . $imageName .'-med.jpg';
         }
 
         if ($imageName == "") {

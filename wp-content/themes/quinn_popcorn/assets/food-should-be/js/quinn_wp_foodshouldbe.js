@@ -30,7 +30,7 @@ $(document).ready(function (){
 
 				switch(relay) {
 					case 'sending_term' :
-						window.location.replace('http://www.quinnsnacks.com/campaigns/food-should-be/?term=' + data);
+						window.location.replace('/campaigns/food-should-be/?term=' + data);
 
 						break;
 

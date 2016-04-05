@@ -47,19 +47,18 @@ Template Name: Product Scroll
 
 <!-- +++++++++++++ MICROWAVE : Reinvented +++++++++++++ -->
 
-<?php if (get_field('template_type') == 'microwave') {; ?>
+<?php if( in_array( get_field('template_type'), array( 'microwave', 'pretzels' ) ) ) { ?>
 
 			<div
 				id="product-reinvented"
 				class="scroll-pane SectionScroll"
-				data-arrow-color="white" >
+				data-arrow-color="white"<? if( get_field('template_type') == 'pretzels' ) : ?> style="background-image:url(/wp-content/themes/quinn_popcorn/assets/images/pretzels-reimagined-2.png); background-color: #74dd67;"<? endif ?>>
 
-				<div class="product-reinvented-inner">
+				<div class="product-reinvented-inner"<? if( get_field('template_type') == 'pretzels' ) : ?> style="padding-top: 5%"<? endif ?>>
 
 					<h1><span></span>Reimagined</h1>
 
 					<?php the_field('reinvented_text'); ?>
-
 
 				</div>
 
@@ -82,9 +81,7 @@ Template Name: Product Scroll
 
 						<div id="f2b-form">
 
-							<form
-							action="http://www.quinnsnacks.com/farmtobag/view.php" method="GET">
-
+							<form action="/farmtobag/view.php" method="GET">
 
 								<div class="f2b-logo"></div>
 								<div class="clearboth"></div>
@@ -96,7 +93,7 @@ Template Name: Product Scroll
 										<input type="submit" value="GO" />
 										<span class="type-or">or</span>
 
-										<a id="link-currentbatch" href="http://www.quinnsnacks.com/farmtobag/view.php?id=<?php echo file_get_contents('http://www.quinnsnacks.com/farmtobag/recent_batch.php'); ?>">Current Batch</a>
+										<a id="link-currentbatch" href="/farmtobag/view.php?id=<?php echo file_get_contents('http://www.quinnsnacks.com/farmtobag/recent_batch.php'); ?>">Current Batch</a>
 
 									</div>
 								</div>
@@ -116,7 +113,7 @@ Template Name: Product Scroll
 
 			<div id="slider-product-ingredients"
 				class="SectionScroll"
-				data-arrow-color="white" >
+				data-arrow-color="white"<? if( get_field('template_type') == 'pretzels' ) : ?> style="background-image: url(/wp-content/themes/quinn_popcorn/assets/images/sorghum.jpg)"<? endif ?>>
 
 
 					<div class="product-ingredients-wrapper">
@@ -126,14 +123,16 @@ Template Name: Product Scroll
 
 					<img src="<%= product.ingredients %>" />
 
-					<?php if (get_field('template_type') == 'microwave') {; ?>
-						<a href="http://www.quinnsnacks.com/m-nutritional-info/ " id="view-nutrition-info">view nutrition info</a>
+					<? if( get_field('template_type') == 'microwave' ) : ?>
+						<a href="/m-nutritional-info/ " id="view-nutrition-info">view nutrition info</a>
 
-					<?php } if (get_field('template_type') == 'popped') {; ?>
+					<? elseif( get_field('template_type') == 'popped' ) : ?>
+						<a href="/p-nutritional-info/" id="view-nutrition-info">view nutrition info</a>
 
-						<a href="http://www.quinnsnacks.com/p-nutritional-info/" id="view-nutrition-info">view nutrition info</a>
+					<? elseif( get_field('template_type') == 'pretzels' ) : ?>
+						<a href="/pretzel-nutritional-info/" id="view-nutrition-info">view nutrition info</a>
 
-					<?php } ?>
+					<? endif; ?>
 
 				</div>
 
@@ -176,32 +175,30 @@ Template Name: Product Scroll
 <div id="product-json">
 <?php
 
-$product_data = array();
-
-if( have_rows('flavor') ):
-
-	while ( have_rows('flavor') ) : the_row();
-
-		$product = array(
-			'title'	=>		get_sub_field('title'),
-			'color'	=>		get_sub_field('color'),
-			'text_color'	=>		get_sub_field('text_color'),
-			'bg_image'	=>		get_sub_field('bg_image'),
-			'tagline'	=>		get_sub_field('tagline'),
-			'tagline_above'	=>	get_sub_field('tagline_above'),
-			'tagline_below'	=>	get_sub_field('tagline_below'),
-			'ingredients'	=>	get_sub_field('ingredients')
-			);
-
-		array_push($product_data, $product);
-
-	endwhile;
-
-	else :
-		// now rows found
+	$product_data = array();
+	
+	if( have_rows('flavor') ):
+	
+		while ( have_rows('flavor') ) : the_row();
+	
+			$product = array(
+				'title'	=>		get_sub_field('title'),
+				'color'	=>		get_sub_field('color'),
+				'text_color'	=>		get_sub_field('text_color'),
+				'bg_image'	=>		get_sub_field('bg_image'),
+				'tagline'	=>		get_sub_field('tagline'),
+				'tagline_above'	=>	get_sub_field('tagline_above'),
+				'tagline_below'	=>	get_sub_field('tagline_below'),
+				'ingredients'	=>	get_sub_field('ingredients')
+				);
+	
+			array_push($product_data, $product);
+	
+		endwhile;
+	
 	endif;
-
-	echo json_encode($product_data);
+	
+echo json_encode($product_data);
 
 ?>
 

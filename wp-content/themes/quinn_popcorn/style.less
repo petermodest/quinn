@@ -6,65 +6,33 @@
 	Version: 3
 */
 
-@import (reference) "/assets/styles/variables.less";
-
-// DEVELOPMENT
-// remember to change {root} in variables.less before exporting
-//
-// @stylesheets:"http://localhost:8888/wp-content/themes/quinn_popcorn/assets/styles/";
-//
-// // Common
-// @import url("@{stylesheets}reset.css");
-// @import url("@{stylesheets}common.css");
-//
-// // Main Pages
-// @import url("@{stylesheets}page-frontpage.css");
-// @import url("@{stylesheets}page-contact-newsletter.css");
-// @import url("@{stylesheets}page-blog.css");
-// @import url("@{stylesheets}page-product.css");
-// @import url("@{stylesheets}page-product-scroll.css");
-// @import url("@{stylesheets}page-reinvented.css");
-// @import url("@{stylesheets}page-reviews.css");
-//
-// // Specific Project Pages
-// @import url("@{stylesheets}page-ispy.css");
-// @import url("@{stylesheets}page-foodshouldbe.css");
-// @import url("@{stylesheets}page-reimagine-snacks.css");
-//
-// // Modules
-// @import url("@{stylesheets}module-section-scroll.css");
-//
-// // Responsive
-// @import url("@{stylesheets}responsive.css");
-//
-
-
-// PRODUCTION
-// remember to change {root} in variables.less before exporting
-
+@import url("/assets/styles/variables");
 @stylesheets:"/assets/styles/";
-//
 
 // Common
-@import (inline) url("@{stylesheets}reset.css");
-@import url("@{stylesheets}common.css");
+@import url("assets/styles/reset");
+@import url("assets/styles/common");
 
 // Main Pages
-@import (inline) url("@{stylesheets}page-frontpage.css");
-@import (inline) url("@{stylesheets}page-contact-newsletter.css");
-@import (inline) url("@{stylesheets}page-blog.css");
-@import (inline) url("@{stylesheets}page-product.css");
-@import (inline) url("@{stylesheets}page-product-scroll.css");
-@import (inline) url("@{stylesheets}page-reinvented.css");
-@import (inline) url("@{stylesheets}page-reviews.css");
+@import url("assets/styles/page-frontpage");
+@import url("assets/styles/page-contact-newsletter");
+@import url("assets/styles/page-blog");
+@import url("assets/styles/page-product");
+@import url("assets/styles/page-product-scroll");
+@import url("assets/styles/page-reinvented");
+@import url("assets/styles/page-reviews");
+@import url("assets/styles/page-store-locator");
 
 // Specific Project Pages
-@import (inline) url("@{stylesheets}page-ispy.css");
-@import (inline) url("@{stylesheets}page-foodshouldbe.css");
-@import (inline) url("@{stylesheets}page-reimagine-snacks.css");
+@import url("assets/styles/page-ispy");
+@import url("assets/styles/page-foodshouldbe");
+@import url("assets/styles/page-reimagine-snacks");
+@import url("assets/styles/page-snack-list");
+
 
 // Modules
-@import (inline) url("@{stylesheets}module-section-scroll.css");
+@import url("assets/styles/module-section-scroll");
 
 // Responsive
-@import (inline) url("@{stylesheets}responsive.css");
+@import url("assets/styles/responsive");
+

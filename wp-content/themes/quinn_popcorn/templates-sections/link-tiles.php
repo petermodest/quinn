@@ -1,68 +1,59 @@
-<?php
+<?
 /*
 Template Name: Link Tiles
 */
 ?>
 
-<?php get_header(); ?>
+<? get_header() ?>
 
 <div id="link-block-view" >
 
-<?php
-
-	if( have_rows('tiles') ):
-
-		// loop through the rows of data
-		while ( have_rows('tiles') ) : the_row(); ?>
+	<? if( have_rows( 'tiles' ) ) : ?>
+		<? while ( have_rows('tiles') ) : ?>
+			<? the_row() ?>
 
 			<div class="block-view-post">
 				<div class="block-info-state">
-					<div class="block-info-state-inner">
-
-						<h3><a href="<?php the_sub_field('link');  ?>"><?php the_sub_field('title'); ?></a></h3>
-						<p><?php the_sub_field('text');  ?></p>
-
-					</div><!-- block-info-state -->
+					<a href="<? the_sub_field('link') ?>">
+						<div class="block-info-state-inner">
+							<div class="vertical-center">
+								<h3><? the_sub_field('title') ?></h3>
+								<p><? the_sub_field('text') ?></p>
+							</div>
+						</div><!-- block-info-state -->
+					</a>
 				</div><!-- block-info-state -->
 
 				<div class="block-image-state">
 
 					<a href="http://localhost:8888/small-the-unfair-advantage/">
-						<img width="350" height="350" src="<?php the_sub_field('image'); ?>" />
+						<img width="350" height="350" src="<? the_sub_field('image'); ?>" />
 					</a>
 
 				</div><!-- block-image-state -->
 
 			</div><!-- block view post -->
+		<? endwhile ?>
 
-<?php endwhile;
-
-		else :
-
-			// no rows found
-
-		endif;
-
-
-?>
-
-
-
+	<? endif ?>
+	
 </div>
 
 <div id="block-view-shim" style="display:block"></div>
 
-<?php if ( have_posts() ) : ?>
+<? if ( have_posts() ) : ?>
+	<? while ( have_posts() ) : ?>
+		<? the_post() ?>
 
-	<?php while ( have_posts() ) : the_post(); ?>
+		<div class="row link-block-subcontent">
+			<div class="inner">
+				<? the_content(); ?>
+			</div>
+		</div>
 
-	<div class="link-block-subcontent">
-
-		<?php the_content(); ?>
-
-	</div>
-
-<?php endwhile; endif; ?>
+	<? endwhile ?>
+<? endif ?>
 <br />
 <br />
-<?php get_footer(); ?>
+
+<? get_footer(); ?>

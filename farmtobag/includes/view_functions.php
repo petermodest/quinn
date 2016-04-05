@@ -598,7 +598,7 @@ function getFrontpageFeatured() {
 function getInfoLink($name) {
 
 		$slug = strtolower(str_replace(" ", "-", $name));
-		$link = "http://www.quinnsnacks.com/suppliers/" . $slug;
+		$link = "/suppliers/" . $slug;
 	
 	return $link;
 }

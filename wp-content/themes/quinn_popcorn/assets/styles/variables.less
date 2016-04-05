@@ -1,33 +1,49 @@
 
 /*--------------------------------------------------------------
-/*  VARIABLES
+/*	VARIABLES
 -------------------------------------------------------------- */
 
 
 /* PATHS */
-
-// @root:"http://localhost:8888/wp-content/themes/quinn_popcorn/";
-@root:"http://dev.quinnpopcorn.com/wp-content/themes/quinn_popcorn/";
-// @root:"http://www.quinnsnacks.com/wp-content/themes/quinn_popcorn/";
-
+@root:"/wp-content/themes/quinn_popcorn/";
 @images:"@{root}/assets/images/";
 @stylesheets:"@{root}/assets/styles/";
 
+/* SIZES */
+@desktopheaderheight: 58px;
 
 /* COLORS */
-
 @blue: #5AB3D1;
 @yellow: #fbfc38;
+@orange: #FFD948;
 
+
+/* DEFAULTS */
+@transition: all;
+@speed: .25s;
+@easing: ease-in-out;
 
 /* MIXINS */
 
 .box_fix(){
-  *,
-  *:before,
-  *:after { /* apply a natural box layout model to all elements; see http://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
-  	-webkit-box-sizing: border-box; /* Not needed for modern webkit but still used by Blackberry Browser 7.0; see http://caniuse.com/#search=box-sizing */
-  	-moz-box-sizing:    border-box; /* Still needed for Firefox 28; see http://caniuse.com/#search=box-sizing */
-  	box-sizing:         border-box;
-  }
+	*,
+	*:before,
+	*:after { /* apply a natural box layout model to all elements; see http://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
+		-webkit-box-sizing: border-box; /* Not needed for modern webkit but still used by Blackberry Browser 7.0; see http://caniuse.com/#search=box-sizing */
+		-moz-box-sizing:		border-box; /* Still needed for Firefox 28; see http://caniuse.com/#search=box-sizing */
+		box-sizing:				border-box;
+	}
+}
+
+.transition( @transition, @speed, @easing ){
+	-webkit-transition: @transition @speed @easing;
+	-moz-transition: @transition @speed @easing;
+	-o-transition: @transition @speed @easing;
+	transition: @transition @speed @easing;
+}
+
+.transform( @transform ) {
+    -ms-transform: @transform;
+    -webkit-transform: @transform;
+    transform: @transform;
 }

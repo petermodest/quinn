@@ -56,7 +56,7 @@ $(document).ready(function() {
 
   			var section = $(this);
   			var innerH = $(this).find('.SectionScroll-inner').outerHeight();
-        console.log(innerH);
+        
         var innerPad = (windowH - innerH) / 2;
 
   			// Resize section to window height

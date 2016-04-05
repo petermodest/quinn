@@ -3,7 +3,7 @@ Contributors: codedart
 Tags: download, embed, embedding, iframe, media, play, playlist, responsive, seo, video, widget, youtube
 Requires at least: 3.9
 Tested up to: 4.4.2
-Stable tag: 4.3.3
+Stable tag: 4.3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -327,6 +327,9 @@ Before reporting it please bear in mind that this plugin uses the standard YouTu
 7. The third party plugins menu
 
 == Changelog ==
+
+= 4.3.4 =
+* Bug: Fixed issue with 3 hyphens in a video ID being converted to &#8212;
 
 = 4.3.3 =
 * Maintenance: One of the URLs in the README is being reported as being infected by malware. I have therefore removed this URL but have changed the release number, although no code has changed, to force the new version to download to existing users
@@ -714,6 +717,9 @@ Before reporting it please bear in mind that this plugin uses the standard YouTu
 * Initial release
 
 == Upgrade Notice ==
+
+= 4.3.4 =
+* Update to fix bug in video IDs with multiple hyphens
 
 = 4.3.3 =
 * Update to remove a malware-reported URL from the README

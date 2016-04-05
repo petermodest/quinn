@@ -1,76 +1,67 @@
-@import (reference) "variables.less";
-
 /*--------------------------------------------------------------
-/*  RESPONSIVE
+/*	RESPONSIVE
 -------------------------------------------------------------- */
 
-@media (min-width: 0) and (max-width: 480px) {
+@media (min-width: 0) and (max-width: 768px) {
 
-  /* MOBILE NAVIGATION */
-  /* don't forget to manually reinsert clip rules at 2098 (.reinvented-section) when you're done.
-  */
+	/* MOBILE NAVIGATION */
+	/* don't forget to manually reinsert clip rules at 2098 (.reinvented-section) when you're done.
+	*/
 
-  .fp-reimagine-header h1 {
-    font-size: 30px !important;
-  }
-  .fp-reimagine-header {
-    height: 400px !important;
-    .section-inner-overlay {
-      height: 400px;
-    }
-  }
+	.header-wrapper#header-desktop {
+		display: none;
+	}
 
-  .header-wrapper#header-desktop {
-    display: none;
-  }
-
-  .header-wrapper#header-mobile {
-    display: block;
-  }
+	.header-wrapper#header-mobile {
+		display: block;
+		height: 90px;
+		max-height: 90px;
+	}
 
 
-  #mobile-header-padding {
-    display: block;
-  }
-
+	#mobile-header-padding {
+		display: block;
+	}
+	/* END MOBILE NAVIGATION */
 }
+
 
 
 
 @media (min-width: 480px) and (max-width: 768px) {
 
-  /* END MOBILE NAVIGATION */
+/*
+	.fp-reimagine-header {
+		height: 500px;
+		.section-inner-overlay {
+			height: 500px;
+		}
+	
+		.fp-reimagine-inner h1 {
+			font-size: 50px;
+		}
+	}
+*/
 
+	#product-scroll-titles {
+		background-attachment: inherit !important;
+	}
 
-  .fp-reimagine-header h1 {
-    font-size: 50px !important;
-  }
-  .fp-reimagine-header {
-    height: 500px !important;
-    .section-inner-overlay {
-      height: 500px;
-    }
-  }
+	#reinvented-scroll {
+		.reinvented-section {
+			.section-content {
+				width: 80%;
+				position: absolute;
+				clip: none;
 
-  #product-scroll-titles {
-    background-attachment: inherit !important;
-  }
-
-  #reinvented-scroll {
-    .reinvented-section {
-      .section-content {
-        width: 80%;
-        position: absolute;
-        clip: none;
-
-        p {
-          font-size: 35px;
-        }
-      }
-    }
-  }
-  #reinvented-scroll-shim {
-    height: 9999px;
-  }
+				p {
+					font-size: 35px;
+				}
+			}
+		}
+	}
+	#reinvented-scroll-shim {
+		height: 9999px;
+	}
 
 }

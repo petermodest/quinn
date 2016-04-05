@@ -1,0 +1,68 @@
+body.page-id-1602 {
+	h1 {
+		padding-top: 26px;
+		padding-bottom: 56px;
+		font-family: "heavitasregular";
+		font-size: 65px;
+		line-height: 78px;
+		text-align: center;
+		
+		span {
+			font-family: "pacificoregular";
+			color: @orange;
+			font-size: 82px;
+			line-height: 99px;
+			text-transform: lowercase;
+		}		
+	}
+	h2,
+	h3 {
+		font-family: "din_engschrift_stdregular";
+		font-size: 24px;
+		line-height: 28px;
+		text-transform: uppercase;
+	}
+	h3 {
+		color: @orange;
+		padding-bottom: 20px;
+	}
+	.col {
+		padding: 0 65px;
+		text-align: center;
+		ul {
+			li {
+				padding-top: 20px;
+				
+				img {
+					.transition( all, @speed, @easing );
+					width: 300px;
+				}
+				&:hover {
+					img {
+						.transform( scale(1.05, 1.05) );
+					}
+				}
+			}
+		}
+	}
+	@media screen and ( max-width: 767px ) {
+		h1 {
+			padding-bottom: 80px;
+			font-size: 44px;
+			line-height: 60px;
+			span {
+				font-size: 70px;
+				line-height: 80px;
+			}
+		}
+		.col {
+			ul {
+				li {
+					img {
+						
+					}
+				}
+			}
+		}
+	}
+}
