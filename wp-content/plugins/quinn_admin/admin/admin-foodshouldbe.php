@@ -83,7 +83,7 @@ jQuery(document).ready(function (){
   <h2><strong>Quinn Admin</strong> - Food Should Be</h2>
   <hr>
 
-  <p>Below is a list of terms that have been addded to the /foodshouldbe database.</p>
+  <p>Below is a list of terms that have been added to the /foodshouldbe database.</p>
 
   <table class="form-table striped ">
 

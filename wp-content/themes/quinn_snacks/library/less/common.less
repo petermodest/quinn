@@ -1,0 +1,828 @@
+/*--------------------------------------------------------------
+/*	COMMON (Typography / Header / Footer)
+-------------------------------------------------------------- */
+
+
+@font-face {
+		font-family: 'din_engschrift_stdregular';
+		src: url('@{fonts}din/dinengschriftstd-webfont.eot');
+		src: url('@{fonts}din/dinengschriftstd-webfont.eot?#iefix') format('embedded-opentype'),
+			url('@{fonts}din/dinengschriftstd-webfont.woff') format('woff'),
+			url('@{fonts}din/dinengschriftstd-webfont.ttf') format('truetype'),
+			url('@{fonts}din/dinengschriftstd-webfont.svg#din_engschrift_stdregular') format('svg');
+		font-weight: normal;
+		font-style: normal;
+
+}
+
+@font-face {
+		font-family: 'architects-daughter';
+		src: url('@{fonts}architects-daughter/architectsdaughter-webfont.eot');
+		src: url('@{fonts}architects-daughter/architectsdaughter-webfont.eot?#iefix') format('embedded-opentype'),
+				url('@{fonts}architects-daughter/architectsdaughter-webfont.woff') format('woff'),
+				url('@{fonts}architects-daughter/architectsdaughter-webfont.ttf') format('truetype'),
+				url('@{fonts}architects-daughter/architectsdaughter-webfont.svg#architectsdaughter') format('svg');
+		font-weight: normal;
+		font-style: normal;
+
+}
+
+@font-face {
+		font-family: 'pacificoregular';
+		src: url('@{fonts}pacifico/pacifico-webfont.eot');
+		src: url('@{fonts}pacifico/pacifico-webfont.eot?#iefix') format('embedded-opentype'),
+				url('@{fonts}pacifico/pacifico-webfont.woff2') format('woff2'),
+				url('@{fonts}pacifico/pacifico-webfont.woff') format('woff'),
+				url('@{fonts}pacifico/pacifico-webfont.ttf') format('truetype'),
+				url('@{fonts}pacifico/pacifico-webfont.svg#pacificoregular') format('svg');
+		font-weight: normal;
+		font-style: normal;
+
+}
+
+@font-face {
+		font-family: 'heavitasregular';
+		src: url('@{fonts}heavitas/heavitas-webfont.eot');
+		src: url('@{fonts}heavitas/heavitas-webfont.eot?#iefix') format('embedded-opentype'),
+				url('@{fonts}heavitas/heavitas-webfont.woff2') format('woff2'),
+				url('@{fonts}heavitas/heavitas-webfont.woff') format('woff'),
+				url('@{fonts}heavitas/heavitas-webfont.ttf') format('truetype'),
+				url('@{fonts}heavitas/heavitas-webfont.svg#heavitasregular') format('svg');
+		font-weight: normal;
+		font-style: normal;
+
+}
+
+
+#sidebar h3,
+.blog-entry-title,
+.blog-category-title,
+.block-view-post h3,
+.link-block-view li a .block-info-state h3,
+#sidebar-blockview h3,
+#wrapper #product-info h1,
+#product-scroll-titles h2,
+#product-scroll-titles a,
+#product-callout,
+#view-nutrition-info,
+#product-media p,
+#product-foot li,
+#product-farmtobag #f2b-quote,
+#product-farmtobag a,
+#product-farmtobag input,
+#product-farmtobag .type-or,
+#product-reinvented,
+#product-farmtobag h1,
+#product-callout h2,
+#reinvented-scroll h2,
+#reinvented-scroll #section-foot a,
+#reinvented-scroll .foot-or,
+.fp-reimagine-header h1,
+.reimagine-1 h1,
+.reimagine-section .subtitle {
+	font-family: 'din_engschrift_stdregular', sans-serif !important;
+}
+
+#mainmenu-header ul,
+#mainmenu-mobile ul,
+h2,
+#slidecaption h2,
+#frontpage-wrapper,
+#product-media h3,
+#reinvented-scroll p,
+#fp-fsb,
+#fsb-wrapper p,
+.reimagine-section .section-inner h3 {
+	font-family: 'Whitney A', 'Whitney B';
+	font-weight: 300;
+	font-style: normal;
+}
+
+
+#fsb-header,
+#fsb-submit,
+#fsb-wrapper h1,
+#fsb-wrapper h2,
+#fsb-wrapper h3,
+#fsb-wrapper h4,
+#fsb-wrapper #fsb-congrat p,
+#fsb-wrapper input,
+#fsb-wrapper textarea,
+#fsb-wrapper button,
+#product-farmtobag h2,
+#product-farmtobag h2 a,
+div.jqcloud,
+.page-reviews .block-info-state p,
+.reimagine-section h1,
+.reimagine-section h2,
+.reimagine-section h3,
+.reimagine-section ul
+{
+	font-family: 'Whitney Cond A', 'Whitney Cond B';
+	font-style: normal;
+}
+
+p, ul, h4, input, textarea,
+#mainmenu-header ul li:hover ul li,
+#slideshow-controls #slidecaption p,
+#slideshow-controls #post-link {
+	font-family: 'Lucida Sans', sans-serif;
+}
+
+#fsb-header input {
+	font-family: 'architects-daughter', sans-serif;
+
+}
+
+
+p, input, textarea, ul {
+	font-size: 14px;
+}
+
+h1 {
+	font-size: 33px;
+	font-weight: normal;
+}
+
+h2, .blog-entry-title,
+.blog-category-title {
+	font-size: 38px;
+}
+
+h2#respond {
+	font-size: 25px;
+
+}
+
+h3 {
+	font-size: 25px;
+	font-weight: 100;
+}
+
+h4 {
+	font-size: 18px;
+	font-weight: normal;
+}
+
+/* ================================== */
+/*!					POSITIONING						*/
+/* ================================== */
+
+#wrapper,
+#footer-contentwrap,
+#header-centering {
+	margin: 0 auto;
+	width: 960px;
+}
+
+#blog-list-view {
+	margin-top: @desktopheaderheight;
+}
+
+
+/*! ==========	HEADER	============ */
+
+.header-wrapper#header-desktop {
+
+	height: @desktopheaderheight;
+	width: 100%;
+	display: block;
+
+
+	#quinn-logo {
+		background: url("@{images}logo.png") no-repeat;
+		width: 140px;
+		height: @desktopheaderheight;
+		display: block;
+		position: relative;
+		z-index: 100;
+	}
+
+	#mainmenu-header{
+		
+		#menu-main-menu {
+			overflow: visible;
+			padding: 0;
+			
+			@media screen and ( min-width: 481px ) and ( max-width: 928px ) {
+				text-align: center;					
+				li.menu-item-has-children {
+					display: inline-block;
+					float: none;
+					> a {
+					    padding: 15px;
+					    font-size: 20px;					    
+					}
+				    ul {
+					     text-align: left;
+					    li {
+						    a {
+							   
+						    }
+					    }
+				    }
+
+				}
+			}
+
+		}
+		
+		ul {
+			margin-left: 140px;
+			position: relative;
+			z-index: 600;
+			overflow: auto;
+			padding-bottom: 0;
+
+			li {
+
+				float: left;
+				text-transform: uppercase;
+				font-size: 24px;
+				display: block;
+				
+				a {
+					padding: 12px 25px 13px;
+					text-decoration: none;
+					color: white;
+					display: block;
+				}
+				
+				> a {
+					position: relative;
+					z-index: 700;
+				}
+
+				ul {
+					display: none;
+					position: absolute;
+					margin-left: 0px;
+					width: auto !important;
+					background: rgba(33,33,33,0.75);
+					padding-top: @desktopheaderheight;
+					margin-top: -@desktopheaderheight;
+
+					li {
+						float: none;
+						margin-left: 0px;
+						font-size: 17px;
+						text-transform: none;
+
+						a {
+							width: auto !important;
+							
+							&:hover {
+								background: rgba(33,33,33,0.75);
+							}
+						}
+					}
+				}
+
+				&:hover ul {
+					display: block;
+				}
+			}
+		}
+	}
+
+	.mainmenu-black #mainmenu-header ul li {
+
+		&:hover {
+			a { color: white; }
+		}
+
+		a {
+			color: black;
+			&:hover { color: white; }
+		}
+
+		ul li a { color: white; }
+	}
+}
+
+#mobile-header-padding {
+	height: 100px;
+	height: 90px;
+	display: block;
+	display: none;
+}
+
+.logged-in.admin-bar {
+	.header-wrapper#header-mobile {
+	    margin-top: 46px;
+	}
+}
+
+.header-wrapper#header-mobile {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 550;
+	background: rgba(0, 0, 0, 0.8);
+
+	#quinn-logo {
+			background: url("@{images}logo-white.svg") no-repeat center center;
+			width: 250px;
+			height: 90px;
+			display: block;
+			position: relative;
+			z-index: 100;
+		}
+
+	#minicart-iframe {
+		position: absolute;
+		top: 10px;
+		right: 100px;
+	}
+
+	#mobile-menu-trigger {
+		width: 80px;
+		height: 80px;
+		overflow: hidden;
+		background: url("@{images}mobile-trigger-lg.svg") no-repeat left top;
+		display: block;
+		position: absolute;
+		top: 4px;
+		right: 10px;
+		cursor: pointer;
+
+		&.mobile-trigger-active {
+			background: url("@{images}mobile-trigger-lg.svg") no-repeat right top;
+		}
+	}
+
+	#mainmenu-mobile{
+		padding-top: 10px;
+		display: none;
+		background: rgba(0, 0, 0, 0.8);
+		ul {
+			li {
+				padding: 10px 10px 10px 25px;
+				font-size: 30px;
+				line-height: 40px;
+				a {
+					
+					color: white;
+					text-decoration: none;
+
+					&:hover {
+						border-bottom: 1px solid white;
+					}
+				}
+			}
+		}
+	}
+
+
+}
+
+
+/*! ==========	FOOTER	============ */
+
+.footer {
+	background: white;
+	width: 100%;
+	position: relative;
+	z-index: 3;
+	padding-top: 20px;
+}
+
+.page-template-frontpage-blocks .footer {
+//	margin-top: 80px;
+}
+
+
+#husk-logo {
+	display: block;
+	background: url("@{images}husk-logo.png") no-repeat;
+	width: 62px;
+	height: 91px;
+	float: left;
+	margin-right: 20px;
+}
+
+#mainmenu-footer {
+	ul {
+
+		li {
+	
+			float: left;
+			text-transform: uppercase;
+			font-size: 15px;
+	
+			a {
+				color: black;
+				text-decoration: none;
+	
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+	
+			ul {
+	
+				margin:10px 20px 0 0;
+	
+				li {
+	
+					font-size: 11px;
+					padding-bottom: 1px;
+					float: none;
+					text-transform: lowercase;
+	
+				}
+			}
+		}
+	
+	}
+}
+
+@media screen and ( max-width: 830px ) {
+	#footer-contentwrap {
+		float: left;
+		clear: both;
+	
+		#husk-logo {
+			float: none;
+			margin: 0 auto;
+			margin-bottom: 20px;
+		}
+		#mainmenu-footer {
+			float: left;
+			clear: both;
+			width: 100%;
+
+			ul#menu-main-menu-1 {
+				float: left;
+				clear: both;
+				width: 100%;
+				> li {
+					float: left;
+					width: 20%;
+					text-align: center;
+					.sub-menu {
+						margin: 10px 0 0;
+					}
+				}
+			}
+		}
+		#footer-social {
+			bottom: 4px;
+			top: auto;
+			width: 100%;
+			text-align: center;
+			right: 0;
+			left: 0;
+			margin: 0;
+			
+			a {
+				display: inline-block;
+				margin: 0 8px;
+				float: none;
+				&#twitter-button {
+					margin-left: -10px;
+				}
+			}
+		}
+		#newsletter-box {
+			width: 100%;
+			float: left;
+			margin-top: 20px;
+			margin: 0 0 70px;
+			text-align: center;
+			
+			a {
+				display: inline-block;
+				margin: 0;
+			}
+		}
+	}
+}
+
+@media screen and ( max-width: 580px ) {
+	#footer-contentwrap {
+		#mainmenu-footer {
+			ul#menu-main-menu-1 {
+				> li {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+
+/* =========== SOCIAL (footer & sidebar ) ==========*/
+
+
+.social-buttons {
+
+	position: absolute;
+	z-index: 999;
+	margin: 100px 0 0 650px;
+	
+
+	a {
+		width: 32px;
+		height: 28px;
+		display: block;
+		opacity: .5;
+
+		&:hover {
+			opacity: 1;
+			}
+
+		&#instagram-button {
+			background: url("@{images}icon-instagram.png") no-repeat;
+			float: left;
+			}
+
+		&#facebook-button {
+			background: url("@{images}icon-facebook.png") no-repeat;
+			float: left;
+			margin-left: 8px;
+			}
+
+		&#twitter-button {
+			background: url("@{images}icon-twitter.png") no-repeat;
+			margin: 3px 0 0 60px;
+			}
+
+	}
+}
+
+
+#newsletter-box {
+	background: #cae8f2;
+	width: 190px;
+	display: block;
+	margin-left: 770px;
+	padding: 15px;
+	margin-top: -20px;
+}
+
+#newsletter-box p {
+	margin: 10px 0;
+	font-size: 12px;
+}
+
+#newsletter-box #newsletter-button{
+	background: url("@{images}icon-mail.png") no-repeat;
+	color: black;
+	padding-left: 45px;
+	text-decoration: none;
+	height: 23px;
+	display: block;
+	opacity: .7;
+	margin-left: 20px;
+
+}
+
+
+#newsletter-box #newsletter-button:hover {
+	opacity: 1;
+}
+
+/*!	HOMEPAGE STICKY FOOTER - http://css-tricks.com/snippets/css/sticky-footer/*/
+//
+// html, body, #wrapper { height: 100%; }
+//
+// body > #wrapper {height: auto; min-height: 100%;}
+//
+// #main { padding-bottom: 270px; }	/* must be same height as the footer */
+//
+// #home-footer {
+//	position: absolute;
+//	border-top: 1px solid #e6e6e6;
+//	height: 270px;
+//	clear:both;
+// }
+
+/* CLEAR FIX*/
+
+.clearfix:after {content: ".";
+display: block;
+height: 0;
+clear: both;
+visibility: hidden;}
+
+.clearfix {display: inline-block;}
+
+/* Hides from IE-mac */
+
+* html .clearfix { height: 1%;}
+.clearfix {display: block;}
+
+/* End hide from IE-mac */
+/* end sticky footer */
+
+
+
+/*! ==================	SUPERSIZED	============ */
+
+/*
+
+Supersized - Fullscreen Slideshow jQuery Plugin
+Version : 3.2.7
+Site	: www.buildinternet.com/project/supersized
+
+Author	: Sam Dunn
+Company : One Mighty Roar (www.onemightyroar.com)
+License : MIT License / GPL License
+
+*/
+
+* { margin:0; padding:0; }
+body { background:white; height:100%; }
+img { border:none; }
+
+#supersized-loader { position:absolute; top:50%; left:50%; z-index:0; width:60px; height:60px; margin:-30px 0 0 -30px; text-indent:-999em; background:url("@{images}progress.gif") no-repeat center center;}
+
+#supersized {	display:block; position:fixed; left:0; top:0; overflow:hidden; z-index:-999; height:100%; width:100%; }
+#supersized img { width:auto; height:auto; position:relative; display:none; outline:none; border:none; }
+#supersized.speed img { -ms-interpolation-mode:nearest-neighbor; image-rendering: -moz-crisp-edges; } /*Speed*/
+#supersized.quality img { -ms-interpolation-mode:bicubic; image-rendering: optimizeQuality; }		/*Quality*/
+
+#supersized li { display:block; list-style:none; z-index:-30; position:fixed; overflow:hidden; top:0; left:0; width:100%; height:100%; background:white; }
+#supersized a { width:100%; height:100%; display:block; }
+#supersized li.prevslide { z-index:-20; }
+#supersized li.activeslide { z-index:-10; }
+#supersized li.image-loading { background:white url(../img/progress.gif) no-repeat center center; width:100%; height:100%; }
+#supersized li.image-loading img{ visibility:hidden; }
+#supersized li.prevslide img, #supersized li.activeslide img{ display:inline; }
+
+
+
+
+
+/* ================================== */
+/*!						MINCART							*/
+/* ================================== */
+
+#minicart-iframe {
+	border: none;
+	float: right;
+	top: 0;
+	position: relative;
+	z-index: 999;
+}
+
+@colspan: 100% / 12%;
+.row {
+	display: block;
+	float: left;
+	clear: both;
+	width: 100%;
+	margin: 0;
+	box-sizing: border-box;
+	padding: 0 15px;
+	
+	&.no-padding {
+		padding: 0;
+	}
+	
+	* {
+		box-sizing: border-box;
+	}
+	
+	.inner {
+		width: 100%;
+		max-width: 960px;
+		margin: 0 auto;
+	}
+	
+	.col {
+		float: left;
+		width: 100%;
+		
+		&.right {
+			float: right;
+			margin-right: 0;
+		}
+	}
+	
+	@media screen and ( min-width: 768px ) {
+		.col {
+			&.span-1 {
+				width: @colspan * 1;
+			}
+			&.span-2 {
+				width: @colspan * 2;
+			}
+			&.span-3 {
+				width: @colspan * 3;
+			}
+			&.span-4 {
+				width: @colspan * 4;
+			}
+			&.span-6 {
+				width: @colspan * 5;
+			}
+			&.span-6 {
+				width: @colspan * 6;
+			}
+			&.span-7 {
+				width: @colspan * 7;
+			}
+			&.span-8 {
+				width: @colspan * 8;
+			}
+			&.span-9 {
+				width: @colspan * 9;
+			}
+			&.span-10 {
+				width: @colspan * 10;
+			}
+			&.span-11 {
+				width: @colspan * 11;
+			}
+			&.span-12 {
+				width: 100%;
+			}
+		}
+	}
+	img {
+		max-width: 100%;
+	}
+}
+
+#home-footer {
+	padding-top: 60px;
+}
+
+/*
+body.home,
+body.page-template-snack-list,
+body.campaigns-reimagine-snacks,
+body.page-template-store-locator,
+body.page-popcorn,
+body.single-post,
+body.search-results,
+body.archive,
+body.page-id-565,
+body.page-id-1007,
+body.page-template-contact,
+body.page-template-contact-wholesale,
+body.page-template-newsletter-signup,
+body.page-template-contact-requeststore,
+body.page-template-link-tiles,
+body.customize-support,
+body.blog,
+body.error404
+*/
+body {
+	#wrapper,
+	#footer-contentwrap,
+	#header-centering {
+		width: 100%;
+		max-width: 100%;
+	}
+	
+	#mainmenu-header,
+	#header-centering,
+	#footer-contentwrap {
+		max-width: 960px;
+		margin-left: auto;
+		margin-right: auto;
+		position: relative;
+	}
+	
+	.header-wrapper,
+	#header-centering,
+	#mainmenu-header,
+	#menu-main-menu {
+		height: @desktopheaderheight;
+		max-height: @desktopheaderheight;
+	}
+	
+	.header-wrapper#header-desktop #quinn-logo {
+		margin-top: -@desktopheaderheight;
+	}
+	.header-wrapper#header-desktop #mainmenu-header ul {
+// 		overflow: hidden;
+	}
+	
+	#newsletter-box {
+		margin-left: 0;
+		float: right;
+	}
+	
+	#footer-social {
+		margin: 0;
+		right: 218px;
+		top: 120px;
+	}
+	
+/*
+	@media screen and ( max-width: 767px ) {
+		
+	}
+*/
+}
+
+
+body.page-id-565 {
+	
+}
