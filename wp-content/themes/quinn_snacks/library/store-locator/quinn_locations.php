@@ -1,4 +1,4 @@
-<?php 
+<? 
 // Allow CORS
 
 //header('Content-type: application/xml');

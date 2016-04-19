@@ -1,12 +1,12 @@
-<?php
+<?
 /*
 Template Name: Campaign - Food Should Be
 */
 ?>
 
-<?php get_header(); ?>
+<? get_header(); ?>
 
-    <?php
+    <?
     if (!isset($_GET['term'])) {
       get_template_part( 'parts/frontpage', 'foodshouldbe' );
     }
@@ -17,7 +17,7 @@ Template Name: Campaign - Food Should Be
     <div class="fsb-section fsb-bluesection fsb-firstsection">
       <div class="fsb-section-inner">
 
-    <h2 id="fsb-title"><span>#FOODSHOULDBE</span><?php echo $_GET['term']; ?></h2>
+    <h2 id="fsb-title"><span>#FOODSHOULDBE</span><? echo $_GET['term']; ?></h2>
 
     <div id="fsb-congrat">
       <p>Awesome, that’s a great one. You know what, you should share it. Use the buttons below to challenge your friends to share what they think food should be. Feeling fresh, tag a big food brand so they know what you think.</p>
@@ -31,7 +31,7 @@ Template Name: Campaign - Food Should Be
           <div class="fsb-social-whitebox">
             <textarea placeholder="Anything else to say?"></textarea>
 
-            <h3>#foodshouldbe #<?php echo $_GET['term']; ?></h3>
+            <h3>#foodshouldbe #<? echo $_GET['term']; ?></h3>
           </div><button class="fsb-submit-twitter">TWEET!</button>
         </li>
 
@@ -41,7 +41,7 @@ Template Name: Campaign - Food Should Be
           <div class="fsb-social-whitebox">
             <textarea placeholder="Anything else to say?"></textarea>
 
-            <h3>#foodshouldbe #<?php echo $_GET['term']; ?></h3>
+            <h3>#foodshouldbe #<? echo $_GET['term']; ?></h3>
           </div><button class="fsb-submit-facebook">SHARE!</button>
         </li>
 
@@ -51,7 +51,7 @@ Template Name: Campaign - Food Should Be
           <div class="fsb-social-whitebox">
             <p>Copy &amp; Paste into your next gram!</p>
             <br />
-            <h3>#foodshouldbe #<?php echo $_GET['term']; ?></h3>
+            <h3>#foodshouldbe #<? echo $_GET['term']; ?></h3>
 
           </div>
         </li>
@@ -124,6 +124,6 @@ Template Name: Campaign - Food Should Be
   </div><!-- #fsb-wrapper -->
 
 
-<?php }  // closes else ifset; ?>
+<? }  // closes else ifset; ?>
 
-  <?php get_footer(); ?>
+  <? get_footer(); ?>

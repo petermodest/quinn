@@ -1,10 +1,10 @@
 
 <!-- STANDARD JS INCLUDES -->
 
-<script type="text/javascript" src="<?= get_stylesheet_directory_uri() ?>/library/javascripts/vendor/jquery.1.11.1.min.js"></script>
-<script type="text/javascript" src="<?= get_stylesheet_directory_uri() ?>/library/javascripts/vendor/device.min.js"></script>
-<script type="text/javascript" src="<?= get_stylesheet_directory_uri() ?>/library/javascripts/vendor/jquery.lazyload.min.js"></script>
-<script type="text/javascript" src="<?= get_stylesheet_directory_uri() ?>/library/javascripts/quinn_wp.js"></script>
+<script type="text/javascript" src="<?= js_dir() ?>vendor/jquery.1.11.1.min.js"></script>
+<script type="text/javascript" src="<?= js_dir() ?>vendor/device.min.js"></script>
+<script type="text/javascript" src="<?= js_dir() ?>vendor/jquery.lazyload.min.js"></script>
+<script type="text/javascript" src="<?= js_dir() ?>quinn_wp.js"></script>
 
 
 <?
@@ -15,7 +15,7 @@
 if ( is_front_page() ) { ?>
 
 
-  <script type="text/javascript" src="<?= get_stylesheet_directory_uri() ?>/library/javascripts/quinn_frontpage.js"></script>
+  <script type="text/javascript" src="<?= js_dir() ?>quinn_frontpage.js"></script>
 
 
 <? } ?>
@@ -47,7 +47,7 @@ if ( is_page_template('template-store-locator.php') ) { ?>
 
 if ( is_page_template('templates-sections/microwave-popcorn-reinvented.php') ) { ?>
 
-  <script type="text/javascript" src="<?= get_stylesheet_directory_uri() ?>/library/javascripts/quinn_modules/section_scroll.js"></script>
+  <script type="text/javascript" src="<?= js_dir() ?>quinn_modules/section_scroll.js"></script>
 
 
 <? } ?>
@@ -60,7 +60,7 @@ if ( is_page_template('templates-sections/microwave-popcorn-reinvented.php') ) {
 
 if ( is_page( 'Reviews' ) ) { ?>
 
-  <script type="text/javascript" src="<?= get_stylesheet_directory_uri() ?>/library/javascripts/quinn_reviews.js"></script>
+  <script type="text/javascript" src="<?= js_dir() ?>quinn_reviews.js"></script>
 
 
 <? } ?>
@@ -70,16 +70,12 @@ if ( is_page( 'Reviews' ) ) { ?>
 /* ---------------------------------------------
  * SECTION : Product Scroll
 */
+if ( is_page_template('templates-sections/product-scroll.php') || $post->post_type == 'snack' ) { ?>
 
-if ( is_page_template('templates-sections/product-scroll.php') ) { ?>
-
-  <script type="text/javascript" src="<?= get_stylesheet_directory_uri() ?>/library/javascripts/vendor/underscore.min.js"></script>
-
-  <script type="text/javascript" src="<?= get_stylesheet_directory_uri() ?>/library/javascripts/vendor/bigtext.js"></script>
-
-  <script type="text/javascript" src="<?= get_stylesheet_directory_uri() ?>/library/javascripts/quinn_wp_product_scroll.js"></script>
-
-  <script type="text/javascript" src="<?= get_stylesheet_directory_uri() ?>/library/javascripts/quinn_modules/section_scroll.js"></script>
+  <script type="text/javascript" src="<?= js_dir() ?>vendor/underscore.min.js"></script>
+  <script type="text/javascript" src="<?= js_dir() ?>vendor/bigtext.js"></script>
+  <script type="text/javascript" src="<?= js_dir() ?>quinn_wp_product_scroll.js"></script>
+  <script type="text/javascript" src="<?= js_dir() ?>quinn_modules/section_scroll.js"></script>
 
 
 <? } ?>
@@ -107,9 +103,9 @@ if ( ( $post->post_title == 'Food Should Be' ) || is_page_template('templates-se
 
 if ( $post->post_title == 'Reimagine Snacks' ) { ?>
 
-  <script type="text/javascript" src="<?= get_stylesheet_directory_uri() ?>/library/javascripts/quinn_modules/section_scroll.js"></script>
+  <script type="text/javascript" src="<?= js_dir() ?>quinn_modules/section_scroll.js"></script>
 
-  <script type="text/javascript" src="<?= get_stylesheet_directory_uri() ?>/library/javascripts/quinn_reimagine_snacks.js"></script>
+  <script type="text/javascript" src="<?= js_dir() ?>quinn_reimagine_snacks.js"></script>
 
 <? } ?>
 
@@ -119,8 +115,8 @@ if ( $post->post_title == 'Reimagine Snacks' ) { ?>
 */
 if ( is_page_template('templates-sections/frontpage-fullscreen.php') || is_page_template('templates-sections/landing-page.php') ) { ?>
 
-  <script type="text/javascript" src="<?= get_stylesheet_directory_uri() ?>/library/javascripts/vendor/supersized.3.2.7.min.js"></script>
-  <script type="text/javascript" src="<?= get_stylesheet_directory_uri() ?>/library/javascripts/vendor/supersized.quinn.js"></script>
+  <script type="text/javascript" src="<?= js_dir() ?>vendor/supersized.3.2.7.min.js"></script>
+  <script type="text/javascript" src="<?= js_dir() ?>vendor/supersized.quinn.js"></script>
 
   <script type="text/javascript">
 
@@ -138,3 +134,33 @@ if ( is_page_template('templates-sections/frontpage-fullscreen.php') || is_page_
 
 
 <? } ?>
+
+<? if( is_page_template('page-farm-to-bag.php') ) : ?>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script src="https://cdn.rawgit.com/nnattawat/flip/v1.0.20/dist/jquery.flip.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('.block').flip({
+				trigger: 'hover'
+			});
+			
+			$( document ).tooltip({
+				items: '.whats-this',
+				content: function() {
+					if ( $(this).is( '.whats-this' ) ) {
+						return '<p>Rustic photos of farmers are wonderful, but information on each and every ingredient is more meaningful. That’s why we created layers deep. It keeps this from becoming a marketing gimmick. It keeps us honest.</p><ul><li><strong>1 Layer Deep:</strong> Full ingredient name. No ‘natural flavors’, or other ingredient obfuscation. </li><li><strong>2 Layers Deep:</strong> Source listed. This should include the name of the supplier and the region that the ingredient is farmed, harvested, or created. Basic ingredient certifications should also be shown.</li><li><strong>3 Layers Deep:</strong> Farm level information. This should include the name of the farm(s), the location of the farm, and an overview of their farming practices.</li><li><strong>4 Layers Deep:</strong> Harvest information. This should include the date and location that the ingredient was harvested, processed, etc. This should also include an overview of employee work standards.</li></ul>';
+					}
+				},
+				position: {
+					my: 'center bottom-20',
+					at: 'center top',
+					using: function( position, feedback ) {
+						$( this ).css( position );
+						$('<div>').addClass('arrow').addClass( feedback.vertical ).addClass( feedback.horizontal ).appendTo( this );
+					}
+				}			
+			});
+
+		})
+	</script>	
+<? endif ?>

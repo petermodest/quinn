@@ -1,15 +1,15 @@
-<?php
+<?
 /*
 Template Name: Frontpage - Fullscreen
 */
 ?>
 
-<?php get_header(); ?>
+<? get_header(); ?>
 
-<?php get_template_part( 'part', 'supersize' ); ?>
+<? get_template_part( 'part', 'supersize' ); ?>
 
 
-<?php
+<?
 	// retreive recent post info and insert it in to the $recent_post_array to
 	// be spat back out in to the supersized.js options
 
@@ -68,7 +68,7 @@ foreach($lastposts as $post) : setup_postdata($post);
 					slide_captions			:   1,
 					slides 					:  	[
 
-					<?php
+					<?
 
 				// populate slide information using the $recent_post_array
 
@@ -92,4 +92,4 @@ foreach($lastposts as $post) : setup_postdata($post);
 
 		</script>
 
-<?php get_footer(); ?>
+<? get_footer(); ?>

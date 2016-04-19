@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * WARNING: Running these tests will post and delete through the actual Twitter account.
  */

@@ -1,4 +1,4 @@
-<?php
+<?
 /**
 * get_tweets.php
 * Collect tweets from the Twitter streaming API

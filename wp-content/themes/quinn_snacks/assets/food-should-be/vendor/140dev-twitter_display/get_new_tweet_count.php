@@ -1,4 +1,4 @@
-<?php 
+<? 
 /**
 * get_new_tweet_count.php
 * Return the count of new tweets as text/html

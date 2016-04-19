@@ -1,4 +1,4 @@
-<?php
+<?
 
 namespace Abraham\TwitterOAuth\Tests;
 

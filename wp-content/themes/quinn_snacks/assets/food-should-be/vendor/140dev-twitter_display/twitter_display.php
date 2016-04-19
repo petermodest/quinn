@@ -1,4 +1,4 @@
-<?php
+<?
 /**
 * twitter_display.php
 * Deliver a complete set of tweets including the supporting HTML elements

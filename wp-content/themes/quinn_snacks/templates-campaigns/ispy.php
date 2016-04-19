@@ -1,12 +1,12 @@
-<?php
+<?
 /*
 Template Name: Campaign - iSpy
 */
 ?>
 
-<?php get_header(); ?>
+<? get_header(); ?>
 
-<script type="text/javascript" src="<?php bloginfo( 'stylesheet_directory' ); ?>/assets/js/jquery.masonry.min.js"></script>
+<script type="text/javascript" src="<? bloginfo( 'stylesheet_directory' ); ?>/assets/js/jquery.masonry.min.js"></script>
 
 		<script type="text/javascript">
 
@@ -52,7 +52,7 @@ Template Name: Campaign - iSpy
 			</li>
 
 		<li class="ispy-item">
-				<img src="<?php bloginfo('url'); ?>/wp-content/quinn-images/ispy/Coulter.jpg"  />
+				<img src="<? bloginfo('url'); ?>/wp-content/quinn-images/ispy/Coulter.jpg"  />
 				<div class="ispy-item-text">
 					<p>I spy @QuinnPopcorn at Whole Foods in Woburn, MA!! #ispyquinnpopcorn.</p>
 					<h4>- Coultl</h4>
@@ -63,7 +63,7 @@ Template Name: Campaign - iSpy
 
 
 		<li class="ispy-item">
-				<img src="<?php bloginfo('url'); ?>/wp-content/quinn-images/ispy/James.jpg"  />
+				<img src="<? bloginfo('url'); ?>/wp-content/quinn-images/ispy/James.jpg"  />
 				<div class="ispy-item-text">
 					<p>#ispyquinnpopcorn at Harvest Coop!! Thanks @quinnpopcorn!</p>
 					<h4>- James</h4>
@@ -72,7 +72,7 @@ Template Name: Campaign - iSpy
 			</li>
 
 		<li class="ispy-item">
-				<img src="<?php bloginfo('url'); ?>/wp-content/quinn-images/ispy/ispy_Alex.jpg"  />
+				<img src="<? bloginfo('url'); ?>/wp-content/quinn-images/ispy/ispy_Alex.jpg"  />
 				<div class="ispy-item-text">
 					<p>#ispyquinnpopcorn at Dean and DeLuca in Georgetown! @quinnpopcorn</p>
 					<h4>- Alex</h4>
@@ -81,7 +81,7 @@ Template Name: Campaign - iSpy
 			</li>
 
 		<li class="ispy-item">
-				<img src="<?php bloginfo('url'); ?>/wp-content/quinn-images/ispy/iSpy_Kevin.jpg"  />
+				<img src="<? bloginfo('url'); ?>/wp-content/quinn-images/ispy/iSpy_Kevin.jpg"  />
 				<div class="ispy-item-text">
 					<p>Whole Foods Market Chelsea @quinnpopcorn #ispyquinnpopcorn</p>
 					<h4>- Kevin</h4>
@@ -90,7 +90,7 @@ Template Name: Campaign - iSpy
 			</li>
 
 		<li class="ispy-item">
-				<img src="<?php bloginfo('url'); ?>/wp-content/quinn-images/ispy/alex.jpg"  />
+				<img src="<? bloginfo('url'); ?>/wp-content/quinn-images/ispy/alex.jpg"  />
 				<div class="ispy-item-text">
 					<p>iSpy @quinnpopcorn at the Westborough Roche Brothers!!! #ispyquinnpopcorn</p>
 					<h4>- Alex</h4>
@@ -99,7 +99,7 @@ Template Name: Campaign - iSpy
 			</li>
 
 		<li class="ispy-item">
-				<img src="<?php bloginfo('url'); ?>/wp-content/quinn-images/ispy/nina.jpg"  />
+				<img src="<? bloginfo('url'); ?>/wp-content/quinn-images/ispy/nina.jpg"  />
 				<div class="ispy-item-text">
 					<p>iSpy @quinnpopcorn at the Sunflower Natural Foods in Laconia, NH. Look at those new flavors too! #ispyquinnpopcorn</p>
 					<h4>- Nina</h4>
@@ -109,7 +109,7 @@ Template Name: Campaign - iSpy
 			</li>
 
 		<li class="ispy-item">
-				<img src="<?php bloginfo('url'); ?>/wp-content/quinn-images/ispy/sara_match.jpg"  />
+				<img src="<? bloginfo('url'); ?>/wp-content/quinn-images/ispy/sara_match.jpg"  />
 				<div class="ispy-item-text">
 					<p>@QuinnPopcorn #ispyquinnpopcorn at Whole Foods Hastings Ranch in Pasadena, CA!</p>
 					<h4>- Sara</h4>
@@ -118,7 +118,7 @@ Template Name: Campaign - iSpy
 			</li>
 
 		<li class="ispy-item">
-				<img src="<?php bloginfo('url'); ?>/wp-content/quinn-images/ispy/lia_fb.jpg"  />
+				<img src="<? bloginfo('url'); ?>/wp-content/quinn-images/ispy/lia_fb.jpg"  />
 				<div class="ispy-item-text">
 					<p>#ispyquinnpopcorn at mom's organic market in Alexandria, VA</p>
 					<h4>- Lia</h4>
@@ -127,7 +127,7 @@ Template Name: Campaign - iSpy
 			</li>
 
 		<li class="ispy-item">
-				<img src="<?php bloginfo('url'); ?>/wp-content/quinn-images/ispy/beverley.jpg"  />
+				<img src="<? bloginfo('url'); ?>/wp-content/quinn-images/ispy/beverley.jpg"  />
 				<div class="ispy-item-text">
 					<p>I spy Quinn Popcorn at Wilson's Farm in Lexington, MA! #ispyquinnpopcorn</p>
 					<h4>- Beverley</h4>
@@ -136,7 +136,7 @@ Template Name: Campaign - iSpy
 			</li>
 
 		<li class="ispy-item">
-				<img src="<?php bloginfo('url'); ?>/wp-content/quinn-images/ispy/qsaner.jpg"  />
+				<img src="<? bloginfo('url'); ?>/wp-content/quinn-images/ispy/qsaner.jpg"  />
 				<div class="ispy-item-text">
 					<p>#ispyquinnpopcorn at Shaw's in Waltham, MA @quinnpopcorn</p>
 					<h4>- QSaner</h4>
@@ -145,7 +145,7 @@ Template Name: Campaign - iSpy
 			</li>
 
 		<li class="ispy-item">
-				<img src="<?php bloginfo('url'); ?>/wp-content/quinn-images/ispy/anna624.jpg"  />
+				<img src="<? bloginfo('url'); ?>/wp-content/quinn-images/ispy/anna624.jpg"  />
 				<div class="ispy-item-text">
 					<p>#ispyquinnpopcorn at Roche Bros. West Roxbury!! @quinnpopcorn</p>
 					<h4>- Anna</h4>
@@ -154,7 +154,7 @@ Template Name: Campaign - iSpy
 			</li>
 
 		<li class="ispy-item">
-				<img src="<?php bloginfo('url'); ?>/wp-content/quinn-images/ispy/adrie624.jpg"  />
+				<img src="<? bloginfo('url'); ?>/wp-content/quinn-images/ispy/adrie624.jpg"  />
 				<div class="ispy-item-text">
 					<p>I have tons at home but I still went to The Fruit Center in Hingham to #ispyquinnpopcorn :) @quinnpopcorn</p>
 					<h4>- Adrienne</h4>
@@ -164,7 +164,7 @@ Template Name: Campaign - iSpy
 			</li>
 
 		<li class="ispy-item">
-				<img src="<?php bloginfo('url'); ?>/wp-content/quinn-images/ispy/joy624.jpg"  />
+				<img src="<? bloginfo('url'); ?>/wp-content/quinn-images/ispy/joy624.jpg"  />
 				<div class="ispy-item-text">
 					<p>@QuinnPopcorn I buy my Quinn Popcorn @FarmBoy #ispyquinnpopcorn in Kanata Ontario</p>
 					<h4>- Joy</h4>
@@ -176,4 +176,4 @@ Template Name: Campaign - iSpy
 
 
 
-<?php get_footer(); ?>
+<? get_footer(); ?>

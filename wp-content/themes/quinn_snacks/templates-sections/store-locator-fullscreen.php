@@ -1,34 +1,34 @@
-<?php
+<?
 /*
 Template Name: Store Locator Fullscreen
 */
 ?>
 
-<?php get_header(); ?>
+<? get_header(); ?>
 
 
 <div id="storelocate-wrapper">
 
 
 
-	<?php if ( have_posts() ) : ?>
+	<? if ( have_posts() ) : ?>
 
 
-			<?php while ( have_posts() ) : the_post(); ?>
+			<? while ( have_posts() ) : the_post(); ?>
 							
 							
 
-						<h2><?php the_title(); ?> </h2>
+						<h2><? the_title(); ?> </h2>
 
 					<div id="storelocate-right">
 				
-						<?php the_content(); ?> 
+						<? the_content(); ?> 
 
 						</div><!-- store-rightside -->
 					
 			
 			
-				<?php endwhile; endif; ?>
+				<? endwhile; endif; ?>
 
 
 
@@ -45,12 +45,12 @@ Template Name: Store Locator Fullscreen
 </style>
 
 
-<iframe id="big_locator" src="<?php bloginfo( 'stylesheet_directory' ); ?>/assets/store-locator" frameBorder="0"></iframe>
+<iframe id="big_locator" src="<? bloginfo( 'stylesheet_directory' ); ?>/assets/store-locator" frameBorder="0"></iframe>
 
 
 
 </div>
-<?php get_footer(); ?>
+<? get_footer(); ?>
 
 
 

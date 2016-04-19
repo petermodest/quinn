@@ -1,4 +1,4 @@
-<?php
+<?
 /**
 * get_tweet_list.php
 * Return a list of the most recent tweets as HTML

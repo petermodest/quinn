@@ -1,4 +1,4 @@
-<?php
+<?
 
 $host    = 'mysql.quinnpopcorn.com';
 $name    = 'quinn_foodshouldbe';

@@ -22,7 +22,7 @@ Template Name: Frontpage - Blocks
 				<?
 					// get image url without the tag
 					$thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID, 'postpic-full'), array(320,240), false, '' );
-					echo $src[0];
+// 					echo $src[0];
 				?>
 	
 					<div class="fp-image" style="background:url(<?= $thumbnail_src[0] ?>) center center no-repeat; background-size: cover;"></div>

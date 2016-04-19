@@ -1,11 +1,11 @@
-<?php
+<?
 /*
 Template Name: Reviews
 */
 ?>
 
 
-<?php get_header(); ?>
+<? get_header(); ?>
 
 
 <script type="text/javascript">
@@ -18,10 +18,10 @@ Template Name: Reviews
 
 <div id="blog-block-view" class="blog-content" role="main">
 
-  <?php get_template_part( 'parts/sidebar', 'block-view' ); ?>
+  <? get_template_part( 'parts/sidebar', 'block-view' ); ?>
 
 
-<?php
+<?
 $args = array( 'numberposts' => 500 );
 $lastposts = get_posts( $args );
 
@@ -31,27 +31,27 @@ foreach($lastposts as $post) : setup_postdata($post); ?>
 
 	<div class="block-info-state">
 
-			<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+			<h3><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
 
-			<p><?php echo excerpt(20); ?></p>
+			<p><? echo excerpt(20); ?></p>
 
 	</div><!-- block-info-state -->
 
 	<div class="block-image-state">
 
 		<div class="block-category">
-			<?php
+			<?
 				// show first category only
 				$category = get_the_category();
 				echo $category[0]->cat_name;
 			?>
 		</div><!-- block-category -->
 
-		<a href="<?php the_permalink(); ?>">
+		<a href="<? the_permalink(); ?>">
 
-			<?php
+			<?
 
-				$tempimg = get_bloginfo('template_url') . "/assets/images/lazy-holder.gif";
+				$tempimg = img_dir() . 'lazy-holder.gif';
 
 			// ============================================
 			//    if the thumbnail is via a custom field
@@ -60,10 +60,10 @@ foreach($lastposts as $post) : setup_postdata($post); ?>
 
 				$imageName = get_post_meta($post->ID, "cover_image", true);	 ?>
 
-				<img id="header-image" src="<?php echo $tempimg ?>" class="lazy" data-original="<?php echo site_url('/') . "wp-content/quinn-images/blogpost-covers/" . $imageName . "/" . $imageName ;?>-tile.jpg" />
+				<img id="header-image" src="<? echo $tempimg ?>" class="lazy" data-original="<? echo site_url('/') . "wp-content/quinn-images/blogpost-covers/" . $imageName . "/" . $imageName ;?>-tile.jpg" />
 
 
-			<?php
+			<?
 			// ============================================
 			//    if the thumbnail is via a post_thumbnail
 
@@ -87,7 +87,7 @@ foreach($lastposts as $post) : setup_postdata($post); ?>
 
 </div><!-- block-view-post -->
 
-<?php endforeach; ?>
+<? endforeach; ?>
 
 
 <div class="clearboth"></div>
@@ -96,4 +96,4 @@ foreach($lastposts as $post) : setup_postdata($post); ?>
 
 <div id="block-view-shim" style="display:block"></div>
 
-<?php get_footer(); ?>
+<? get_footer(); ?>

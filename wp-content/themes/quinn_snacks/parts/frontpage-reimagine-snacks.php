@@ -2,11 +2,11 @@
 
 	<div class="reimagine-header-inner">
 
-		<div class="section-inner-overlay" style="background-color: <?php the_field('frontpage_overlay_color', 1487); ?>"></div>
+		<div class="section-inner-overlay" style="background-color: <? the_field('frontpage_overlay_color', 1487); ?>"></div>
 		<div class="fp-reimagine-inner">
 				<div class="js-reimagine-title fp-reimagine-title load-hidden">
 
-					<?php the_field('frontpage_text', 1487); ?>
+					<? the_field('frontpage_text', 1487); ?>
 
 				</div>
 		</div>

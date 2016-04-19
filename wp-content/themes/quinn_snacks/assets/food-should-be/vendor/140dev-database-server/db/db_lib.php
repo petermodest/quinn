@@ -1,4 +1,4 @@
-<?php
+<?
 /**
 * db_lib.php
 * General purpose database library for use by all 140dev code

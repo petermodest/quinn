@@ -1,10 +1,10 @@
-	<?php
+	<?
 /*
 Template Name: Store Locator Target
 */
 ?>
 
-<?php get_header(); ?>
+<? get_header(); ?>
 
 
 <div id="storelocate-wrapper">
@@ -13,7 +13,7 @@ Template Name: Store Locator Target
 
 
 
-<iframe id="big_locator" src="<?php bloginfo( 'stylesheet_directory' ); ?>/assets/store-locator-target" frameBorder="0" height="600"></iframe>
+<iframe id="big_locator" src="<? bloginfo( 'stylesheet_directory' ); ?>/assets/store-locator-target" frameBorder="0" height="600"></iframe>
 
 <style type="text/css">
 
@@ -35,29 +35,29 @@ Template Name: Store Locator Target
 
 <div id="store-locator-shim"></div>
 
-	<?php if ( have_posts() ) : ?>
+	<? if ( have_posts() ) : ?>
 
 
-			<?php while ( have_posts() ) : the_post(); ?>
+			<? while ( have_posts() ) : the_post(); ?>
 							
 							
 
-						<h2><?php the_title(); ?> </h2>
+						<h2><? the_title(); ?> </h2>
 
 					<div id="storelocate-right">
 				
-						<?php the_content(); ?> 
+						<? the_content(); ?> 
 
 						</div><!-- store-rightside -->
 					
 			
 			
-				<?php endwhile; endif; ?>
+				<? endwhile; endif; ?>
 
 
 
 </div>
-<?php get_footer(); ?>
+<? get_footer(); ?>
 
 
 

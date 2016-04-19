@@ -1,4 +1,4 @@
-<?php
+<?
 require_once('../lib/Phirehose.php');
 require_once('../lib/OauthPhirehose.php');
 

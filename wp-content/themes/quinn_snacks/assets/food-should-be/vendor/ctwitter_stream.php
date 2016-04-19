@@ -1,4 +1,4 @@
-<?php
+<?
 class ctwitter_stream
 {
     private $m_oauth_consumer_key;

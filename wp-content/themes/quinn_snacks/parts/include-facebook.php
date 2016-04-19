@@ -1,5 +1,5 @@
 
-<?php
+<?
 
 /* If the page is Food Should Be, then load the
  * foodshouldbe facebook app to allow sharing.
@@ -26,7 +26,7 @@ if ( $post->post_title == 'Food Should Be' ) { ?>
 
 
 
-<?php } else { ?>
+<? } else { ?>
 
 
   <div id="fb-root"></div>
@@ -39,4 +39,4 @@ if ( $post->post_title == 'Food Should Be' ) { ?>
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));</script>
 
-<?php } ?>
+<? } ?>

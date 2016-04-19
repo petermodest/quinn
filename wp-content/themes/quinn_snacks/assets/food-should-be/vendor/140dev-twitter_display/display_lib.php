@@ -1,4 +1,4 @@
-<?php 
+<? 
 /**
 * display_lib.php
 * Convert entities into links within a tweet's text

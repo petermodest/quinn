@@ -1,4 +1,4 @@
-<?php
+<?
 /**
 * monitor_tweets.php
 * Check for new tweets in the tweets table and report by email if they aren't found

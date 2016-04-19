@@ -1,0 +1,8 @@
+
+@font-face {
+  font-family: 'WhitneyHTF-BoldCondensed';
+  src: url('WhitneyHTF-BoldCondensed.eot?#iefix') format('embedded-opentype'),  url('WhitneyHTF-BoldCondensed.otf')  format('opentype'),
+	     url('WhitneyHTF-BoldCondensed.woff') format('woff'), url('WhitneyHTF-BoldCondensed.ttf')  format('truetype'), url('WhitneyHTF-BoldCondensed.svg#WhitneyHTF-BoldCondensed') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

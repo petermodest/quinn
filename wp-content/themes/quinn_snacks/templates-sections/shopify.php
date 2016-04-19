@@ -1,16 +1,16 @@
-<?php
+<?
 /*
 Template Name: Shopify
 */
 ?>
 
 
-<?php get_header(); ?>
+<? get_header(); ?>
 
 
 <div id="stylesheet">
 
-<?php
+<?
 		$stylesheet = get_stylesheet_uri();
 		$print_stylesheet = file_get_contents($stylesheet);
 
@@ -21,4 +21,4 @@ Template Name: Shopify
 
 </div>
 
-<?php get_footer(); ?>
+<? get_footer(); ?>

@@ -1,22 +1,22 @@
-<?php
+<?
 /*
 Template Name: Microwave Popcorn Reinvented
 */
 ?>
 
-<?php get_header(); ?>
+<? get_header(); ?>
 
 <div id="reinvented-scroll" class="SectionScroll-wrap">
 
 	<div
 	class="SectionScroll reinvented-section"
-	style='background: url("<?php bloginfo( 'stylesheet_directory' ); ?>/assets/images/reinvented-slide1-titlev2.png") no-repeat center center'
+	style='background: url("<?= img_dir() ?>reinvented-slide1-titlev2.png") no-repeat center center'
 	data-arrow-color="black"
 	>
 
 	</div><!-- section -->
 
-<?php
+<?
 
 	if( have_rows('slides') ):
 
@@ -24,13 +24,13 @@ Template Name: Microwave Popcorn Reinvented
 
 		while ( have_rows('slides') ) : the_row(); ?>
 
-		<div class="SectionScroll reinvented-section" data-arrow-color="white"  style='background: url("<?php the_sub_field('background_image'); ?>")' id="section-<?php echo $slideNum; ?>">
+		<div class="SectionScroll reinvented-section" data-arrow-color="white"  style='background: url("<? the_sub_field('background_image'); ?>")' id="section-<? echo $slideNum; ?>">
 
 		<div class="SectionScroll-inner section-content">
 
 
 
-			<?php
+			<?
 
 				$titleString = '';
 
@@ -49,14 +49,14 @@ Template Name: Microwave Popcorn Reinvented
 			?>
 
 			<div class="description">
-				<?php the_sub_field('description'); ?>
+				<? the_sub_field('description'); ?>
 			</div>
 
 		</div>
 
 	</div><!-- section -->
 
-<?php
+<?
 
 		endwhile;
 
@@ -75,7 +75,7 @@ Template Name: Microwave Popcorn Reinvented
 		<ul class="footer-icons">
 
 			<li id="find-a-store">
-				<a href="<?php bloginfo('url'); ?>/store-locator/">find a store</a>
+				<a href="<? bloginfo('url'); ?>/store-locator/">find a store</a>
 			</li>
 
 			<li id="buy-online">
@@ -83,7 +83,7 @@ Template Name: Microwave Popcorn Reinvented
 			</li>
 
 			<li id="flavors">
-				<a href="<?php bloginfo('url'); ?>/popcorn/microwave-popcorn/">flavors</a>
+				<a href="<? bloginfo('url'); ?>/popcorn/microwave-popcorn/">flavors</a>
 			</li>
 
 		</ul>
@@ -99,4 +99,4 @@ Template Name: Microwave Popcorn Reinvented
 
 
 <div id="reinvented-scroll-shim"></div>
-<?php get_footer(); ?>
+<? get_footer(); ?>

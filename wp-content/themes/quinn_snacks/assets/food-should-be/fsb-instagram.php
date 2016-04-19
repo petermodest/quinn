@@ -1,4 +1,4 @@
-<?php
+<?
 
 $client = "d3e7199bacf44b86b3b0c689d44a3d07";
 $query = 'foodshouldbe';
@@ -41,16 +41,16 @@ if($response){
 
 
     <li>
-      <a href="<?php echo htmlspecialchars($url); ?>">
-        <img src="<?php echo htmlspecialchars($src); ?>" />
-        <h3>- @<?php echo htmlspecialchars($user); ?></h3>
+      <a href="<? echo htmlspecialchars($url); ?>">
+        <img src="<? echo htmlspecialchars($src); ?>" />
+        <h3>- @<? echo htmlspecialchars($user); ?></h3>
       </a>
 
     </li>
 
 
 
-<?php
+<?
 
     }
 }

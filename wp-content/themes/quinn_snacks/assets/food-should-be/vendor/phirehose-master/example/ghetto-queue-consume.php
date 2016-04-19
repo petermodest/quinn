@@ -1,4 +1,4 @@
-<?php
+<?
 /**
  * A simple example of how you could consume (ie: process) statuses collected by the ghetto-queue-collect.
  * 

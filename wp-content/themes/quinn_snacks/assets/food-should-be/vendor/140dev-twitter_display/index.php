@@ -13,7 +13,7 @@
 <body>
  <h2>Demonstration of the 140dev Twitter display plugin</h2>
 
-<?php require('twitter_display.php'); ?>
+<? require('twitter_display.php'); ?>
 
 </body>
 </html>

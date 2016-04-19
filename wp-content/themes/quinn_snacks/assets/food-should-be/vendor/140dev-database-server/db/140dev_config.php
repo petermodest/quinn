@@ -1,4 +1,4 @@
-<?php
+<?
 /**
 * 140dev_config.php
 * Constants for the entire 140dev Twitter framework

@@ -1,4 +1,4 @@
-<?php 
+<? 
 /**
 * db_test.php
 * Use this script to test your database installation 

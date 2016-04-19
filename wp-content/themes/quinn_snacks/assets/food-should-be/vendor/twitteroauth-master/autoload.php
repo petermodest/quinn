@@ -1,4 +1,4 @@
-<?php
+<?
 
 /**
  * Use to autoload needed classes without Composer.

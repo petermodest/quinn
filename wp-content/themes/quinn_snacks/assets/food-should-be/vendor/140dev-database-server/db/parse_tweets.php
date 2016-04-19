@@ -1,4 +1,4 @@
-<?php
+<?
 /**
 * parse_tweets.php
 * Populate the database with new tweet data from the json_cache table

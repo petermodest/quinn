@@ -1,7 +1,40 @@
-<?php
+<?
 
+/*
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+*/
+
+function modest_fw_child_theme() {
+
+	require_once( MODEST_FW_PATH . '/functions.php' );
+	
+	require_once( 'library/structure/init.inc.php' ); // INITIATE THEME
+	require_once( 'library/structure/html.inc.php' ); // HTML FUNCTIONS TO REDUCE REPLICATED CODE
+	
+	// WP ADMIN
+	if ( is_admin() || is_login_page() ) require_once( 'library/structure/admin/admin.php' );
+
+	// LOGIN PAGE
+// 	if( is_login_page() ) require_once( 'library/structure/admin/login.php' );
+	
+	function custom_post_object() {
+		global $post;
+
+		if( $post ) :
+			$class_name = post_type_to_class_name( $post->post_type );
+			$post = class_exists( $class_name ) ? new $class_name( $post ) : new Post( $post );
+			global ${$post->post_type};
+			${$post->post_type} = $post;
+		endif;
+
+	}
+	add_action( 'wp', 'custom_post_object' );
+}
+
+modest_fw_child_theme();
+
+include( 'library/structure/init.inc.php' );
 
 // ====================================================
 // add thumbnail (featured image) functionality
@@ -39,7 +72,6 @@ function getHeaderColor(){
 	global $wp_query;
 	$postid = $wp_query->post->ID;
 
-//	$menucolor = get_post_meta($postid, "header-color", true);
 	$menucolor = get_field("acf_header_menu_type", $postid);
 
 	if ($menucolor != null) {
@@ -169,9 +201,6 @@ function fields_in_feed($content) {
 				if ( has_post_thumbnail() ) {
 					$src = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), array( 720,405 ), false, '' );
 					$output = $src[0];
-
-
-
 				};
 
         }
@@ -205,7 +234,8 @@ add_filter( 'body_class', 'add_slug_body_class' );
 
 
 function quinn_admin_theme_style() {
-    wp_enqueue_style('quinn-admin-theme', get_stylesheet_directory_uri() . 'library/stylesheets/admin/admin.css');
+    wp_enqueue_style('quinn-admin-theme', get_stylesheet_directory_uri() . '/library/structure/admin/admin.css');
+	wp_enqueue_script('quinn-admin-theme-js', get_stylesheet_directory_uri() . '/library/structure/admin/admin.js');
 }
 add_action('admin_enqueue_scripts', 'quinn_admin_theme_style');
 
@@ -216,5 +246,142 @@ function user_body_class($classes) {
 	$classes[] = 'user-' . $current_user->ID;
 	return $classes;
 }
+
+
+
+
+
+function custom_theme_setup() {
+	add_theme_support( 'post-thumbnails' );
+}
+add_action( 'after_setup_theme', 'custom_theme_setup' );
+
+
+function add_inline_head_script(){
+	global $post;
+
+	// BATCH JS
+	if( isset( $post->post_type ) && $post->post_type == 'batch' ) :
+
+		$suppliers = new WP_Query(
+			array(
+				'post_type'			=> 'supplier',
+				'posts_per_page'	=> -1,
+			)
+		);
+
+		$snacks = new WP_Query(
+			array(
+				'post_type'			=> 'snack',
+				'posts_per_page'	=> -1
+			)
+		);
+	
+		foreach( $suppliers->posts as $key => $supplier ) :
+			$type = wp_get_post_terms( $supplier->ID, 'supplier_type', array( 'fields' => 'ids' ) );
+			if( in_array( 32, $type ) ) :
+				$supplier_info['ingredients'][$supplier->ID] = wp_get_post_terms( $supplier->ID, 'ingredient', array( 'fields' => 'ids' ) );
+			endif;
+			if( in_array( 33, $type ) ) :
+				$supplier_info['packagers'][$supplier->ID] = wp_get_post_terms( $supplier->ID, 'packaging_type', array( 'fields' => 'ids' ) );
+			endif;
+			if( in_array( 34, $type ) ) :
+				$supplier_info['producers'][$supplier->ID] = wp_get_post_terms( $supplier->ID, 'production_type', array( 'fields' => 'ids' ) );
+			endif;
+		endforeach;
+
+		foreach( $snacks->posts as $key => $snack ) :
+			$snack_supply['ingredients'][$snack->ID] = wp_get_post_terms( $snack->ID, 'ingredient', array( 'fields' => 'ids' ) );
+			$snack_supply['packagers'][$snack->ID] = wp_get_post_terms( $snack->ID, 'packaging_type', array( 'fields' => 'ids' ) );
+			$snack_supply['producers'][$snack->ID] = wp_get_post_terms( $snack->ID, 'production_type', array( 'fields' => 'ids' ) );
+		endforeach;
+
+		?>
+			<script>
+				var snack_supply = <?= json_encode( $snack_supply ) ?>;
+				var suppliers = <?= json_encode( $supplier_info ) ?>;
+			</script>
+		<?
+
+	endif;
+}
+
+if( is_admin() ) :
+	add_action( 'wp_print_scripts', 'add_inline_head_script' );
+endif;
+
+
+
+// ACF FIELDS
+
+
+	// INGREDIENTS
+	function acf_load_ingredient_field_choices( $field ) {
+		$field['choices'] = array();
+		$terms = get_terms( 'ingredient' );
+		$field['choices'][0] = 'Select an Ingredient';
+		foreach( $terms as $key => $term ) $field['choices'][ $term->term_id ] = $term->name;
+		return $field;
+	}
+	add_filter('acf/load_field/name=ingredient', 'acf_load_ingredient_field_choices');
+	
+	
+	// PACKAGERS
+	function acf_load_packager_field_choices( $field ) {
+		$field['choices'] = array();
+		$terms = get_terms( 'packaging_type' );
+		$field['choices'][0] = 'Select a Packager';
+		foreach( $terms as $key => $term ) $field['choices'][ $term->term_id ] = $term->name;
+		return $field;
+	}
+	add_filter('acf/load_field/name=packager', 'acf_load_packager_field_choices');
+	
+	
+	// PRODUCERS
+	function acf_load_producer_field_choices( $field ) {
+		$field['choices'] = array();
+		$terms = get_terms( 'production_type' );
+		$field['choices'][0] = 'Select a Producer';
+		foreach( $terms as $key => $term ) $field['choices'][ $term->term_id ] = $term->name;
+		return $field;
+	}
+	add_filter('acf/load_field/name=producer', 'acf_load_producer_field_choices');
+	
+	
+	// SUPPLIER
+	function acf_load_supplier_field_choices( $field ) {
+		$field['choices'] = array();
+		$supplier_types = array(
+			'field_5706e88ef1869'	=> 32,
+			'field_57111cb60ce4c'	=> 33,
+			'field_57111dc40ce50'	=> 34
+		);
+		$query = new WP_Query(
+			array(
+				'post_type'			=> 'supplier',
+				'posts_per_page'	=> -1,
+				'tax_query'			=> array(
+					array(
+						'taxonomy'	=> 'supplier_type',
+						'terms'		=> array( $supplier_types[ $field[ 'key' ] ] )
+					)
+				)
+			)
+		);
+		foreach( $query->posts as $key => $supplier ) $field['choices'][ $supplier->ID ] = $supplier->post_title;
+		return $field;
+	}
+	add_filter('acf/load_field/name=supplier', 'acf_load_supplier_field_choices');
+	
+	
+	// BATCH ID's
+	function acf_load_batch_ids_field_choices( $field ) {
+		if( isset( $_GET['post'] ) ) :
+			$field['choices'] = array();
+			foreach( wp_get_post_terms( $_GET['post'], 'batch_ids' ) as $key => $term ) $field['choices'][ $key ] = $term->name;
+		endif;
+		return $field;
+	}
+	add_filter('acf/load_field/name=batch_ids', 'acf_load_batch_ids_field_choices');
 
 ?>

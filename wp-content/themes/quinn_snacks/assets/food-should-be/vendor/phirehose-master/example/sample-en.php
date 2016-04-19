@@ -1,4 +1,4 @@
-<?php
+<?
 require_once('../lib/Phirehose.php');
 /**
  * Example of using Phirehose to display the 'sample' twitter stream. 

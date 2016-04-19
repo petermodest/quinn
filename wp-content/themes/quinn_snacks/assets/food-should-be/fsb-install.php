@@ -1,4 +1,4 @@
-<?php
+<?
 
 include_once("fsb-db.php");
 

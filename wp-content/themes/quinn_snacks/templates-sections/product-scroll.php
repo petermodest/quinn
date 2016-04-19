@@ -1,20 +1,20 @@
-<?php
+<?
 /*
 Template Name: Product Scroll
 */
 ?>
 
-<?php get_header(); ?>
+<? get_header(); ?>
 
 
-	<div id="product-scroll" class="SectionScroll-wrap" data-scrolltype="<?php the_field('template_type'); ?>">
+	<div id="product-scroll" class="SectionScroll-wrap" data-scrolltype="<? the_field('template_type'); ?>">
 
 <!-- ***************** PRODUCT TITLES *****************  -->
 
 	<div class="sticky_shim"></div>
 	<div
 		id="product-scroll-titles"
-		style="background:url(<?php the_field('header_image'); ?>) right center no-repeat fixed; background-size:cover;" >
+		style="background:url(<? the_field('header_image'); ?>) right center no-repeat fixed; background-size:cover;" >
 
 		<ul></ul>
 
@@ -47,18 +47,18 @@ Template Name: Product Scroll
 
 <!-- +++++++++++++ MICROWAVE : Reinvented +++++++++++++ -->
 
-<?php if( in_array( get_field('template_type'), array( 'microwave', 'pretzels' ) ) ) { ?>
+<? if( in_array( get_field('template_type'), array( 'microwave', 'pretzels' ) ) ) { ?>
 
 			<div
 				id="product-reinvented"
 				class="scroll-pane SectionScroll"
-				data-arrow-color="white"<? if( get_field('template_type') == 'pretzels' ) : ?> style="background-image:url(/wp-content/themes/quinn_popcorn/assets/images/pretzels-reimagined-2.png); background-color: #74dd67;"<? endif ?>>
+				data-arrow-color="white"<? if( get_field('template_type') == 'pretzels' ) : ?> style="background-image:url(<?= img_dir() ?>pretzels-reimagined-2.png); background-color: #74dd67;"<? endif ?>>
 
 				<div class="product-reinvented-inner"<? if( get_field('template_type') == 'pretzels' ) : ?> style="padding-top: 5%"<? endif ?>>
 
 					<h1><span></span>Reimagined</h1>
 
-					<?php the_field('reinvented_text'); ?>
+					<? the_field('reinvented_text'); ?>
 
 				</div>
 
@@ -66,7 +66,7 @@ Template Name: Product Scroll
 
 <!-- +++++++++++++ MICROWAVE : FARM TO BAG +++++++++++++ -->
 
-<?php } if (get_field('template_type') == 'popped') { ?>
+<? } if (get_field('template_type') == 'popped') { ?>
 
 			<div
 				id="product-farmtobag"
@@ -77,7 +77,7 @@ Template Name: Product Scroll
 
 					<h1><span></span>Reimagined</h1>
 
-					<?php the_field('farm_to_bag_text'); ?>
+					<? the_field('farm_to_bag_text'); ?>
 
 						<div id="f2b-form">
 
@@ -93,7 +93,7 @@ Template Name: Product Scroll
 										<input type="submit" value="GO" />
 										<span class="type-or">or</span>
 
-										<a id="link-currentbatch" href="/farmtobag/view.php?id=<?php echo file_get_contents('http://www.quinnsnacks.com/farmtobag/recent_batch.php'); ?>">Current Batch</a>
+										<a id="link-currentbatch" href="/farmtobag/view.php?id=<? echo file_get_contents('http://www.quinnsnacks.com/farmtobag/recent_batch.php'); ?>">Current Batch</a>
 
 									</div>
 								</div>
@@ -107,18 +107,18 @@ Template Name: Product Scroll
 
 			</div><!-- product-farmtobag -->
 
-<?php }  ?>
+<? }  ?>
 
 <!-- +++++++++++++ INGREDIENTS +++++++++++++ -->
 
 			<div id="slider-product-ingredients"
 				class="SectionScroll"
-				data-arrow-color="white"<? if( get_field('template_type') == 'pretzels' ) : ?> style="background-image: url(/wp-content/themes/quinn_popcorn/assets/images/sorghum.jpg)"<? endif ?>>
+				data-arrow-color="white"<? if( get_field('template_type') == 'pretzels' ) : ?> style="background-image: url(<?= img_dir() ?>sorghum.jpg)"<? endif ?>>
 
 
 					<div class="product-ingredients-wrapper">
 
-					<img class="product-ingredients-title" src="<?php bloginfo('stylesheet_directory') ?>/assets/images/product-ingredient-title.png" />
+					<img class="product-ingredients-title" src="<?= img_dir() ?>product-ingredient-title.png" />
 
 
 					<img src="<%= product.ingredients %>" />
@@ -151,7 +151,7 @@ Template Name: Product Scroll
 				<div class="SectionScroll-inner">
 				<ul>
 					<li id="find-a-store" class="foot-btn">
-						<a href="<?php bloginfo('url'); ?>/store-locator/">find a store</a>
+						<a href="<? bloginfo('url'); ?>/store-locator/">find a store</a>
 					</li>
 
 					<li id="buy-online"  class="foot-btn">
@@ -159,7 +159,7 @@ Template Name: Product Scroll
 					</li>
 
 					<li id="see-reviews"  class="foot-btn">
-						<a href="<?php bloginfo('url'); ?>/popcorn/reviews">see reviews</a>
+						<a href="<? bloginfo('url'); ?>/popcorn/reviews">see reviews</a>
 					</li>
 				</ul>
 
@@ -172,36 +172,33 @@ Template Name: Product Scroll
 </div>
 
 
-<div id="product-json">
-<?php
-
-	$product_data = array();
-	
-	if( have_rows('flavor') ):
-	
-		while ( have_rows('flavor') ) : the_row();
-	
-			$product = array(
-				'title'	=>		get_sub_field('title'),
-				'color'	=>		get_sub_field('color'),
-				'text_color'	=>		get_sub_field('text_color'),
-				'bg_image'	=>		get_sub_field('bg_image'),
-				'tagline'	=>		get_sub_field('tagline'),
-				'tagline_above'	=>	get_sub_field('tagline_above'),
-				'tagline_below'	=>	get_sub_field('tagline_below'),
-				'ingredients'	=>	get_sub_field('ingredients')
+<script>
+	<?
+		$product_data = array();
+		$count = 0;
+		
+		if( have_rows('flavor') ):		
+			while ( have_rows('flavor') ) :
+				the_row();
+				
+				$product_data[] = array(
+					'ID'			=> $count . $count . $count,
+					'title'			=> htmlspecialchars( get_sub_field('title') ),
+					'color'			=> '#' . get_sub_field('color'),
+					'text_color'	=> '#' . get_sub_field('text_color'),
+					'bg_image'		=> get_sub_field('bg_image'),
+					'tagline'		=> get_sub_field('tagline'),
+					'tagline_above'	=> get_sub_field('tagline_above'),
+					'tagline_below'	=> get_sub_field('tagline_below'),
+					'ingredients'	=> get_sub_field('ingredients'),
+					'selected'		=> $count == 0 ? 1 : 0
 				);
-	
-			array_push($product_data, $product);
-	
-		endwhile;
-	
-	endif;
-	
-echo json_encode($product_data);
+				$count++;
+			endwhile;
+		endif;
+	?>
+	var productData = <?= json_encode( $product_data ) ?>;
+</script>
 
-?>
 
-</div>
-
-<?php get_footer(); ?>
+<? get_footer(); ?>

@@ -1,4 +1,4 @@
-<?php
+<?
 /**
 * db_config.php
 * MySQL connection parameters for 140dev Twitter database server

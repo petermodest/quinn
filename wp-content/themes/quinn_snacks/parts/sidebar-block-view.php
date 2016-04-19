@@ -1,7 +1,7 @@
 <div id="sidebar-blockview" class="block-view-post">
 
 	<div class="block-image-state">
-		<img src="<?= get_stylesheet_directory_uri() ?>/assets/images/transparent-square.png" />
+		<img src="<?= img_dir() ?>transparent-square.png" />
 	</div>
 
 	<div class="inner">

@@ -1,0 +1,488 @@
+.page-template-page-farm-to-bag {
+	font-family: "tradegothic";
+	
+	#wrapper {	
+		h1 {
+			margin-top: 22px;
+			text-align: center;
+			img {
+				display: inline-block;
+				width: 510px;
+				position: relative;
+				z-index: 10;
+				max-width: 80%;
+			}
+		}
+		
+		h4 {
+			font-family: "whitney-boldcond";
+			text-transform: uppercase;
+			font-size: 33px;
+			line-height: 39px;
+		}
+	}
+	
+	.map {
+		margin-top: -56px;
+		position: relative;
+		
+		img {
+			display: block;
+			width: 100%;
+			&.base {
+				position: relative;
+				z-index: 0;
+			}
+			&.overlay {
+				position: absolute;
+				z-index: 1;
+				top: 0;
+				left: 0;
+			}
+		}
+		
+		.none-found {
+			background: rgba( 255, 255, 255, .9 );
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			text-align: center;
+			top: 0;
+			left: 0;
+			
+			h4,
+			h5,
+			h6 {
+				color: black;
+			}
+			
+			h4 {
+				font-size: 52px;
+				line-height: 68px;
+			}
+			
+			h5 {
+				font-family: "tradegothic-bold";
+				font-size: 26px;
+				line-height: 38px;
+			}
+			
+			h6 {
+				font-family: "tradegothic-bold";
+			    font-size: 17px;
+			    line-height: 28px;
+			}
+			
+			form.filter-batch {
+				float: none !important;
+				clear: both;
+				margin: 0;
+				
+				.input-wrap {
+					float: none;
+				}
+			}
+		}
+	
+		@media screen and ( max-width: 480px ) {
+			margin-top: -48px;
+		}
+		
+	}
+	
+	form.filter-batch {
+		float: left;
+		clear: both;
+		margin-top: -145px;
+		position: relative;
+		z-index: 1000;
+		width: 100%;
+		
+		label {
+			font-weight: 300;
+			font-style: normal;
+			float: left;
+			clear: both;
+		}
+		.input-wrap {
+			background: @yellow;
+			padding: 26px;
+			display: inline-block;
+			float: left;
+			clear: both;
+			margin: 7px 0;
+		}
+		input,
+		button {
+			padding: 8px;
+			padding: 10px;
+			border: 1px solid black;	
+			float: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 0;
+			vertical-align: top;
+		}
+		
+		input {
+			width: 180px;
+		}
+		
+		button {
+			border-left: 1px solid rgb( 150, 150, 150 );
+			margin-left: -6px;
+			background: white;
+		    font-size: 22px;
+		    font-family: "tradegothic-bold";
+		    padding: 11px 10px 5px;
+		    line-height: 22px;
+		    cursor: pointer;
+
+		    &:hover {
+			    background: black;
+			    color: white;
+		    }
+		    &:focus {
+			    outline:0;
+			    background: black;
+			    color: white;
+			}
+		}
+
+		::-webkit-input-placeholder {
+			text-transform: uppercase;
+			letter-spacing: -1px;
+			font-size: 16px;
+		}
+		::-moz-placeholder {
+			text-transform: uppercase;
+			letter-spacing: -1px;
+			font-size: 16px;
+		}
+		:-ms-input-placeholder {
+			text-transform: uppercase;
+			letter-spacing: -1px;
+			font-size: 16px;
+		}
+		:-moz-placeholder {
+			text-transform: uppercase;
+			letter-spacing: -1px;
+			font-size: 16px;
+		}
+
+		@media screen and ( max-width: 980px ) {
+		}
+		
+		@media screen and ( max-width: 767px ) {
+			margin-top: 0;
+		}
+	
+		@media screen and ( max-width: 480px ) {
+			margin-top: 0px;
+			.input-wrap {
+				width: 100%;
+				text-align: center;
+			}
+		}
+	}
+
+	.yellow-button {
+		.transition( all, @speed, @easing );
+		padding: 18px;
+		border: 2px solid @yellow;
+		background: @yellow;
+		display: block;
+		color: black;
+		text-decoration: none;		
+		
+		&:hover {
+			border-color: black;
+			background: white;
+		}
+	}
+
+	section {
+	    float: left;
+	    clear: both;
+	    margin-bottom: 2px;
+	    width: 100%;
+	    
+	    h4 {
+		    float: left;
+		    clear: both;
+		    width: 100%;
+		    padding-right: 230px;
+		    
+		    @media screen and ( max-width: 767px ) {
+			    padding-right: 0;
+		    }
+	    }
+
+		.why-transparency {
+			.yellow-button;
+			float: right;
+			font-size: 18px;
+			line-height: 21px;
+			text-align: center;
+			padding: 16px 35px 10px;
+			margin-top: -121px;
+			position: relative;
+			z-index: 1000;
+			&.mobile {
+				display: none;
+				float: none;
+				padding: 8px 10px 3px;
+	
+				br {
+					display: none;
+				}
+			}
+		}
+
+	    @media screen and ( max-width: 767px ) {
+			.why-transparency.mobile {
+				display: block;
+			    margin: -20px 0 20px;
+			}
+			.why-transparency.desktop {
+				display: none;
+			}
+	    }
+	    
+		@media screen and ( max-width: 480px ) {
+			.why-transparency.mobile {
+				display: block;
+				margin: 7px 0 20px;
+			}
+			.why-transparency.desktop {
+				display: none;
+			}			
+		}
+	}
+	
+	.select-flavor {
+		float: left;
+		clear: both;
+		margin-top: -128px;
+		position: relative;
+		z-index: 1000;
+
+		ul {
+			float: left;
+			clear: both;
+			padding-top: 7px;
+			padding-bottom: 7px;
+			padding-bottom: 0;
+			padding-right: 230px;
+			
+			li {
+				float: left;
+				padding-bottom: 10px;
+				a {
+					.yellow-button;
+					font-family: "whitney-boldcond";
+					margin-right: 10px;
+					text-transform: lowercase;
+					font-size: 26px;
+					line-height: 32px;
+				}
+			}
+		}
+		@media screen and ( max-width: 767px ) {
+			margin-top: 0;
+			
+			ul {
+				padding-right: 0;
+				li {
+					
+				}
+			}
+		}
+	}
+	
+	.row.block-wrap {
+		padding: 0 17px;
+
+		.block {
+			height: 25vw;
+			width: 25%;
+			position: relative;
+			border: 8px solid transparent;
+			z-index: 10;		
+			font-size: 18px;
+			line-height: 21px;
+			
+			@media screen and ( max-width: 980px ) {
+				width: 33.333333333%;
+				height: 33.333333333vw;
+			}
+			
+			@media screen and ( max-width: 767px ) {
+				width: 50%;
+				height: 50vw;
+			}
+		
+			@media screen and ( max-width: 480px ) {
+				width: 100%;
+				height: 100vw;
+			}
+	
+			.front,
+			.back {
+				z-index: 10;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				overflow: hidden;
+			}
+			
+			.front {
+				background-size: cover;
+				background-position: center center;
+				
+				.key {
+					background-color: red;
+					width: 85px;
+					height: 85px;
+					position: relative;
+					img {
+						max-height: 55px;
+						max-width: 55px;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+						position: absolute;
+						display: block;			
+					}
+				}
+			}
+			
+			.back {
+				border: 1px solid black;
+				background: white;	
+				
+				h2 {
+					font-family: "tradegothic-bold";
+					font-size: 18px;
+					line-height: 21px;
+					color: white;
+					text-align: center;
+					padding: 11px 8px 6px;
+				}
+				.inner-content {
+					padding: 10px;
+				}
+				div {
+					padding: 6px 0;
+					span {
+						.rounded( 50% );
+						font-family: "tradegothic-bold";
+						width: 24px;
+						height: 24px;
+						color: white;
+						display: block;
+						float: left;
+						text-align: center;
+						padding: 4px 0;
+						margin-top: -3px;
+						margin-right: 10px;
+					}
+					label {
+						font-family: "tradegothic-bold";
+					}
+					&.bottom-link {
+						position: absolute;
+						width: 100%;
+						left: 0;
+						bottom: 4px;
+						width: 100%;
+						text-align: center;
+						
+						a {
+							font-family: "tradegothic-bold";
+							display: inline-block;
+							background: @yellow;
+							padding: 8px 12px 2px;
+							text-decoration: none;
+							color: black;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.vertical-center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+
+.ui-tooltip, .arrow:after {
+	background: white;
+	border: 1px solid black;
+	width: 500px;
+	max-width: 100%;
+	z-index: 2000;
+	font-family: "tradegothic";
+	font-size: 16px;
+	line-height: 19px;	
+}
+.ui-tooltip {
+	padding: 15px;
+	
+	.arrow {
+		width: 70px;
+		height: 16px;
+		overflow: hidden;
+		position: absolute;
+		left: 50%;
+		margin-left: -35px;
+		bottom: -16px;
+	}
+	.arrow.top {
+		top: -16px;
+		bottom: auto;
+	}
+	.arrow.left {
+		left: 20%;
+	}
+	.arrow:after {
+		content: "";
+		position: absolute;
+		left: 20px;
+		top: -20px;
+		width: 25px;
+		height: 25px;
+		box-shadow: 6px 5px 9px -9px black;
+		-webkit-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		transform: rotate(45deg);
+	}
+	.arrow.top:after {
+		bottom: -20px;
+		top: auto;
+	}	
+	
+	p {
+		margin-bottom: 10px;
+	}
+	strong,
+	b {
+		font-family: "whitney-boldcond";
+		text-transform: uppercase;
+	}
+
+	ul {
+		padding: 0;
+		margin: 0;
+		li {
+			padding-top: 5px;
+		}
+	}
+}

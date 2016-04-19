@@ -1,4 +1,4 @@
-<?php
+<?
 /**
 * twitter_display_config.php
 * Configuration options for the Twitter display plugin
