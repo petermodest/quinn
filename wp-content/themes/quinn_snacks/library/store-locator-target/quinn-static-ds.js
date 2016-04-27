@@ -6,7 +6,7 @@ function QuinnDataSource() {
   $.extend(this, new storeLocator.StaticDataFeed);
 
   var that = this;
-  $.get('http://www.quinnsnacks.com/wp-content/themes/quinn_popcorn/assets/store-locator-target/target-stores.php', function(data) {
+  $.get('http://www.quinnsnacks.com/wp-content/themes/quinn_popcorn/library/store-locator-target/target-stores.php', function(data) {
     that.setStores(that.parse_(data));
   });
 }

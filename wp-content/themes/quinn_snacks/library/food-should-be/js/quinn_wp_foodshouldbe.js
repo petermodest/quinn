@@ -4,7 +4,7 @@ $(document).ready(function (){
 
 	var Model = {
 
-		root: '../wp-content/themes/quinn_popcorn/assets/food-should-be/',
+		root: '../wp-content/themes/quinn_popcorn/library/food-should-be/',
 
 		url: {
 			add_term : 'fsb-add-term.php',
@@ -71,7 +71,7 @@ $(document).ready(function (){
 
 		includeTweets: function(){
 
-			$.get( "http://www.quinnsnacks.com/wp-content/themes/quinn_popcorn/assets/food-should-be/vendor/140dev-twitter_display/twitter_display.php", function( data ) {
+			$.get( "http://www.quinnsnacks.com/wp-content/themes/quinn_popcorn/library/food-should-be/vendor/140dev-twitter_display/twitter_display.php", function( data ) {
 				$( "#fsb-tweets" ).html( data );
 			});
 
@@ -79,7 +79,7 @@ $(document).ready(function (){
 
 		includeInstagrams: function(){
 
-			$.get( "http://www.quinnsnacks.com/wp-content/themes/quinn_popcorn/assets/food-should-be/fsb-instagram.php", function( data ) {
+			$.get( "http://www.quinnsnacks.com/wp-content/themes/quinn_popcorn/library/food-should-be/fsb-instagram.php", function( data ) {
 				$( "#fsb-instagram-stream" ).html( data );
 			});
 

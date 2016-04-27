@@ -45,7 +45,7 @@ Template Name: Store Locator Fullscreen
 </style>
 
 
-<iframe id="big_locator" src="<? bloginfo( 'stylesheet_directory' ); ?>/assets/store-locator" frameBorder="0"></iframe>
+<iframe id="big_locator" src="<? bloginfo( 'stylesheet_directory' ); ?>/library/store-locator" frameBorder="0"></iframe>
 
 
 

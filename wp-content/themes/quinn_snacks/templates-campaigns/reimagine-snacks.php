@@ -94,9 +94,9 @@ endif;
                  </div> <!-- video-intro -->
 
                  <div class="video-container">
-                   <video poster="<? bloginfo('stylesheet_directory'); ?>/assets/videos/QuinnPopcorn.jpg" controls preload="none" width="100%" height="auto">
-                   <source src="<? bloginfo('stylesheet_directory'); ?>/assets/videos/QuinnPopcorn.mp4" type="video/mp4">
-                   <source src="<? bloginfo('stylesheet_directory'); ?>/assets/videos/QuinnPopcorn.webm" type="video/webm">
+                   <video poster="<? bloginfo('stylesheet_directory'); ?>/library/videos/QuinnPopcorn.jpg" controls preload="none" width="100%" height="auto">
+                   <source src="<? bloginfo('stylesheet_directory'); ?>/library/videos/QuinnPopcorn.mp4" type="video/mp4">
+                   <source src="<? bloginfo('stylesheet_directory'); ?>/library/videos/QuinnPopcorn.webm" type="video/webm">
                    </video>
                  </div>
 

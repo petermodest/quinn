@@ -1,5 +1,5 @@
-<script type="text/javascript" src="<? bloginfo( 'stylesheet_directory' ); ?>/assets/js/supersized.3.2.7.min.js"></script>
-<script type="text/javascript" src="<? bloginfo( 'stylesheet_directory' ); ?>/assets/js/supersized.quinn.js"></script>
+<script type="text/javascript" src="<?= js_dir() ?>/supersized.3.2.7.min.js"></script>
+<script type="text/javascript" src="<?= js_dir() ?>/supersized.quinn.js"></script>
 
 <script type="text/javascript">
 

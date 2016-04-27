@@ -9,7 +9,7 @@
 
 <div id="storelocate-wrapper">
 
-	<iframe id="big_locator" src="<? bloginfo( 'stylesheet_directory' ); ?>/assets/store-locator" frameBorder="0" height="600"></iframe>
+	<iframe id="big_locator" src="<? bloginfo( 'stylesheet_directory' ); ?>/library/store-locator" frameBorder="0" height="600"></iframe>
 	
 	<div id="store-locator-shim"></div>
 	

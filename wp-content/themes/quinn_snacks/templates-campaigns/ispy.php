@@ -6,7 +6,7 @@ Template Name: Campaign - iSpy
 
 <? get_header(); ?>
 
-<script type="text/javascript" src="<? bloginfo( 'stylesheet_directory' ); ?>/assets/js/jquery.masonry.min.js"></script>
+<script type="text/javascript" src="<?= js_dir() ?>/jquery.masonry.min.js"></script>
 
 		<script type="text/javascript">
 

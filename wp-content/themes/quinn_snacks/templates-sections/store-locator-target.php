@@ -13,7 +13,7 @@ Template Name: Store Locator Target
 
 
 
-<iframe id="big_locator" src="<? bloginfo( 'stylesheet_directory' ); ?>/assets/store-locator-target" frameBorder="0" height="600"></iframe>
+<iframe id="big_locator" src="<? bloginfo( 'stylesheet_directory' ); ?>/library/store-locator-target" frameBorder="0" height="600"></iframe>
 
 <style type="text/css">
 

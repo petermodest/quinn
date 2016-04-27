@@ -112,7 +112,7 @@
 							</div>
 							<? if( $block->location ) : ?>
 								<div>
-									<label style="color: <?= $block->color ?>">Grown In:</label>
+									<label style="color: <?= $block->color ?>"><?= $block->location_text ?>:</label>
 									<?= $block->location ?>
 								</div>
 							<? endif ?>

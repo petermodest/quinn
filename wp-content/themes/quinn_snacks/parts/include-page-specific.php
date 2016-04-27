@@ -89,9 +89,9 @@ if ( is_page_template('templates-sections/product-scroll.php') || $post->post_ty
 
 if ( ( $post->post_title == 'Food Should Be' ) || is_page_template('templates-sections/frontpage.php')) { ?>
 
-	<script type="text/javascript" src="<? bloginfo( 'stylesheet_directory' ); ?>/assets/food-should-be/js/fsb-fullscreen_popups.js"></script>
-	<script type="text/javascript" src="<? bloginfo( 'stylesheet_directory' ); ?>/assets/food-should-be/js/jqcloud.js"></script>
-	<script type="text/javascript" src="<? bloginfo( 'stylesheet_directory' ); ?>/assets/food-should-be/js/quinn_wp_foodshouldbe.js"></script>
+	<script type="text/javascript" src="<? bloginfo( 'stylesheet_directory' ); ?>/library/food-should-be/js/fsb-fullscreen_popups.js"></script>
+	<script type="text/javascript" src="<? bloginfo( 'stylesheet_directory' ); ?>/library/food-should-be/js/jqcloud.js"></script>
+	<script type="text/javascript" src="<? bloginfo( 'stylesheet_directory' ); ?>/library/food-should-be/js/quinn_wp_foodshouldbe.js"></script>
 
 <? } ?>
 
@@ -148,7 +148,7 @@ if ( is_page_template('templates-sections/frontpage-fullscreen.php') || is_page_
 				items: '.whats-this',
 				content: function() {
 					if ( $(this).is( '.whats-this' ) ) {
-						return '<p>Rustic photos of farmers are wonderful, but information on each and every ingredient is more meaningful. That’s why we created layers deep. It keeps this from becoming a marketing gimmick. It keeps us honest.</p><ul><li><strong>1 Layer Deep:</strong> Full ingredient name. No ‘natural flavors’, or other ingredient obfuscation. </li><li><strong>2 Layers Deep:</strong> Source listed. This should include the name of the supplier and the region that the ingredient is farmed, harvested, or created. Basic ingredient certifications should also be shown.</li><li><strong>3 Layers Deep:</strong> Farm level information. This should include the name of the farm(s), the location of the farm, and an overview of their farming practices.</li><li><strong>4 Layers Deep:</strong> Harvest information. This should include the date and location that the ingredient was harvested, processed, etc. This should also include an overview of employee work standards.</li></ul>';
+						return '<ul><li><strong>1 Layer Deep:</strong> Full ingredient name. No ‘natural flavors’, or other ingredient obfuscation.</li><li><strong>2 Layers Deep:</strong> Source listed. This should include the name of the supplier and the region that the ingredient is farmed, harvested, or created. Basic ingredient certifications should also be shown.</li><li><strong>3 Layers Deep:</strong> Farm level information. This should include the name of the farm(s), the location of the farm, and an overview of their farming practices.</li></ul>';
 					}
 				},
 				position: {
