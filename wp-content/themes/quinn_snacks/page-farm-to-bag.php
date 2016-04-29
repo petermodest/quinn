@@ -124,7 +124,7 @@
 							<? endif ?>
 							<? if( $block->link ) : ?>
 								<div class="bottom-link">
-									<a href="<?= $block->permalink ?>">See The Farm</a>
+									<a href="<?= $block->permalink ?>"><?= $block->link_text ?></a>
 								</div>
 							<? endif ?>
 						</div>

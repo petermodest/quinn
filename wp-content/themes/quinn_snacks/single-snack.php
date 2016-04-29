@@ -40,19 +40,19 @@
 		
 						<div id="f2b-form">
 	
-							<form action="/farmtobag/view.php" method="GET">
+							<form action="/farm-to-bag" method="GET">
 	
 								<div class="f2b-logo"></div>
 								<div class="clearboth"></div>
 								<div class="f2b-arrow">
 									<div class="f2b-arrow-inner">
 	
-										<input type="text" placeholder="your batch #" name="id">
+										<input type="text" placeholder="your batch #" name="batch-number">
 	
 										<input type="submit" value="GO" />
 										<span class="type-or">or</span>
 	
-										<a id="link-currentbatch" href="/farmtobag/view.php?id=<? echo file_get_contents('http://www.quinnsnacks.com/farmtobag/recent_batch.php'); ?>">Current Batch</a>
+										<a id="link-currentbatch" href="/farm-to-bag">Current Batch</a>
 	
 									</div>
 								</div>

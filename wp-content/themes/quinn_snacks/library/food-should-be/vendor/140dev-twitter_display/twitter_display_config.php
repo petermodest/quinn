@@ -13,7 +13,7 @@
 // For example, if the code is at http://mydomain.com/twitter_display/
 // change to define('AJAX_URL', 'http://mydomain.com/twitter_display/');
 
-define('AJAX_URL', 'http://www.quinnsnacks.com/wp-content/themes/quinn_popcorn/library/food-should-be/vendor/140dev-twitter_display/');
+define('AJAX_URL', 'http://www.quinnsnacks.com/wp-content/themes/quinn_snacks/library/food-should-be/vendor/140dev-twitter_display/');
 
 // Number of tweets displayed when the tweet list is first displayed
 // and when the View More button is clicked

@@ -25,7 +25,7 @@ if (is_page_template('template-product-page2.php'))  { ?>
 	<ul>
 		<li id="sidebar-product-buylink"><a href="http://store.quinnpopcorn.com/" style="background:#<? echo get_post_meta($post->ID, "title-background", true); ?>">BUY</a></li>
 		<li><a class="modal-link">nutrition</a></li>
-		<li id="sidebar-product-farmtobaglink"><a href="/farmtobag/"></a></li>
+		<li id="sidebar-product-farmtobaglink"><a href="/farm-to-bag/"></a></li>
 	</ul>
 	 
 </div><!-- #sidebar-product -->
