@@ -68,22 +68,17 @@ add_action( 'init', 'register_my_menus' );
 // Retreive custom header color from ACF plugin outside the main loop
 
 function getHeaderColor(){
-
-	global $wp_query;
-	$postid = $wp_query->post->ID;
-
-	$menucolor = get_field("acf_header_menu_type", $postid);
+	global $wp_query, $post;
+	
+	$menucolor = get_field( "acf_header_menu_type", $post->ID );
 
 	if ($menucolor != null) {
 		return 'mainmenu-' . $menucolor;
-	}
-
-	if ($menucolor == null) {
+	} else {
 		return 'mainmenu-black';
 	}
 
 	wp_reset_query();
-
 }
 
 // ====================================================

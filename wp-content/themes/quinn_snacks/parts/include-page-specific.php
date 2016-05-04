@@ -159,6 +159,21 @@ if ( is_page_template('templates-sections/frontpage-fullscreen.php') || is_page_
 						$('<div>').addClass('arrow').addClass( feedback.vertical ).addClass( feedback.horizontal ).appendTo( this );
 					}
 				}			
+			}).tooltip({
+				items: '.why-transparency',
+				content: function() {
+					if ( $(this).is( '.why-transparency' ) ) {
+						return '<p>Knowing where your food comes from is fundamental and it’s about time companies open up.</p><p>Not only do you deserve to know, sharing all the details changes how food is made. You make more responsible choices. You seek out the best ingredients. You dig deeper. You make food better.</p><p>Simply put, transparency is the most powerful force for good in food.</p>';
+					}
+				},
+				position: {
+					my: 'center bottom-20',
+					at: 'center top',
+					using: function( position, feedback ) {
+						$( this ).css( position );
+						$('<div>').addClass('arrow').addClass( feedback.vertical ).addClass( feedback.horizontal ).appendTo( this );
+					}
+				}			
 			});
 
 		})

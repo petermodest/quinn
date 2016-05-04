@@ -26,16 +26,16 @@
 			  '#F16729' => array( 'MS' ),
 			  'transparent' => array( 'HI', 'AK' )
 		);
-		
+
 		public function __construct( $post = false, $load = true ) {
 			if( $post && $load ) $this->load( $post, 1 );
 		}
-		
+
 		public function load( $post, $taxes = true ) {
 			parent::load( $post, $taxes );
 			$this->prepare_blocks();
 		}
-		
+
 		public function prepare_blocks() {
 			$this->batch_loop = $this->snacks;
 			$this->snacks = array();
@@ -43,10 +43,11 @@
 				foreach( $this->batch_loop as $snack ) :
 					if( ( isset( $_GET['flavor'] ) && $snack->snack->ID == $_GET['flavor'] ) || ! isset( $_GET['flavor'] ) ) :
 						$this->snacks[$snack->snack->ID] = new Flavor( $snack->snack );
+
 						if( isset( $snack->map_overlay->url ) ) :
-							$map_overlays[] = $snack->map_overlay->url;
-						elseif( isset( $this->snacks[$snack->snack->ID]->url ) ) :
-							$map_overlays[] = $this->snacks[$snack->snack->ID]->url;
+							$this->map_overlays[] = $snack->map_overlay->url;
+						elseif( isset( $this->snacks[$snack->snack->ID]->map_overlay->url ) ) :
+							$this->map_overlays[] = $this->snacks[$snack->snack->ID]->map_overlay->url;
 						endif;
 	
 						foreach( $snack->ingredients as $ingredient ) :
@@ -60,7 +61,7 @@
 				endforeach;
 			endif;
 		}
-		
+
 		public function set_block( $supplier, $ingredient ) {
 			$ingredient = $this->set_ingredient( $ingredient );
 			$supplier = $this->set_supplier( $supplier );
@@ -85,7 +86,7 @@
 				);
 			endif;
 		}
-		
+
 		public function get_all_suppliers() {
 			$suppliers = new WP_Query(
 				array(
@@ -106,7 +107,7 @@
 				endforeach; 
 			endforeach;
 		}
-		
+
 		public function set_ingredient( $ingredient ) {
 			if( is_numeric( $ingredient ) && array_key_exists( $ingredient, $this->cache_ingredients ) ) :
 				return $this->cache_ingredients[$ingredient];
@@ -115,20 +116,20 @@
 			elseif( is_numeric( $ingredient ) ) :
 				$ingredient = get_term( $ingredient, 'ingredient' );
 			endif;
-			
+
 			$ingredient->inactive = get_field( 'ingredient_inactive', 'ingredient_' . $ingredient->term_id );
 			$ingredient->icon = get_field( 'ingredient_icon', 'ingredient_' . $ingredient->term_id );
 			$ingredient->bg_image = get_field( 'ingredient_image', 'ingredient_' . $ingredient->term_id );
 			$ingredient->color = get_field( 'ingredient_background_color', 'ingredient_' . $ingredient->term_id );
 			$ingredient->grown_in_text = get_field( 'ingredient_grown_in', 'ingredient_' . $ingredient->term_id );
-			
+
 			$ingredient->icon = $ingredient->icon ? $ingredient->icon['url'] : '/wp-content/uploads/2016/04/generic_ingredient_icon.png';
 			$ingredient->bg_image = $ingredient->bg_image ? $ingredient->bg_image['url'] : '/wp-content/uploads/2016/04/generic_ingredient_image.jpg';
 			if( ! $ingredient->color ) $ingredient->color = false;//'#3c82c4';
 			$this->cache_ingredients[ $ingredient->term_id ] = $ingredient;
 			return $ingredient;
 		}
-		
+
 		public function set_supplier( $supplier ) {
 			if( is_numeric( $supplier ) && array_key_exists( $supplier, $this->cache_suppliers ) ) :
 				return $this->cache_suppliers[$supplier];
@@ -140,7 +141,7 @@
 			$this->cache_suppliers[ $supplier->ID ] = $supplier;
 			return $supplier;
 		}
-		
+
 		public function get_block_color( $locations ) {
 			foreach( $locations as $location ) :
 				foreach( ( explode( ' ', ( str_replace( array( ',' ), '', $location->location->address ) ) ) ) as $section ) :
@@ -156,5 +157,4 @@
 			endforeach;
 			return '#3c82c4';
 		}
-				
 	}

@@ -1,9 +1,9 @@
 <?
-/**
-* The loop
-* @package WordPress
-* @subpackage Quinn
-*/
+	/**
+	* The loop
+	* @package WordPress
+	* @subpackage Quinn
+	*/
 ?>
 
 <? $single = false ?>
