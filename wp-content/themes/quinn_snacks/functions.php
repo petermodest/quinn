@@ -306,6 +306,40 @@ if( is_admin() ) :
 endif;
 
 
+// ACF SNACK PARENT FILTER
+
+	add_filter('acf/location/rule_types', 'acf_location_rules_types');
+	function acf_location_rules_types( $choices ) {
+		$choices['Snack']['snack_parent'] = 'Snack Parent';
+		return $choices;
+	}
+
+	add_filter('acf/location/rule_values/snack_parent', 'acf_location_rules_values_snack_parent');
+	function acf_location_rules_values_snack_parent( $choices ) {
+		
+		$parents = new WP_Query( array( 'post_type' => 'snack', 'post_parent' => 0 ) );
+		
+		foreach( $parents->posts as $parent ) :
+			$choices[ $parent->ID ] = $parent->post_title;
+		endforeach;
+	
+	    return $choices;
+	}
+
+	add_filter('acf/location/rule_match/snack_parent', 'acf_location_rules_match_snack_parent', 10, 3);
+	function acf_location_rules_match_snack_parent( $match, $rule, $options ) {
+		$parent = wp_get_post_parent_id( $options['post_id'] );
+		
+		if( $rule['operator'] == "==" ) :
+			$match = ( $parent == $rule['value'] );
+		elseif($rule['operator'] == "!=") :
+			$match = ( $parent != $rule['value'] );
+		endif;
+		
+		return $match;
+	}
+
+
 
 // ACF FIELDS
 

@@ -145,10 +145,12 @@ if ( is_page_template('templates-sections/frontpage-fullscreen.php') || is_page_
 			});
 			
 			$( document ).tooltip({
-				items: '.whats-this',
+				items: '.whats-this,.why-transparency',
 				content: function() {
 					if ( $(this).is( '.whats-this' ) ) {
 						return '<ul><li><strong>1 Layer Deep:</strong> Full ingredient name. No ‘natural flavors’, or other ingredient obfuscation.</li><li><strong>2 Layers Deep:</strong> Source listed. This should include the name of the supplier and the region that the ingredient is farmed, harvested, or created. Basic ingredient certifications should also be shown.</li><li><strong>3 Layers Deep:</strong> Farm level information. This should include the name of the farm(s), the location of the farm, and an overview of their farming practices.</li></ul>';
+					} else if ( $(this).is( '.why-transparency' ) ) {
+						return '<p>Knowing where your food comes from is fundamental and it’s about time companies open up.</p><p>Not only do you deserve to know, sharing all the details changes how food is made. You make more responsible choices. You seek out the best ingredients. You dig deeper. You make food better.</p><p>Simply put, transparency is the most powerful force for good in food.</p><p class="img-wrap"><img class="signiture" src="/wp-content/themes/quinn_snacks/library/images/kristy-signiture.png"></p>';
 					}
 				},
 				position: {
@@ -156,26 +158,13 @@ if ( is_page_template('templates-sections/frontpage-fullscreen.php') || is_page_
 					at: 'center top',
 					using: function( position, feedback ) {
 						$( this ).css( position );
+						console.log(feedback.horizontal)
 						$('<div>').addClass('arrow').addClass( feedback.vertical ).addClass( feedback.horizontal ).appendTo( this );
-					}
-				}			
-			}).tooltip({
-				items: '.why-transparency',
-				content: function() {
-					if ( $(this).is( '.why-transparency' ) ) {
-						return '<p>Knowing where your food comes from is fundamental and it’s about time companies open up.</p><p>Not only do you deserve to know, sharing all the details changes how food is made. You make more responsible choices. You seek out the best ingredients. You dig deeper. You make food better.</p><p>Simply put, transparency is the most powerful force for good in food.</p>';
 					}
 				},
-				position: {
-					my: 'center bottom-20',
-					at: 'center top',
-					using: function( position, feedback ) {
-						$( this ).css( position );
-						$('<div>').addClass('arrow').addClass( feedback.vertical ).addClass( feedback.horizontal ).appendTo( this );
-					}
-				}			
-			});
-
+				show: { effect: "fadeIn", duration: 0 },
+				hide: { effect: "fadeOut", duration: 0 }
+			})
 		})
 	</script>	
 <? endif ?>

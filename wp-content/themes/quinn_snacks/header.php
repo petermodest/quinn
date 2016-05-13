@@ -54,7 +54,7 @@
 		<div class="header-wrapper" id="header-desktop">
 			<div id="header-centering" class="<? echo getHeaderColor(); ?>">
 	
-				<iframe id="minicart-iframe" src="http://store.quinnpopcorn.com/pages/minicart-for-wp" width="77" height="40" scrolling="no"></iframe>
+<!-- 				<iframe id="minicart-iframe" src="http://store.quinnpopcorn.com/pages/minicart-for-wp" width="77" height="40" scrolling="no"></iframe> -->
 	
 					<?
 						wp_nav_menu( array(

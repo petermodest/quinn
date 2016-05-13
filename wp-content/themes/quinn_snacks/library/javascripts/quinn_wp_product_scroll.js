@@ -91,7 +91,7 @@ $(document).ready(function() {
 			});
 	
 			var string = '';
-			var noun = '';
+			var noun = $('#product-scroll').attr('data-noun');
 			var t = this;
 			_.each(this.productData, function(product) {
 	
@@ -104,18 +104,7 @@ $(document).ready(function() {
 				if (product.text_color === '#000000') {
 					blackwhite = 'text_black';
 				}
-	
-			// BOX vs BAG switch
-	
-				if( ProductScroll.scrollType === 'microwave-popcorn' ) {
-					noun = "BOX";
-				}
-	
-				if( ProductScroll.scrollType === 'popped-popcorn' || ProductScroll.scrollType === 'pretzels' ){
-					noun = "BAG";
-				}
-	
-	
+		
 				string += '<li class="' + blackwhite +  '" data-slug="' + product.ID + '" data-hover-color="' + product.color + '">';
 				string += '<h2>' + product.title +  '</h2>';
 				string += '<div class="title-buttons">';

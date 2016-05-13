@@ -1,15 +1,29 @@
 <? get_header() ?>
-	<div id="product-scroll" class="SectionScroll-wrap" data-scrolltype="<?= $snack->post_name ?>">
+<?
+	if( $snackname == 'microwave-popcorn' ) :
+		$snackname = 'microwave-popcorn';
+	elseif( $snackname == 'pretzels' ) :
+		$snackname = 'pretzels';
+	elseif( $snackname == 'popped-popcorn' ) :
+		$snackname = 'popped-popcorn';
+	elseif( $snackname == 'popping-kernels' ) :
+		$snackname = 'popping-kernels';
+	endif;
+?>
+	<div id="product-scroll" class="SectionScroll-wrap" data-scrolltype="<?= $snackname ?>" data-noun="<?= $snack->buy_noun ?>">
 
 		<div class="sticky_shim"></div>
 		
 		<div id="product-scroll-titles" style="background:url(<?= $snack->header_image->url ?>) right center no-repeat fixed; background-size:cover;" >
-	
 			<ul></ul>
-	
+			<? if( $snackname == 'popping-kernels' ) : ?>
+				<?= apply_filters('the_content', $snack->section_content ) ?>
+			<? endif ?>
 		</div>
 	
-		<div id="product-content"></div>
+		<? if( $snackname != 'popping-kernels' ) : ?>
+			<div id="product-content"></div>
+		<? endif ?>
 
 		<script type="text/template" id="product-template">
 		
@@ -19,56 +33,40 @@
 				</div>
 			</div>
 
-			<? if( in_array( $snack->post_name, array( 'microwave-popcorn', 'pretzels' ) ) ) : ?>
+			<? if( in_array( $snackname, array( 'microwave-popcorn', 'pretzels' ) ) ) : ?>
 			
-				<div id="product-reinvented" class="scroll-pane SectionScroll" data-arrow-color="white" style="background-image:url(<?= $snack->section_background->url ?>);<? if( $snack->post_name == 'pretzels' ) : ?> background-color: #74dd67;<? endif ?>">
-					<div class="product-reinvented-inner"<? if( $snack->post_name == 'pretzels' ) : ?> style="padding-top: 5%"<? endif ?>>
+				<div id="product-reinvented" class="scroll-pane SectionScroll" data-arrow-color="white" style="background-image:url(<?= $snack->section_background->url ?>);<? if( $snackname == 'pretzels' ) : ?> background-color: #74dd67;<? endif ?>">
+					<div class="product-reinvented-inner"<? if( $snackname == 'pretzels' ) : ?> style="padding-top: 5%"<? endif ?>>
 						<h1><span></span>Reimagined</h1>
 						<?= apply_filters('the_content', $snack->section_content ) ?>
 					</div>
 				</div>
 			
-			<? elseif ($snack->post_name == 'popped-popcorn') : ?>
-		
+			<? elseif( $snackname == 'popped-popcorn' ) : ?>	
 				<div id="product-farmtobag" class="scroll-pane SectionScroll" data-arrow-color="white" style="background-image:url(<?= $snack->section_background->url ?>);">
-		
 					<div class="SectionScroll-inner">
-		
 						<h1><span></span>Reimagined</h1>
-		
 						<?= apply_filters('the_content', $snack->section_content ) ?>
-		
 						<div id="f2b-form">
-	
 							<form action="/farm-to-bag" method="GET">
-	
 								<div class="f2b-logo"></div>
 								<div class="clearboth"></div>
 								<div class="f2b-arrow">
 									<div class="f2b-arrow-inner">
-	
 										<input type="text" placeholder="your batch #" name="batch-number">
-	
 										<input type="submit" value="GO" />
 										<span class="type-or">or</span>
-	
 										<a id="link-currentbatch" href="/farm-to-bag">Current Batch</a>
-	
 									</div>
 								</div>
 							</form>
-	
 						</div>
-		
 					</div>
-		
 					<div class="clearboth"></div>
-		
 				</div>
-		
 			<? endif ?>
 		
-			<div id="slider-product-ingredients" class="SectionScroll" data-arrow-color="white"<? if( $snack->post_name == 'pretzels' ) : ?> style="background-image: url(<?= img_dir() ?>sorghum.jpg)"<? endif ?>>
+			<div id="slider-product-ingredients" class="SectionScroll" data-arrow-color="white"<? if( $snackname == 'pretzels' ) : ?> style="background-image: url(<?= img_dir() ?>sorghum.jpg)"<? endif ?>>
 	
 				<div class="product-ingredients-wrapper">
 
@@ -76,13 +74,13 @@
 
 					<img src="<%= product.ingredients %>" />
 
-					<? if( $snack->post_name == 'microwave-popcorn' ) : ?>
+					<? if( $snackname == 'microwave-popcorn' ) : ?>
 						<a href="/m-nutritional-info/ " id="view-nutrition-info">view nutrition info</a>
 	
-					<? elseif( $snack->post_name == 'popped-popcorn' ) : ?>
+					<? elseif( $snackname == 'popped-popcorn' ) : ?>
 						<a href="/p-nutritional-info/" id="view-nutrition-info">view nutrition info</a>
 	
-					<? elseif( $snack->post_name == 'pretzels' ) : ?>
+					<? elseif( $snackname == 'pretzels' ) : ?>
 						<a href="/pretzel-nutritional-info/" id="view-nutrition-info">view nutrition info</a>
 	
 					<? endif ?>
@@ -105,6 +103,11 @@
 		
 						<li id="see-reviews"  class="foot-btn">
 							<a href="<? bloginfo('url'); ?>/popcorn/reviews">see reviews</a>
+						</li>
+						
+						<li>
+							<span><a href="#">Nutrition Info</a></span>
+							<span><a href="#">Popping Instructions</a></span>
 						</li>
 					</ul>		
 				</div>
