@@ -3,7 +3,7 @@
 	if( isset( $_GET['batch-number'] ) ) :
 		$args = array(
 			'post_type'			=> 'batch',
-			'posts_per_page'	=> 1,
+			'posts_per_page'	=> -1,
 			'orderby'			=> 'title',
 			'order'				=> 'DESC',
 			'tax_query'			=> array(
@@ -14,9 +14,33 @@
 				)
 			)
 		);
-		$batch = new WP_Query( $args );
-		if( count( $batch->posts ) > 0 ) :
-			$batch = new Batch( $batch->posts[0] );
+		$batches = new WP_Query( $args );
+		if( count( $batches->posts ) == 1 ) :
+			$batch = $batches->posts[0];
+		elseif( count( $batches->posts ) > 1 ) :
+			$snacks = array();
+			$blocks = array();
+			$overlays = array();
+			foreach( $batches->posts as $key => $batch ) :
+				$temp = new Batch( $batch );
+				foreach( $temp->snacks as $key => $snack ) :
+					$snacks[$key] = $snack;
+				endforeach;
+				foreach( $temp->blocks as $key => $block ) :
+					$blocks[$key] = $block;
+				endforeach;
+				if( count( $temp->map_overlays ) > 0 ) :
+					foreach( $temp->map_overlays as $key => $overlay ) :
+						$overlays[] = $overlay;
+					endforeach;
+				endif;
+			endforeach;
+			$overlays = array_unique( $overlays );
+			
+			$batch = $batches->posts[0];
+			$batch->snacks = $snacks;
+			$batch->blocks = $blocks;
+			$batch->map_overlays = $overlays;
 		else :
 			$batch = false;
 		endif;
@@ -69,7 +93,7 @@
 						<h4>Filter by Flavor:</h4>
 						<ul>
 							<? foreach( $batch->snacks as $snack ) : ?>
-								<li><a href="?batch-number=<?= $batch->post_title ?>&flavor=<?= $snack->ID ?>"><?= $snack->post_title ?></a></li>
+								<li><a href="?batch-number=<?= $_GET['batch-number'] ?>&flavor=<?= $snack->ID ?>"><?= $snack->post_title ?></a></li>
 							<? endforeach ?>
 						</ul>
 					</div>

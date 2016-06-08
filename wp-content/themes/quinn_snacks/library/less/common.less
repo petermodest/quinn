@@ -212,11 +212,9 @@ h4 {
 /*! ==========	HEADER	============ */
 
 .header-wrapper#header-desktop {
-
 	height: @desktopheaderheight;
 	width: 100%;
 	display: block;
-
 
 	#quinn-logo {
 		background: url("@{images}logo.png") no-repeat;
@@ -243,20 +241,20 @@ h4 {
 					}
 				}				
 			}
-			
 
-			
-			@media screen and ( min-width: 481px ) and ( max-width: 928px ) {
+			@media screen and ( min-width: 481px ) and ( max-width: 955px ) {
 				text-align: center;					
-				li.menu-item-has-children {
+				
+				> li {
 					display: inline-block;
 					float: none;
+				
 					> a {
-					    padding: 15px;
+					    padding: 15px 13px;
 					    font-size: 20px;					    
 					}
 				    ul {
-					     text-align: left;
+					    text-align: left;
 					    li {
 						    a {
 							   
@@ -446,6 +444,13 @@ h4 {
 }
 
 #mainmenu-footer {
+	> ul {
+		> li {
+			> a {
+				margin-right: 20px;
+			}
+		}
+	}
 	ul {
 
 		li {
@@ -462,7 +467,7 @@ h4 {
 					text-decoration: underline;
 				}
 			}
-	
+				
 			ul {
 	
 				margin:10px 20px 0 0;
@@ -549,6 +554,17 @@ h4 {
 			ul#menu-main-menu-1 {
 				> li {
 					width: 100%;
+					ul {
+						padding-bottom: 0;
+					}
+				}
+			}
+			>ul {
+				>li {
+					padding-bottom: 20px;
+					>a{
+						margin-right: 0;
+					}
 				}
 			}
 		}

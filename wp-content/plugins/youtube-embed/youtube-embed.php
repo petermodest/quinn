@@ -3,9 +3,9 @@
 Plugin Name: YouTube Embed
 Plugin URI: https://wordpress.org/plugins/youtube-embed/
 Description: Embed YouTube Videos in WordPress
-Version: 4.3.4
-Author: Coded Art
-Author URI: http://codedart.co
+Version: 4.3.5
+Author: David Artiss
+Author URI: http://www.artiss.co.uk
 Text Domain: youtube-embed
 Domain Path: /languages
 */
@@ -19,7 +19,7 @@ Domain Path: /languages
 * @since	2.0
 */
 
-define( 'youtube_embed_version', '4.3.4' );
+define( 'youtube_embed_version', '4.3.5' );
 
 $functions_dir = plugin_dir_path( __FILE__ ) . 'includes/';
 

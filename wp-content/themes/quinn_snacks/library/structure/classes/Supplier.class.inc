@@ -2,7 +2,8 @@
 	class Supplier extends Post {
 		
 		var $location_convert = array();
-		
+		var $ingredients = array();
+
 		public function __construct( $post = false, $load = true ) {
 			if( $post && $load ) $this->load( $post, 1 );
 		}
@@ -15,6 +16,8 @@
 				endif;
 			endforeach;
 			$this->location_name = implode( ' / ', $this->location_convert );
+
+			foreach( $this->taxonomies->ingredient as $key => $ingredient ) $this->ingredients[] = $ingredient->name;
 		}
-				
+
 	}

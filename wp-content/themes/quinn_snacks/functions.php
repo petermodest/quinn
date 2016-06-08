@@ -71,7 +71,11 @@ function getHeaderColor(){
 	global $wp_query, $post;
 	
 	$menucolor = get_field( "acf_header_menu_type", $post->ID );
-
+	
+	if( is_archive() ) :
+		return 'mainmenu-black';
+	endif;
+	
 	if ($menucolor != null) {
 		return 'mainmenu-' . $menucolor;
 	} else {
@@ -85,30 +89,30 @@ function getHeaderColor(){
 // change the_excerpt size
 
 function excerpt($limit) {
-      $excerpt = explode(' ', get_the_excerpt(), $limit);
-      if (count($excerpt)>=$limit) {
-        array_pop($excerpt);
-        $excerpt = implode(" ",$excerpt).'...';
-      } else {
-        $excerpt = implode(" ",$excerpt);
-      }
-      $excerpt = preg_replace('`\[[^\]]*\]`','',$excerpt);
-      return $excerpt;
-    }
+	 $excerpt = explode(' ', get_the_excerpt(), $limit);
+	 if (count($excerpt)>=$limit) {
+		array_pop($excerpt);
+		$excerpt = implode(" ",$excerpt).'...';
+	 } else {
+		$excerpt = implode(" ",$excerpt);
+	 }
+	 $excerpt = preg_replace('`\[[^\]]*\]`','',$excerpt);
+	 return $excerpt;
+	}
 
-    function content($limit) {
-      $content = explode(' ', get_the_content(), $limit);
-      if (count($content)>=$limit) {
-        array_pop($content);
-        $content = implode(" ",$content).'...';
-      } else {
-        $content = implode(" ",$content);
-      }
-      $content = preg_replace('/\[.+\]/','', $content);
-      $content = apply_filters('the_content', $content);
-      $content = str_replace(']]>', ']]&gt;', $content);
-      return $content;
-    }
+	function content($limit) {
+	 $content = explode(' ', get_the_content(), $limit);
+	 if (count($content)>=$limit) {
+		array_pop($content);
+		$content = implode(" ",$content).'...';
+	 } else {
+		$content = implode(" ",$content);
+	 }
+	 $content = preg_replace('/\[.+\]/','', $content);
+	 $content = apply_filters('the_content', $content);
+	 $content = str_replace(']]>', ']]&gt;', $content);
+	 return $content;
+	}
 
 // ====================================================
 // Filter the way links are spit out so they can use the block view styles.
@@ -119,16 +123,16 @@ function wpse40213_new_classes( $html )
 {
 
 	// add info intro
-    $round1 = str_replace( ' />', ' /><span class="block-info-state"><h3>', $html );
+	$round1 = str_replace( ' />', ' /><span class="block-info-state"><h3>', $html );
 
   // snip link from the middle
-    $round2 = str_replace( '</a>', ' ', $round1 );
+	$round2 = str_replace( '</a>', ' ', $round1 );
 
   // divide the 2 pieces.
 
-    $round3 = str_replace( '/><span class="block-info-state">', '/></span><span class="block-info-state">', $round2 );
+	$round3 = str_replace( '/><span class="block-info-state">', '/></span><span class="block-info-state">', $round2 );
 
-    return str_replace( "</li>", "</p></span></a></li>", $round3 );
+	return str_replace( "</li>", "</p></span></a></li>", $round3 );
 }
 
 // ====================================================
@@ -137,39 +141,32 @@ function wpse40213_new_classes( $html )
 
 function kriesi_pagination($range)
 {
-     $showitems = ($range * 2)+1;
+	$showitems = ($range * 2)+1;
 
-     global $paged;
-     if(empty($paged)) $paged = 1;
+	global $paged;
+	if( empty( $paged ) ) $paged = 1;
+	
+	global $wp_query;
+	$pages = $wp_query->max_num_pages;
+	if( ! $pages ) :
+		$pages = 1;
+	endif;
 
-     if($pages == '')
-     {
-         global $wp_query;
-         $pages = $wp_query->max_num_pages;
-         if(!$pages)
-         {
-             $pages = 1;
-         }
-     }
+	if( 1 != $pages ) :
+		echo "<div class='pagination'>";
+		if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo "<a href='".get_pagenum_link(1)."'>&laquo;</a>";
+		if($paged > 1 && $showitems < $pages) echo "<a href='".get_pagenum_link($paged - 1)."'>&lsaquo;</a>";
 
-     if(1 != $pages)
-     {
-         echo "<div class='pagination'>";
-         if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo "<a href='".get_pagenum_link(1)."'>&laquo;</a>";
-         if($paged > 1 && $showitems < $pages) echo "<a href='".get_pagenum_link($paged - 1)."'>&lsaquo;</a>";
+		for( $i=1; $i <= $pages; $i++ ) :
+			if (1 != $pages &&( !( $i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems ) ) :
+				echo ($paged == $i)? "<span class='current'>".$i."</span>":"<a href='".get_pagenum_link($i)."' class='inactive' >".$i."</a>";
+			endif;
+		endfor;
 
-         for ($i=1; $i <= $pages; $i++)
-         {
-             if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems ))
-             {
-                 echo ($paged == $i)? "<span class='current'>".$i."</span>":"<a href='".get_pagenum_link($i)."' class='inactive' >".$i."</a>";
-             }
-         }
-
-         if ($paged < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($paged + 1)."'>&rsaquo;</a>";
-         if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($pages)."'>LAST &raquo;</a>";
-         echo "</div>\n";
-     }
+		if ($paged < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($paged + 1)."'>&rsaquo;</a>";
+		if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($pages)."'>LAST &raquo;</a>";
+		echo "</div>\n";
+	endif;
 }
 
 
@@ -182,31 +179,28 @@ function kriesi_pagination($range)
 
 
 function fields_in_feed($content) {
-    if(is_feed()) {
-        $post_id = get_the_ID();
-        $imageName = get_post_meta($post_id, "cover_image", true);
+	if(is_feed()) {
+		$post_id = get_the_ID();
+		$imageName = get_post_meta($post_id, "cover_image", true);
 
-        if ($imageName != null) {
+		if ($imageName != null) {
 
-	        $output = '/wp-content/quinn-images/blogpost-covers/' . $imageName . '/' . $imageName .'-med.jpg';
-        }
+			$output = '/wp-content/quinn-images/blogpost-covers/' . $imageName . '/' . $imageName .'-med.jpg';
+		}
 
-        if ($imageName == "") {
+		if ($imageName == "") {
 
 				if ( has_post_thumbnail() ) {
 					$src = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), array( 720,405 ), false, '' );
 					$output = $src[0];
 				};
 
-        }
+		}
 
+		$content = '<img src="'.$output.'" />' . $content;
 
-	        $content = '<img src="'.$output.'" />' . $content;
-
-
-
-    }
-    return $content;
+	}
+	return $content;
 }
 
 
@@ -229,7 +223,7 @@ add_filter( 'body_class', 'add_slug_body_class' );
 
 
 function quinn_admin_theme_style() {
-    wp_enqueue_style('quinn-admin-theme', get_stylesheet_directory_uri() . '/library/structure/admin/admin.css');
+	wp_enqueue_style('quinn-admin-theme', get_stylesheet_directory_uri() . '/library/structure/admin/admin.css');
 	wp_enqueue_script('quinn-admin-theme-js', get_stylesheet_directory_uri() . '/library/structure/admin/admin.js');
 }
 add_action('admin_enqueue_scripts', 'quinn_admin_theme_style');
@@ -323,7 +317,7 @@ endif;
 			$choices[ $parent->ID ] = $parent->post_title;
 		endforeach;
 	
-	    return $choices;
+		return $choices;
 	}
 
 	add_filter('acf/location/rule_match/snack_parent', 'acf_location_rules_match_snack_parent', 10, 3);

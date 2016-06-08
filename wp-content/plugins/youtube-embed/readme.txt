@@ -1,9 +1,10 @@
 === YouTube Embed ===
-Contributors: codedart
+Contributors: dartiss
+Donate link: http://artiss.co.uk/donate
 Tags: download, embed, embedding, iframe, media, play, playlist, responsive, seo, video, widget, youtube
 Requires at least: 3.9
-Tested up to: 4.4.2
-Stable tag: 4.3.4
+Tested up to: 4.5.1
+Stable tag: 4.3.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -327,6 +328,9 @@ Before reporting it please bear in mind that this plugin uses the standard YouTu
 7. The third party plugins menu
 
 == Changelog ==
+
+= 4.3.5 =
+* Maintenance: Updated branding, inc. adding donation links
 
 = 4.3.4 =
 * Bug: Fixed issue with 3 hyphens in a video ID being converted to &#8212;
@@ -717,6 +721,9 @@ Before reporting it please bear in mind that this plugin uses the standard YouTu
 * Initial release
 
 == Upgrade Notice ==
+
+= 4.3.5 =
+* Minor update to change branding
 
 = 4.3.4 =
 * Update to fix bug in video IDs with multiple hyphens

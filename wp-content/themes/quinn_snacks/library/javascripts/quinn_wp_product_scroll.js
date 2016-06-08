@@ -30,9 +30,7 @@ $(document).ready(function() {
 		},
 		
 		selectInitial: function() {
-			console.log(this.productData);
 			for( var i = 0; i < this.productData.length; i++ ) {
-				console.log(i);
 				if( productData[i].selected ) {
 					this.selectFlavor( productData[i].ID );
 					break;
@@ -80,7 +78,6 @@ $(document).ready(function() {
 					$('html, body').animate({
 						scrollTop: $("#product-callout").offset().top
 					}, 1000);
-	
 			});
 		},
 	

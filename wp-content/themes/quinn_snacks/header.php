@@ -32,7 +32,8 @@
 		<link rel="pingback" href="<? bloginfo( 'pingback_url' ); ?>" />
 	
 		<link rel="stylesheet" type="text/css" href="//cloud.typography.com/661378/702364/css/fonts.css" />
-		<link rel="stylesheet" type="text/css" media="all" href="<?= get_stylesheet_directory_uri() ?>/library/stylesheets/style.css" />
+		<link rel="stylesheet" type="text/css" media="all" href="<?= js_dir() ?>/vendor/fancybox/jquery.fancybox.css" />
+		<link rel="stylesheet" type="text/css" media="all" href="<?= style_dir() ?>style.css" />
 	
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -54,7 +55,7 @@
 		<div class="header-wrapper" id="header-desktop">
 			<div id="header-centering" class="<? echo getHeaderColor(); ?>">
 	
-<!-- 				<iframe id="minicart-iframe" src="http://store.quinnpopcorn.com/pages/minicart-for-wp" width="77" height="40" scrolling="no"></iframe> -->
+				<iframe id="minicart-iframe" src="http://store.quinnpopcorn.com/pages/minicart-for-wp" width="77" height="40" scrolling="no"></iframe>
 	
 					<?
 						wp_nav_menu( array(

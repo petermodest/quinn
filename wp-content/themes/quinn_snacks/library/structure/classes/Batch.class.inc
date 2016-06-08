@@ -44,10 +44,10 @@
 					if( ( isset( $_GET['flavor'] ) && $snack->snack->ID == $_GET['flavor'] ) || ! isset( $_GET['flavor'] ) ) :
 						$this->snacks[$snack->snack->ID] = new Flavor( $snack->snack );
 
-						if( isset( $snack->map_overlay->url ) ) :
-							$this->map_overlays[] = $snack->map_overlay->url;
-						elseif( isset( $this->snacks[$snack->snack->ID]->map_overlay->url ) ) :
-							$this->map_overlays[] = $this->snacks[$snack->snack->ID]->map_overlay->url;
+						if( isset( $snack->flavor_map_overlay->url ) ) :
+							$this->map_overlays[] = $snack->flavor_map_overlay->url;
+						elseif( isset( $this->snacks[$snack->snack->ID]->flavor_map_overlay->url ) ) :
+							$this->map_overlays[] = $this->snacks[$snack->snack->ID]->flavor_map_overlay->url;
 						endif;
 	
 						foreach( $snack->ingredients as $ingredient ) :

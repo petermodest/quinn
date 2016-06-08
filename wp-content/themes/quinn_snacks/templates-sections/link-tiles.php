@@ -20,19 +20,15 @@ Template Name: Link Tiles
 								<h3><? the_sub_field('title') ?></h3>
 								<p><? the_sub_field('text') ?></p>
 							</div>
-						</div><!-- block-info-state -->
+						</div>
 					</a>
-				</div><!-- block-info-state -->
-
-				<div class="block-image-state">
-
+				</div>
+				<div class="block-image-state" style="background-image: url(<? the_sub_field('image') ?>)">
 					<a href="http://localhost:8888/small-the-unfair-advantage/">
-						<img width="350" height="350" src="<? the_sub_field('image'); ?>" />
+						<img src="<?= img_dir() ?>transparent-square.png" />
 					</a>
-
-				</div><!-- block-image-state -->
-
-			</div><!-- block view post -->
+				</div>
+			</div>
 		<? endwhile ?>
 
 	<? endif ?>

@@ -3,6 +3,7 @@
 
 		var $cache = array();
 		var $selected = false;
+		var $f2b_section_display = false;
 		
 		public function __construct( $post = false, $load = true ) {
 			if( $post && $load ) $this->load( $post, 1 );
@@ -24,25 +25,35 @@
 					'description'	=> $this->cache[ $post->ID ]->seo_description,
 					'keywords'		=> $this->cache[ $post->ID ]->seo_keywords
 				);
-				
+
 				parent::load( $post->post_parent, $taxes );
 				$this->seo_title = $seo['title'];
 				$this->seo_description = $seo['description'];
-				$this->seo_keywords= $seo['keywords'];
+				$this->seo_keywords = $seo['keywords'];
 			else :
 				parent::load( $post, $taxes );
-			endif;			
+			endif;
 			
 			$this->get_flavors();
 		}
 		
 		public function get_flavors() {
-			$children = new WP_Query( array( 'post_type' => 'snack', 'post_parent' => $this->ID ) );
-			foreach( $this->get_child_ids() as $key => $child ) :
+			$children = $this->get_child_ids();
+			if( count( $children ) <= 0 ) :
+				$children[] = $this->ID;
+				$this->parent_flavor = true;
+			else :
+				$this->parent_flavor = false;
+			endif;
+			
+			foreach( $children as $key => $child ) :
 				$flavor = array_key_exists( $child, $this->cache ) ? new Flavor( $this->cache[$child] ) : new Flavor( $child );
-				if( isset( $flavor->retired ) && ! $flavor->retired || ! isset( $flavor->retired ) ) :
+				if( ! $flavor->flavor_retired ) :
 					if( ! $this->selected ) :
 						$this->selected = $flavor->ID;
+					endif;
+					if( $flavor->f2b_display ) :
+						$this->f2b_section_display = true;
 					endif;
 					$this->flavors[] = $flavor;
 				endif;

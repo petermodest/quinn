@@ -52,6 +52,7 @@ function ye_set_plugin_meta( $links, $file ) {
 	if ( strpos( $file, 'youtube-embed.php' ) !== false ) {
 
 		$links = array_merge( $links, array( '<a href="https://wordpress.org/support/plugin/youtube-embed">' . __( 'Support', 'youtube-embed' ) . '</a>' ) );
+		$links = array_merge( $links, array( '<a href="http://www.artiss.co.uk/donate">' . __( 'Donate', 'youtube-embed' ) . '</a>' ) );
 
 	}
 
