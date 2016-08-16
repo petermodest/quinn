@@ -82,7 +82,7 @@
 			?>
 				<script src="<?= js_dir() ?>vendor/fancybox/jquery.fancybox.pack.js"></script>
 				<script src="https://cdn.rawgit.com/nnattawat/flip/v1.0.20/dist/jquery.flip.min.js"></script>
-				<script type="text/javascript" src="<?= js_dir() ?>single-snack.js"></script>
+				<script type="text/javascript" src="<?= js_dir() ?>single-snack.js?v=<?= time() ?>"></script>
 			<?
 		endif;
 		
