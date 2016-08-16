@@ -17,44 +17,25 @@
 * @uses		ye_add_links				Add links under video
 * @uses		ye_error				    Display an error
 * @uses		ye_extract_id			    Get the video ID
-* @uses		ye_validate_list		    Get the requested listr
-* @uses		ye_validate_id			    Validate the video ID
+* @uses		ye_validate_list		    Get the requested lists
+* @uses		ye_get_api_data			    Get the API data
 * @uses		ye_validate_profile		Get the requested profile
 * @uses		ye_get_general_defaults	Get general options
 * @uses		ye_get_profile				Set default profile options
 *
-* @param	string		$id				Video ID
-* @param	string		$width			Video width
-* @param	string		$height			Video height
-* @param	string		$fullscreen		Fullscreen button
-* @param	string		$related		Show related info.
-* @param	string		$autoplay		Start video automatically
-* @param	string		$loop			Loop video to start
-* @param	string		$start			Start in seconds
-* @param	string		$info			Show video info.
-* @param	string		$annotation		Annotations
-* @param	string		$cc				Closed captions
-* @param	string		$style			Stylesheet information
-* @param	string		$stop			Stop in seconds
-* @param	string		$disablekb		Disable keyboard controls
-* @param	string		$ratio			Video size ratio
-* @param	string		$autohide		Autohide controls
-* @param	string		$controls		Display controls
-* @param	string		$profile		Which profile to use
-* @param	string		$list_style		How to use a list, if used
-* @param	string		$template		Display template
-* @param	string		$color		 	Progress bar color
-* @param	string		$theme			Use dark or light theme
-* @param    string      $responsive     Show responsive output
-* @param    string      $search         Perform a search
-* @param    string      $user           Look up user videos
-* @param    string      $modest         Modest browsing
-* @param	string		$playsinline	Playsinline on iOS
-* @param	string		$html5			Force HTML5
+* @param	string		$array			Array of parameters
 * @return	string						Code output
 */
 
-function ye_generate_youtube_code( $id = '', $width = '', $height = '', $fullscreen = '', $related = '', $autoplay = '', $loop = '', $start = '', $info = '', $annotation = '', $cc = '', $style = '', $stop = '', $disablekb = '', $ratio = '', $autohide = '', $controls = '', $profile = '', $list_style = '', $template = '', $color = '', $theme = '', $responsive = '', $search = '', $user = '', $modest = '', $playsinline = '', $html5 = '' )  {
+function ye_generate_youtube_code( $array )  {
+
+	// Set defaults then merge with passed array. Finally, split array into individual variables
+
+	$default = array( 'id' => '', 'width' => '', 'height' => '', 'fullscreen' => '', 'related' => '', 'autoplay' => '', 'loop' => '', 'start' => '', 'info' => '', 'annotation' => '', 'cc' => '', 'style' => '', 'stop' => '', 'disablekb' => '', 'ratio' => '', 'autohide' => '', 'controls' => '', 'profile' => '', 'list_style' => '', 'template' => '', 'color' => '', 'theme' => '', 'responsive' => '', 'search' => '', 'user' => '', 'modest' => '', 'playsinline' => '', 'html5' => '' );
+
+	$array = array_merge( $default, $array );
+
+	extract( $array );
 
 	// Initialisation
 
@@ -90,9 +71,7 @@ function ye_generate_youtube_code( $id = '', $width = '', $height = '', $fullscr
 		// Check if it's a list
 
 		$list_found = false;
-		if ( $general[ 'list' ] == 1 ) {
-			if ( $list_style != '' ) { $list_found = true; }
-		} else {
+		if ( ( $general[ 'force_list_type' ] == 1 &&  $list_style != '' ) or ( $general[ 'force_list_type' ] != 1 ) ) {
 			$list = ye_validate_list( $id, $general[ 'list_no' ] );
 			if ( is_array( $list ) ) { $list_found = true; }
 		}
@@ -110,14 +89,14 @@ function ye_generate_youtube_code( $id = '', $width = '', $height = '', $fullscr
 
 			$id = ye_extract_id( $id );
 
-			// Check what type of video it is and whether it's valid
-			// Should be 'v' (video), 'p' (playlist) or blank (not known)
+			// Fetch in video data
 
-			$embed_type = ye_validate_id( $id );
+			$api_data = ye_get_api_data( $id );
+			$embed_type = $api_data[ 'type' ];
 
 			// If the video is invalid, output an error
 
-			if ( ( $embed_type == '' ) or ( strlen ( $embed_type ) != 1 ) ) {
+			if ( !$api_data[ 'valid' ] ) {
 				$result = $newline . '<!-- YouTube Embed v' . youtube_embed_version . ' -->' . $newline;
 				$result .= sprintf( __( 'The YouTube ID of %s is invalid.', 'youtube-embed' ), $id ) . $newline . '<!-- ' . __( 'End of YouTube Embed code' ) . ' -->' . $newline;
 				return $result;
@@ -130,6 +109,7 @@ function ye_generate_youtube_code( $id = '', $width = '', $height = '', $fullscr
 		if ( $list_found ) {
 
 			$embed_type = 'v';
+			$list_name = $id;
 
 			// Randomize the video
 
@@ -157,12 +137,34 @@ function ye_generate_youtube_code( $id = '', $width = '', $height = '', $fullscr
 					}
 				}
 			}
+
+			// Fetch in video data
+
+			$api_data = ye_get_api_data( $id, '', '', '', $list_name );
 		}
 	}
 
     // Correct the ID if a playlist
 
-    if ( strtolower( substr( $id, 0, 2 ) ) == 'pl') { $id = substr( $id, 2 ); }
+    if ( strtolower( substr( $id, 0, 2 ) ) == 'pl' && strlen( $video_id ) == 34 ) { $id = substr( $id, 2 ); }
+
+	// Get from cache, if required
+
+	if ( $general[ 'video_cache' ] != 0 && get_the_date() !== false ) {
+
+		// Generate the cache key - it's a combination of ALL the passed parameters, some of the general options, all of the relevant profile options and the playlist, if specified
+
+		$general_extract = array( 'metadata' => $general[ 'metadata' ], 'feed' => $general[ 'feed' ], 'thumbnail' => $general[ 'thumbnail' ], 'privacy' => $general[ 'privacy' ], 'frameborder' => $general[ 'frameborder' ], 'language' => $general[ 'language' ], 'debug' => $general[ 'debug' ], 'script' => $general[ 'script' ], 'force_list_type' => $general[ 'force_list_type' ] );
+
+		$key = serialize( $options ) . serialize( $array ) . serialize ( $general_extract );
+
+		if ( $list_found ) { $key .= serialize( $list ); }
+
+		// Now fetch the cache
+
+		$cache = ye_get_transient( $key, true );
+		if ( $cache !== false ) { return $cache; }
+	}
 
 	// If this is a feed then display a thumbnail and/or text link to the original video
 
@@ -172,7 +174,7 @@ function ye_generate_youtube_code( $id = '', $width = '', $height = '', $fullscr
 			$result .= '<p>'.__( 'A video list cannot be viewed within this feed - please view the original content', 'youtube-embed' ) . '.</p>' . $newline;
 		} else {
 			$youtube_url = 'https://www.youtube.com/watch?' . $embed_type . '=' . $id;
-			if ( ( $embed_type == 'v' ) && ( $general[ 'feed' ] != 't' ) ) { $result .= '<p><a href="' . $youtube_url . '"><img src="https://img.youtube.com/vi/' . $id . '/' . $general[ 'thumbnail' ] . '.jpg"></a></p>' . $newline; }
+			if ( ( $embed_type == 'v' ) && ( $general[ 'feed' ] != 't' ) ) { $result .= '<p><a href="' . $youtube_url . '"><img src="https://img.youtube.com/vi/' . $id . '/' . $general[ 'thumbnail' ] . '.jpg" alt="' . $api_data[ 'title' ] . '"></a></p>' . $newline; }
 			if ( ( $general ['feed'] != 'v' ) or ( $embed_type != 'v' ) ) { $result .= '<p><a href="' . $youtube_url . '">' . __( 'Click here to view the video on YouTube', 'youtube-embed' ) . '</a>.</p>' . $newline; }
 		}
 		return $result;
@@ -301,16 +303,25 @@ function ye_generate_youtube_code( $id = '', $width = '', $height = '', $fullscr
 
     if ( $metadata != 0 ) {
 
-		$title = get_the_title();
+		if ( $api_data[ 'restricted' ] === true ) {
+			$friendly = 'false';
+		} else {
+			if ( $api_data[ 'restricted' ] === false ) {
+				$friendly = 'true';
+			} else {
+				$friendly = '';
+			}
+		}
 
         $result .= $ttab . '<meta itemprop="url" content="https://www.youtube.com/' . $embed_type . '/' . $id . '" />' . $newline;
-        $result .= $ttab . '<meta itemprop="name" content="' . $title . '" />' . $newline;
-        $result .= $ttab . '<meta itemprop="description" content="' . $title . '" />' . $newline;
-        $result .= $ttab . '<meta itemprop="uploadDate" content="' . get_the_date( 'c' ) . '" />' . $newline;
-        $result .= $ttab . '<meta itemprop="thumbnailUrl" content="https://i.ytimg.com/vi/' . $id . '/hqdefault.jpg" />' . $newline;
+        if ( $api_data[ 'title' ] != '' ) { $result .= $ttab . '<meta itemprop="name" content="' . $api_data[ 'title' ] . '" />' . $newline; }
+        if ( $api_data[ 'description' ] != '' ) { $result .= $ttab . '<meta itemprop="description" content="' . $api_data[ 'description' ] . '" />' . $newline; }
+        if ( $api_data[ 'published' ] != '' ) { $result .= $ttab . '<meta itemprop="uploadDate" content="' . $api_data[ 'published' ] . '" />' . $newline; }
+        if ( $api_data[ 'thumb_default' ] != '' ) { $result .= $ttab . '<meta itemprop="thumbnailUrl" content="' . $api_data[  'thumb_default' ] . '" />' . $newline; }
         $result .= $ttab . '<meta itemprop="embedUrl" content="https://www.youtube.com/embed/' . $id . '" />' . $newline;
         $result .= $ttab . '<meta itemprop="height" content="' . $height . '" />' . $newline;
         $result .= $ttab . '<meta itemprop="width" content="' . $width . '" />' . $newline;
+		if ( $friendly != '' ) { $result .= $ttab . '<meta itemprop="isFamilyFriendly" content="' . $friendly . '" />' . $newline; }
     }
 
 	// Work out, depending on privacy settings, the main address to use
@@ -382,7 +393,19 @@ function ye_generate_youtube_code( $id = '', $width = '', $height = '', $fullscr
 		$result .= '<!-- End of YouTube Embed code. Generated in ' . $runtime . ' seconds -->' . $newline;
 	}
 
-	return $newline . $result;
+	$result = $newline . $result;
+
+	// Save the cache
+
+	if ( $general[ 'video_cache' ] != 0 && get_the_date() !== false ) {
+
+		$cache = $general[ 'video_cache' ] * 60 * 60;
+
+		ye_set_transient( $key, $result, $cache, true );
+
+	}
+
+	return $result;
 }
 
 /**
@@ -412,7 +435,7 @@ function ye_validate_profile( $name, $number ) {
 				$profile = $loop;
 			} else {
 				$profiles = ye_get_profile( $loop );
-				$profname = strtolower( $profiles[ 'name' ] );
+				$profname = strtolower( $profiles[ 'profile_name' ] );
 				if ( $profname == $name ) { $profile = $loop; }
 			}
 			$loop ++;
@@ -458,7 +481,7 @@ function ye_validate_list( $name, $number ) {
 					if ( ( $name == strval( $loop ) ) or ( $name == 'List ' . $loop ) ) {
 						$list = $listfiles[ 'list' ];
 					} else {
-						$listname = strtolower( $listfiles[ 'name' ] );
+						$listname = strtolower( $listfiles[ 'list_name' ] );
 						if ( $listname == $name ) { $list = $listfiles[ 'list' ]; }
 					}
 				}

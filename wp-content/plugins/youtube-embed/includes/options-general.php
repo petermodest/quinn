@@ -47,22 +47,44 @@ if ( ( !empty( $_POST ) ) && ( check_admin_referer( 'youtube-embed-general', 'yo
 	$options[ 'language' ] = sanitize_text_field( $_POST[ 'youtube_embed_language' ] );
 	$options[ 'script' ] = sanitize_text_field( $_POST[ 'youtube_embed_script' ] );
 
+	$options[ 'api_cache' ] = sanitize_text_field( $_POST[ 'youtube_embed_api_cache' ] );
+	if ( !is_numeric( $options[ 'api_cache' ] ) ) { $options[ 'api_cache' ] = 0; }
+	$options[ 'video_cache' ] = sanitize_text_field( $_POST[ 'youtube_embed_video_cache' ] );
+	if ( !is_numeric( $options[ 'video_cache' ] ) ) { $options[ 'video_cache' ] = 0; }
+
 	if ( isset( $_POST[ 'youtube_embed_metadata' ] ) ) { $options[ 'metadata' ] = sanitize_text_field( $_POST[ 'youtube_embed_metadata' ] ); } else { $options[ 'metadata' ] = ''; }
 	if ( isset( $_POST[ 'youtube_embed_frameborder' ] ) ) { $options[ 'frameborder' ] = sanitize_text_field( $_POST[ 'youtube_embed_frameborder' ] ); } else { $options[ 'frameborder' ] = ''; }
 	if ( isset( $_POST[ 'youtube_embed_widgets' ] ) ) { $options[ 'widgets' ] = sanitize_text_field( $_POST[ 'youtube_embed_widgets' ] ); } else { $options[ 'widgets' ] = ''; }
 	if ( isset( $_POST[ 'youtube_embed_debug' ] ) ) { $options[ 'debug' ] = sanitize_text_field( $_POST[ 'youtube_embed_debug' ] ); } else { $options[ 'debug' ] = ''; }
 	if ( isset( $_POST[ 'youtube_embed_prompt' ] ) ) { $options[ 'prompt' ] = sanitize_text_field( $_POST[ 'youtube_embed_prompt' ] ); } else { $options[ 'prompt' ] = ''; }
-	if ( isset( $_POST[ 'youtube_embed_list' ] ) ) { $options[ 'list' ] = sanitize_text_field( $_POST[ 'youtube_embed_list' ] ); } else { $options[ 'list' ] = ''; }
+	if ( isset( $_POST[ 'youtube_embed_list' ] ) ) { $options[ 'force_list_type' ] = sanitize_text_field( $_POST[ 'youtube_embed_list' ] ); } else { $options[ 'force_list_type' ] = ''; }
 
 	// If the number of profiles or lists is less than zero, put it to 0
 
 	if ( $options[ 'profile_no' ] < 0 ) { $options[ 'profile_no' ] = 0; }
 	if ( $options[ 'list_no' ] < 0 ) { $options[ 'list_no' ] = 0; }
 
+	// Test the API key
+
+	$api_key = sanitize_text_field( $_POST[ 'youtube_embed_api' ] );
+	$api_valid = true;
+	if ( $api_key != '' ) {
+		$api_test = ye_get_api_data( 'jNQXAC9IVRw', $api_key, true );
+		if ( !$api_test[ 'api' ] ) { $api_valid = false; }
+	}
+
+	if ( !$api_valid  ) {
+		$update_message = __( 'API key is invalid or API is unavailable.', 'youtube-embed' );
+		$update_class = 'error';
+	} else {
+		$options[ 'api' ] =  $api_key;
+		$update_message = __( 'Settings Saved.', 'youtube-embed' );
+		$update_class = 'updated';
+	}
+
 	// Update the options
 
 	update_option( 'youtube_embed_general', $options );
-	$update_message = __( 'Settings Saved.', 'youtube-embed' );
 
 	// Update the alternative shortcodes
 
@@ -71,7 +93,7 @@ if ( ( !empty( $_POST ) ) && ( check_admin_referer( 'youtube-embed-general', 'yo
 
 	update_option( 'youtube_embed_shortcode', $shortcode );
 
-	echo '<div class="updated fade"><p><strong>' . $update_message . "</strong></p></div>\n";
+	echo '<div class="' . $update_class . ' fade"><p><strong>' . $update_message . "</strong></p></div>\n";
 }
 
 // Get options
@@ -84,7 +106,15 @@ $shortcode = ye_get_shortcode();
 
 <form method="post" action="<?php echo get_bloginfo( 'wpurl' ).'/wp-admin/admin.php?page=ye-general-options' ?>">
 
-<h3 class="title"><?php _e( 'Embedding', 'youtube-embed' ); ?></h3><table class="form-table">
+<table class="form-table">
+
+<tr>
+<th scope="row"><?php _e( 'API Key', 'youtube-embed' ); ?></th>
+<td><label for="youtube_embed_api"><input type="text" size="50" name="youtube_embed_api" value="<?php echo esc_attr( $options[ 'api' ] ); ?>"/></label>
+<p class="description"><?php _e( 'Please see the instructions for details on creating your own API key.', 'youtube-embed' ); ?></p></td>
+</tr>
+
+</table><hr><h3 class="title"><?php _e( 'Embedding', 'youtube-embed' ); ?></h3><table class="form-table">
 
 <!-- Add Metadata -->
 
@@ -205,16 +235,42 @@ $shortcode = ye_get_shortcode();
 
 <tr>
 <th scope="row"><?php _e( 'Number of Profiles', 'youtube-embed' ); ?></th>
-<td><label for="youtube_embed_profile_no"><input type="text" size="2" maxlength="2" name="youtube_embed_profile_no" value="<?php echo esc_attr( $options[ 'profile_no' ] ); ?>"/></label>
-<p class="description"><?php _e( 'Maximum number of profiles.', 'youtube-embed' ); ?></p></td>
+<td><label for="youtube_embed_profile_no"><input type="text" size="2" maxlength="2" name="youtube_embed_profile_no" value="<?php echo esc_attr( $options[ 'profile_no' ] ); ?>"/> <?php _e( 'Maximum number of profiles.', 'youtube-embed' ); ?></label></td>
 </tr>
 
 <!-- Number of Lists -->
 
 <tr>
 <th scope="row"><?php _e( 'Number of Lists', 'youtube-embed' ); ?></th>
-<td><label for="youtube_embed_list_no"><input type="text" size="2" maxlength="2" name="youtube_embed_list_no" value="<?php echo esc_attr( $options[ 'list_no' ] ); ?>"/></label>
-<p class="description"><?php _e( 'Maximum number of lists.', 'youtube-embed' ); ?></p></td>
+<td><label for="youtube_embed_list_no"><input type="text" size="2" maxlength="2" name="youtube_embed_list_no" value="<?php echo esc_attr( $options[ 'list_no' ] ); ?>"/> <?php _e( 'Maximum number of lists.', 'youtube-embed' ); ?></label></td>
+</tr>
+
+</table><hr><h3 class="title"><?php _e( 'Performance', 'youtube-embed' ); ?></h3><table class="form-table">
+
+
+<!-- Specify a list -->
+
+<tr>
+<th scope="row"><?php _e( 'Force list specification', 'youtube-embed' ); ?></th>
+<td><label for="youtube_embed_list"><input type="checkbox" name="youtube_embed_list" value="1"<?php if ( $options[ 'force_list_type' ] == '1' ) { echo ' checked="checked"'; } ?>/>
+<?php _e( 'Force users to specify a list type', 'youtube-embed' ); ?></label>
+<p class="description"><?php _e( 'By switching this on, a list type must be specified for a list to be valid. This improves performance as use of a list doesn\'t then need to be verified.', 'youtube-embed' ); ?></p></td>
+</tr>
+
+<!-- Video cache -->
+
+<tr>
+<th scope="row"><?php _e( 'Video Cache', 'youtube-embed' ); ?></th>
+<td><label for="youtube_embed_video_cache"><input type="text" size="2" maxlength="2" name="youtube_embed_video_cache" value="<?php echo esc_attr( $options[ 'video_cache' ] ); ?>"/> <?php _e( 'days', 'youtube-embed' ); ?></label>
+<p class="description"><?php _e( 'How long to cache the video output. Set to 0 to switch off.', 'youtube-embed' ); ?></p></td>
+</tr>
+
+<!-- API cache -->
+
+<tr>
+<th scope="row"><?php _e( 'API Cache', 'youtube-embed' ); ?></th>
+<td><label for="youtube_embed_api_cache"><input type="text" size="2" maxlength="2" name="youtube_embed_api_cache" value="<?php echo esc_attr( $options[ 'api_cache' ] ); ?>"/> <?php _e( 'hours', 'youtube-embed' ); ?></label>
+<p class="description"><?php _e( 'How long to cache the API data. Set to 0 to switch off.', 'youtube-embed' ); ?></p></td>
 </tr>
 
 </table><hr><h3 class="title"><?php _e( 'Security', 'youtube-embed' ); ?></h3><table class="form-table">
@@ -256,15 +312,6 @@ $shortcode = ye_get_shortcode();
 <th scope="row"><?php _e( 'Interface language', 'youtube-embed' ); ?></th>
 <td><label for="youtube_embed_language"><input type="text" size="5" maxlength="5" name="youtube_embed_language" value="<?php echo esc_attr( $options[ 'language' ] ); ?>"/><?php _e( 'The player\'s interface language', 'youtube-embed' ); ?></label>
 <p class="description"><?php echo __( 'The parameter value is an <a href="https://www.loc.gov/standards/iso639-2/php/code_list.php">ISO 639-1 two-letter language code</a> or a fully specified locale. For example, the current locale is ', 'youtube-embed' ) . strtolower( str_replace( '_', '-', get_locale() ) ) . '.'; ?></p></td>
-</tr>
-
-<!-- Specify a list -->
-
-<tr>
-<th scope="row"><?php _e( 'Force list specification', 'youtube-embed' ); ?></th>
-<td><label for="youtube_embed_list"><input type="checkbox" name="youtube_embed_list" value="1"<?php if ( $options[ 'list' ] == '1' ) { echo ' checked="checked"'; } ?>/>
-<?php _e( 'Force users to specify a list type', 'youtube-embed' ); ?></label>
-<p class="description"><?php _e( 'By switching this on, a list type must be specified for a list to be valid. This improves performance as use of a list doesn\'t then need to be verified.', 'youtube-embed' ); ?></p></td>
 </tr>
 
 </table>

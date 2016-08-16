@@ -38,11 +38,12 @@ if ( ( !empty( $_POST[ 'Submit' ] ) ) && ( check_admin_referer( 'youtube-embed-g
 
 			$id = trim( ye_extract_id( $id_array[ $loop ] ) );
 
-			// Now check its validity
+			// Now check its validity using the API data
 
 			if ( $id != '' ) {
-				$type = ye_validate_id( $id );
-				if ( $type != 'v' ) { $valid = false; }
+				$data = ye_get_api_data( $id );
+				$valid = $data[ 'valid' ];
+				if ( $data[ 'type' ] != 'v' ) { $valid = false; }
 				$new_id_list .= $id . "\n";
 			}
 			$loop ++;
@@ -50,7 +51,7 @@ if ( ( !empty( $_POST[ 'Submit' ] ) ) && ( check_admin_referer( 'youtube-embed-g
 
 		// If one or more IDs weren't valid, output an error
 
-		if (!$valid) {
+		if ( !$valid ) {
 			$class = 'error';
 			$message = __( 'Errors were found with your video list. See the list below for details.', 'youtube-embed' );
 		}
@@ -58,7 +59,7 @@ if ( ( !empty( $_POST[ 'Submit' ] ) ) && ( check_admin_referer( 'youtube-embed-g
 
 	// Update the options
 
-	$options[ 'name' ] = $_POST[ 'youtube_embed_name' ];
+	$options[ 'list_name' ] = $_POST[ 'youtube_embed_name' ];
 
 	if ( $new_id_list == '' ) {
 		$options[ 'list' ] = sanitize_text_field( $_POST[ 'youtube_embed_video_list' ] );
@@ -119,7 +120,7 @@ while ( $loop <= $general[ 'list_no' ] ) {
 
 	$listfiles = ye_get_list( $loop );
 	if ( $listfiles[ 'list' ] != '' ) {
-		$listname = $listfiles[ 'name' ];
+		$listname = $listfiles[ 'list_name' ];
 		$list_found = true;
 	} else {
 		$listname = __( 'List', 'youtube-embed' ) . ' ' . $loop;
@@ -146,7 +147,7 @@ while ( $loop <= $general[ 'list_no' ] ) {
 
 <tr>
 <th scope="row"><?php _e( 'List Name', 'youtube-embed' ); ?></th>
-<td><label for="youtube_embed_name"><input type="text" size="20" name="youtube_embed_name" value="<?php echo esc_attr( $options[ 'name' ] ); ?>"/>
+<td><label for="youtube_embed_name"><input type="text" size="20" name="youtube_embed_name" value="<?php echo esc_attr( $options[ 'list_name' ] ); ?>"/>
 <?php _e( 'The name you wish to give this list', 'youtube-embed' ); ?></label></td>
 </tr>
 
@@ -184,20 +185,17 @@ if ( $options[ 'list' ] != '' ) {
 
 			// Validate the video type
 
-			$type = ye_validate_id( $id );
+			$api_data = ye_get_api_data( $id );
 
-			if ( $type == 'p' ) {
+			if ( $api_data[ 'type' ] == 'p' ) {
 				$text = __( 'This is a playlist', 'youtube-embed' );
 				$status = '-1';
 			} else {
-				if ( $type == '' ) {
+				if ( !$api_data[ 'valid' ] ) {
 					$text = __( 'Invalid video ID', 'youtube-embed' );
 					$status = '-2';
 				} else {
-					if ( strlen( $type ) != 1 ) {
-						$text = __( 'YouTube API error', 'youtube-embed' );
-						$status = '-3';
-					} else {
+					if ( $api_data[ 'valid' ] ) {
 						$text = __( 'Valid video', 'youtube-embed' );
 						$status = '0';
 					}
@@ -207,6 +205,17 @@ if ( $options[ 'list' ] != '' ) {
 			// Output the video information
 
 			echo "\t<tr>\n\t\t<td>" . $id . "</td>\n";
+			echo "\t\t<td>";
+			if ( $api_data[ 'api' ] ) {
+				if ( $api_data[ 'title' ] == '' ) {
+					echo '[No title available]';
+				} else {
+					echo $api_data[ 'title' ];
+				}
+			} else {
+				echo '[No title - API not available]';
+			}
+			echo "</td>\n";
 			echo "\t\t<td style=\"";
 
 			if ( $status != 0 ) {
@@ -217,10 +226,10 @@ if ( $options[ 'list' ] != '' ) {
 
 			if ( $status == 0 ) {
 				$alt_text = __( 'The video ID is valid', 'youtube-embed' );
-				echo 'tick.png" alt="' . $alt_text . '" title="' . $alt_text . '" ';
+				echo 'tick.png" alt="' . $alt_text . '" ';
 			} else {
 				$alt_text = __( 'The video ID is invalid', 'youtube-embed' );
-				echo 'cross.png" alt="' . $alt_text . '" title="' . $alt_text . '" ';
+				echo 'cross.png" alt="' . $alt_text . '" ';
 			}
 
 			echo "height=\"16px\" width=\"16px\"/>&nbsp;" . $text . "</td>\n\t</tr>\n";

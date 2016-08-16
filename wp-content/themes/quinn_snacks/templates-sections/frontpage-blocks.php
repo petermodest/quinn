@@ -9,7 +9,9 @@ Template Name: Frontpage - Blocks
 <div id="frontpage-wrapper">
 
 	<div id="fp-main">
-		<div class="fp-reimagine-header reimagine-section" style="background-image: url(<?= get_field('fp_top_image' ) ?>);">
+		<? get_template_part( 'parts/frontpage', 'reimagine-snacks' ); ?>
+		<?
+			/* <div class="fp-reimagine-header reimagine-section" style="background-image: url(<?= get_field('fp_top_image' ) ?>);">
 			<div class="reimagine-header-inner">
 				<div class="section-inner-overlay" style="background-color: <?= get_field( 'fp_top_color_overlay' ) ?>"></div>
 				<div class="fp-reimagine-inner">
@@ -17,6 +19,7 @@ Template Name: Frontpage - Blocks
 				</div>
 			</div>
 		</div>
+		*/ ?>
 	</div>
 
 	<div id="fp-halves-wrapper" class="row no-padding">
@@ -29,7 +32,7 @@ Template Name: Frontpage - Blocks
 	
 					<? $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID, 'postpic-full'), array(320,240), false, '' ); ?>
 	
-					<div class="fp-image" style="background-image:url(<?= $thumbnail_src[0] ?>);"></div>
+					<div class="fp-image" style="background-image:url(<?= $thumbnail_src[0] ?>); background-size: cover; background-position: center center;"></div>
 	
 					<div class="fp-text">
 						<h1 class="fp-supertitle">Blog</h1>
@@ -48,7 +51,7 @@ Template Name: Frontpage - Blocks
 						<div class="fp-color-overlay" style="background-color:<?= $section['fp_color_overlay'] ?>;"></div>
 					<? endif ?>
 
-					<div class="fp-image" style="background-image:url(<?= $section['fp_image'] ?>)"></div>
+					<div class="fp-image" style="background-image:url(<?= $section['fp_image'] ?>); background-size: cover; background-position: center center;"></div>
 
 					<div class="fp-text">
 						<h1 class="fp-supertitle"><?= $section['fp_supertitle'] ?></h1>

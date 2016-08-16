@@ -52,7 +52,7 @@ function ye_set_plugin_meta( $links, $file ) {
 	if ( strpos( $file, 'youtube-embed.php' ) !== false ) {
 
 		$links = array_merge( $links, array( '<a href="https://wordpress.org/support/plugin/youtube-embed">' . __( 'Support', 'youtube-embed' ) . '</a>' ) );
-		$links = array_merge( $links, array( '<a href="http://www.artiss.co.uk/donate">' . __( 'Donate', 'youtube-embed' ) . '</a>' ) );
+		$links = array_merge( $links, array( '<a href="http://www.artiss.co.uk/donate">' . __( 'Donate', 'youtube-embed' ) . '</a>' ) );	
 
 	}
 
@@ -303,8 +303,8 @@ function youtube_embed_help( $screen, $tab = 'help' ) {
 
 		$text .= '<p>' . __( 'This screen allows you to set the options for the default and additional profiles. If you don\'t specify a specific parameter when displaying your YouTube video then the default profile option will be used instead. Additional profiles, which you may name, can be used as well and used as required.', 'youtube-embed' ) . '</p>';
 		$text .= '<p>' . __( 'All settings will work whether the Flash or HTML5 player is used, unless one of the following icons is shown, indicating which format the option works with...', 'youtube-embed' ) . '</p>';
-		$text .= "<p><img src='" . plugins_url( 'images/flash.png', dirname(__FILE__) ) . "' width='10px'/> - " . __( 'Flash player', 'youtube-embed' ) . '</br>';
-		$text .= "<img src='" . plugins_url( 'images/html5.png', dirname(__FILE__) ) . "' width='10px'/> - " . __( 'HTML5 player', 'youtube-embed' ) . '</br>';
+		$text .= "<p><img src='" . plugins_url( 'images/flash.png', dirname(__FILE__) ) . "' alt='" . __( 'Flash player', 'youtube-embed' ) . "' width='10px'/> - " . __( 'Flash player', 'youtube-embed' ) . '</br>';
+		$text .= "<img src='" . plugins_url( 'images/html5.png', dirname(__FILE__) ) . "' alt='" . __( 'HTML5 player', 'youtube-embed' ) . "' width='10px'/> - " . __( 'HTML5 player', 'youtube-embed' ) . '</br>';
 	}
 
 	if ( $screen == 'lists' && $tab == 'help' ) {

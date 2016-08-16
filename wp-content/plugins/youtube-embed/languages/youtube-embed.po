@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Vixy YouTube Embed\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-05 13:20-0000\n"
-"PO-Revision-Date: 2016-05-05 13:20-0000\n"
+"POT-Creation-Date: 2016-02-04 12:49-0000\n"
+"PO-Revision-Date: 2016-02-04 12:49-0000\n"
 "Last-Translator: David Artiss <david.artiss@artiss.co.uk>\n"
 "Language-Team: \n"
 "Language: en_GB\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: includes/add-scripts.php:115 includes/admin-config.php:86
+#: includes/add-scripts.php:115 includes/admin-config.php:85
 #: includes/generate-widgets.php:25
 msgid "YouTube Embed"
 msgstr ""
@@ -26,11 +26,11 @@ msgstr ""
 msgid "Options"
 msgstr ""
 
-#: includes/add-scripts.php:127 includes/admin-config.php:92
+#: includes/add-scripts.php:127 includes/admin-config.php:91
 msgid "Profiles"
 msgstr ""
 
-#: includes/add-scripts.php:134 includes/admin-config.php:100
+#: includes/add-scripts.php:134 includes/admin-config.php:99
 msgid "Lists"
 msgstr ""
 
@@ -42,56 +42,52 @@ msgstr ""
 msgid "Support"
 msgstr ""
 
-#: includes/admin-config.php:55
-msgid "Donate"
-msgstr ""
-
-#: includes/admin-config.php:86
+#: includes/admin-config.php:85
 msgid "About YouTube Embed"
 msgstr ""
 
-#: includes/admin-config.php:92 includes/options-profiles.php:116
+#: includes/admin-config.php:91 includes/options-profiles.php:116
 msgid "YouTube Embed Profiles"
 msgstr ""
 
-#: includes/admin-config.php:100 includes/options-lists.php:103
+#: includes/admin-config.php:99 includes/options-lists.php:103
 msgid "YouTube Embed Lists"
 msgstr ""
 
-#: includes/admin-config.php:108
+#: includes/admin-config.php:107
 msgid "3rd Party Plugins"
 msgstr ""
 
-#: includes/admin-config.php:116
+#: includes/admin-config.php:115
 msgid "Video Overlay Ads"
 msgstr ""
 
-#: includes/admin-config.php:123 includes/options-plugins.php:39
+#: includes/admin-config.php:122 includes/options-plugins.php:39
 msgid "Video SEO"
 msgstr ""
 
-#: includes/admin-config.php:131
+#: includes/admin-config.php:130
 msgid "General Settings"
 msgstr ""
 
-#: includes/admin-config.php:211 includes/admin-config.php:233
-#: includes/admin-config.php:255 includes/admin-config.php:277
+#: includes/admin-config.php:210 includes/admin-config.php:232
+#: includes/admin-config.php:254 includes/admin-config.php:276
 msgid "Help"
 msgstr ""
 
-#: includes/admin-config.php:213 includes/admin-config.php:235
-#: includes/admin-config.php:257
+#: includes/admin-config.php:212 includes/admin-config.php:234
+#: includes/admin-config.php:256
 msgid "Links"
 msgstr ""
 
-#: includes/admin-config.php:299
+#: includes/admin-config.php:298
 msgid ""
 "This screen allows you to select non-specific options for the YouTube Embed "
 "plugin. For the default embedding settings, please select the <a href="
 "\"admin.php?page=ye-profile-options\">Profiles</a> administration option."
 msgstr ""
 
-#: includes/admin-config.php:304
+#: includes/admin-config.php:303
 msgid ""
 "This screen allows you to set the options for the default and additional "
 "profiles. If you don't specify a specific parameter when displaying your "
@@ -100,28 +96,28 @@ msgid ""
 "required."
 msgstr ""
 
-#: includes/admin-config.php:305
+#: includes/admin-config.php:304
 msgid ""
 "All settings will work whether the Flash or HTML5 player is used, unless one "
 "of the following icons is shown, indicating which format the option works "
 "with..."
 msgstr ""
 
-#: includes/admin-config.php:306
+#: includes/admin-config.php:305
 msgid "Flash player"
 msgstr ""
 
-#: includes/admin-config.php:307
+#: includes/admin-config.php:306
 msgid "HTML5 player"
 msgstr ""
 
-#: includes/admin-config.php:312
+#: includes/admin-config.php:311
 msgid ""
 "This screen allows you to create lists of YouTube videos, which may be "
 "named. These lists can then be used in preference to a single video ID."
 msgstr ""
 
-#: includes/admin-config.php:317
+#: includes/admin-config.php:316
 msgid ""
 "This screen lists plugins which have all been tested for compatibility with "
 "YouTube Embed (and in some cases, specific changes have been made by their "
@@ -129,47 +125,47 @@ msgid ""
 "even install the plugins (where hosted at WordPress.org)."
 msgstr ""
 
-#: includes/admin-config.php:318
+#: includes/admin-config.php:317
 msgid ""
 "NB. Inclusion here does not provide any guarantee for third party software, "
 "which includes any support."
 msgstr ""
 
-#: includes/admin-config.php:319
+#: includes/admin-config.php:318
 msgid ""
 "Some of these plugins will also appear under the YouTube Admin "
 "administration menu, once activated."
 msgstr ""
 
-#: includes/admin-config.php:323
+#: includes/admin-config.php:322
 msgid ""
 "Remember to click the Save Changes button at the bottom of the screen for "
 "any changes to take effect."
 msgstr ""
 
-#: includes/admin-config.php:328
+#: includes/admin-config.php:327
 msgid "For more information:"
 msgstr ""
 
-#: includes/admin-config.php:329
+#: includes/admin-config.php:328
 msgid "YouTube Embed Plugin Documentation"
 msgstr ""
 
-#: includes/admin-config.php:332
+#: includes/admin-config.php:331
 msgid "YouTube Player Documentation"
 msgstr ""
 
-#: includes/admin-config.php:432
+#: includes/admin-config.php:431
 msgid ""
 "For some reason the shortcode <strong>[youtube]</strong> is not working on "
 "the main site"
 msgstr ""
 
-#: includes/admin-config.php:435
+#: includes/admin-config.php:434
 msgid "An alternative plugin is using the <strong>[youtube]</strong> shortcode"
 msgstr ""
 
-#: includes/admin-config.php:442
+#: includes/admin-config.php:441
 msgid ""
 ", possibly the <a href=\"admin.php?page=jetpack_modules&activated=true"
 "\">Shortcode Embeds module</a> in Jetpack"

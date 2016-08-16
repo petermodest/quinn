@@ -74,7 +74,7 @@ if ( isset( $shortcode ) && $shortcode != '' ) { add_shortcode( $shortcode, 'ye_
 
 function ye_video_shortcode( $paras = '', $content = '', $callback = '', $alt_shortcode = false ) {
 
-	extract( shortcode_atts( array( 'width' => '', 'height' => '', 'fullscreen' => '', 'related' => '', 'autoplay' => '', 'loop' => '', 'start' => '', 'info' => '', 'annotation' => '', 'cc' => '', 'style' => '', 'stop' => '', 'disablekb' => '', 'ratio' => '', 'autohide' => '', 'controls' => '', 'profile' => '', 'id' => '', 'url' => '', 'rel' => '', 'fs' => '', 	'cc_load_policy' => '', 'iv_load_policy' => '', 'showinfo' => '', 'youtubeurl' => '', 'template' => '', 'list' => '', 'color' => '', 'theme' => '', 'height' => '', 'width' => '', 'dynamic' => '', 'responsive' => '', 'h' => '', 'w' => '', 'search' => '', 'user' => '', 'modest' => '', 'playsinline' => '', 'html5' => '' ), $paras ) );
+	extract( shortcode_atts( array( 'width' => '', 'height' => '', 'fullscreen' => '', 'related' => '', 'autoplay' => '', 'loop' => '', 'start' => '', 'info' => '', 'annotation' => '', 'cc' => '', 'style' => '', 'stop' => '', 'disablekb' => '', 'ratio' => '', 'autohide' => '', 'controls' => '', 'profile' => '', 'id' => '', 'url' => '', 'rel' => '', 'fs' => '', 	'cc_load_policy' => '', 'iv_load_policy' => '', 'showinfo' => '', 'youtubeurl' => '', 'template' => '', 'list' => '', 'color' => '', 'theme' => '', 'dynamic' => '', 'responsive' => '', 'h' => '', 'w' => '', 'search' => '', 'user' => '', 'modest' => '', 'playsinline' => '', 'html5' => '' ), $paras ) );
 
 	// If no profile specified and an alternative shortcode used, get that shortcodes default profile
 
@@ -119,13 +119,40 @@ function ye_video_shortcode( $paras = '', $content = '', $callback = '', $alt_sh
 
 	if ( $responsive == '' ) { $responsive = $dynamic; }
 
-	// Set up Autohide parameter
-
-	$autohide = ye_set_autohide( $autohide );
-
 	// Create YouTube code
 
-	$youtube_code = ye_generate_youtube_code( $content, $width, $height, ye_convert( $fullscreen ), ye_convert( $related ), ye_convert( $autoplay ), ye_convert( $loop ), $start, ye_convert( $info ), ye_convert_3( $annotation ), ye_convert( $cc ), $style, $stop, ye_convert( $disablekb ), $ratio, $autohide, $controls, $profile, $list, $template, $color, $theme, ye_convert( $responsive ), ye_convert( $search ), ye_convert( $user ), ye_convert( $modest ), ye_convert( $playsinline ), ye_convert( $html5 ) );
+	$array = array(
+					'id' => $content,
+					'width' => $width,
+					'height' => $height,
+					'fullscreen' => ye_convert( $fullscreen ),
+					'related' => ye_convert( $related ),
+					'autoplay' => ye_convert( $autoplay ),
+					'loop' => ye_convert( $loop ),
+					'start' => $start,
+					'info' => ye_convert( $info ),
+					'annotation' => ye_convert_3( $annotation ),
+					'cc' => ye_convert( $cc ),
+					'style' => $style,
+					'stop' => $stop,
+					'disablekb' => ye_convert( $disablekb ),
+					'ratio' => $ratio,
+					'autohide' => ye_set_autohide( $autohide ),
+					'controls' => $controls,
+					'profile' => $profile,
+					'list_style' => $list,
+					'template' => $template,
+					'color' => $color,
+					'theme' => $theme,
+					'responsive' => ye_convert( $responsive ),
+					'search' => ye_convert( $search ),
+					'user' => ye_convert( $user ),
+					'modest' => ye_convert( $modest ),
+					'playsinline' => ye_convert( $playsinline ),
+					'html5' => ye_convert( $html5 )
+					);
+
+	$youtube_code = ye_generate_youtube_code( $array );
 
     return apply_filters( 'a3_lazy_load_html', do_shortcode( $youtube_code ) );
 }
@@ -148,11 +175,48 @@ function ye_thumbnail_sc( $paras = '', $content = '' ) {
 
 	extract( shortcode_atts( array( 'style' => '', 'class' => '', 'rel' => '', 'target' => '', 'width' => '', 'height' => '', 'alt' => '', 'version' => '', 'nolink' => '' ), $paras ) );
 
-	return do_shortcode( ye_generate_thumbnail_code( $content, $style, $class, $rel, $target, $width, $height, $alt, $version, $nolink ) );
+	$array = array(
+					'id' => $content,
+					'style' => $style,
+					'class' => $class,
+					'rel' => $rel,
+					'target' => $target,
+					'width' => $width,
+					'height' => $height,
+					'alt' => $alt,
+					'version' => $version,
+					'nolink' => $nolink
+					);
+
+	return do_shortcode( ye_generate_thumbnail_code( $array ) );
 
 }
 
 add_shortcode( 'youtube_thumb', 'ye_thumbnail_sc' );
+
+/**
+* Video Information Shortcode
+*
+* Shortcode to return video information
+*
+* @since	5.0
+*
+* @uses		ye_generate_vinfo_code		Generate the video information code
+*
+* @param    string		$paras			Shortcode parameters
+* @param	string		$content		Shortcode content
+* @return   string						Video information code
+*/
+
+function ye_vinfo_sc( $paras = '', $content = '' ) {
+
+	extract( shortcode_atts( array( 'id' => '' ), $paras ) );
+
+	return do_shortcode( ye_generate_vinfo_code( $id, $content ) );
+
+}
+
+add_shortcode( 'vinfo', 'ye_vinfo_sc' );
 
 /**
 * Short URL shortcode
@@ -202,17 +266,13 @@ function ye_video_download( $paras = '', $content = '' ) {
 
 	$id = ye_extract_id( $id );
 
-	// Check what type of video it is and whether it's valid
+	// Extract the API data
 
-	$embed_type = ye_validate_id( $id );
+	$data = ye_get_api_data( $id );
 
-	if ( $embed_type != 'v' ) {
+	if ( $data[ 'type' ] != 'v' or !$data[ 'valid' ] ) {
 
-		if ( strlen( $embed_type ) > 1 ) {
-			return do_shortcode( ye_error( $embed_type ) );
-		} else {
-			return do_shortcode( ye_error( sprintf( __( 'The YouTube ID of %s is invalid.', 'youtube-embed' ), $id ) ) );
-		}
+		return do_shortcode( ye_error( sprintf( __( 'The YouTube ID of %s is invalid.', 'youtube-embed' ), $id ) ) );
 
 	}
 

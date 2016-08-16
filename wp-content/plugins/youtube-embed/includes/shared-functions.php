@@ -86,35 +86,6 @@ function ye_extract_id( $id ) {
 }
 
 /**
-* Validate video type
-*
-* Function to work out what type of video has been requested.
-*
-* @since	2.0
-*
-* @param	string	$id				Video ID
-* @return	string					Array containing file details
-*/
-
-function ye_validate_id( $id ) {
-
-	$type = '';
-	if ( strlen( $id ) == 11 ) {
-		$type = 'v';
-	} else {
-		if ( strtolower( substr( $id, 0, 2 ) ) == 'pl') {
-			$type = 'p';
-		} else {
-			if ( strlen( $id ) == 16 ) {
-				$type = 'p';
-			}
-		}
-	}
-
-	return $type;
-}
-
-/**
 * Function to report an error
 *
 * Display an error message in a standard format
@@ -169,6 +140,7 @@ function ye_convert( $input ) {
 function ye_generate_profile_list( $current, $total, $full_list = false ) {
 
 	$loop = 0;
+	echo 'Total: ' . $total;
 	while ( $loop <= $total ) {
 
 		// Attempt to get profile
@@ -185,7 +157,7 @@ function ye_generate_profile_list( $current, $total, $full_list = false ) {
 
 			echo '<option value="' . $loop . '"';
 			if ( $current == $loop ) { echo " selected='selected'"; }
-			echo '>' . __( $profiles[ 'name' ] );
+			echo '>' . __( $profiles[ 'profile_name' ] );
 			if ( !$list_found ) { echo ' [undefined]'; }
 			echo "</option>\n";
 
@@ -299,7 +271,10 @@ function ye_set_general_defaults() {
 						   'debug' => 1,
 						   'script' => '',
 						   'prompt' => 1,
-						   'list' => 0,
+						   'force_list_type' => 0,
+						   'api' => '',
+						   'api_cache' => 7,
+						   'video_cache' => 24
 						   );
 
 	// If a new user switch the list option on. Otherwise, an existing user will default to off
@@ -425,7 +400,7 @@ function ye_set_profile_defaults( $profile ) {
 	// Set default array
 
 	$default = array(
-					'name' => $profname,
+					'profile_name' => $profname,
 					'width' => $width,
 					'height' => $height,
 					'fullscreen' => 1,
@@ -537,7 +512,7 @@ function ye_set_list( $lists ) {
 function ye_set_list_defaults( $list ) {
 
 	$default = array(
-				   'name' => 'List ' . $list,
+				   'list_name' => 'List ' . $list,
 				   'list' => ''
 					);
 

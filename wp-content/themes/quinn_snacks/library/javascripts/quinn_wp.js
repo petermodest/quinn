@@ -1,6 +1,5 @@
 jQuery(document).ready(function() {
 
-
 /*
 	MAIN MENU MOBILE TRIGGER
 */
@@ -40,6 +39,42 @@ jQuery(document).ready(function() {
 
 		$(this).remove();
 	});
+
+
+
+	function setCookie( c_name, value, exdays ) {
+		var exdate = new Date();
+		exdate.setDate( exdate.getDate() + exdays );
+		var c_value = escape( value ) + ( ( exdays == null ) ? '' : '; expires=' + exdate.toUTCString() );
+		document.cookie = c_name + "=" + c_value;
+	}
+
+	function getCookie( cookiename ) {
+		var cookies = document.cookie.split('; ');
+		for( i = 0; i < cookies.length; i++ ) {
+			var cookie = cookies[i].split('=');
+			if( cookie[0] == cookiename ) return cookie[1];
+		}
+		return false;
+	}
+
+	function checkCookie() {
+		var hide_ad = getCookie( 'hide_ad' );
+		if( ! hide_ad ) {
+			setTimeout(function(){
+				
+				$('.discount-popup').removeClass('hide');
+			}, 4000);
+		}
+	}
+
+	checkCookie();
+
+	$('.close').on('click', function(){
+		$('.discount-popup').addClass('hide');
+		setCookie( 'hide_ad', 'hidden', 1 );
+	})
+
 
 
 /*

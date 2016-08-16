@@ -8,7 +8,7 @@
 * @since	2.0
 */
 
-$demo_video = 'Wc7cvpQS-xQ';
+$demo_video = '8qMtsir0l9k';
 
 // Set current profile number
 
@@ -19,7 +19,7 @@ if ( $profile_no == '' ) { $profile_no = 0; }
 
 if ( ( !empty( $_POST[ 'Submit' ] ) ) && ( check_admin_referer( 'youtube-embed-profile' , 'youtube_embed_profile_nonce' ) ) ) {
 
-	$options[ 'name' ] = sanitize_text_field( $_POST[ 'youtube_embed_name' ] );
+	$options[ 'profile_name' ] = sanitize_text_field( $_POST[ 'youtube_embed_name' ] );
 	$options[ 'width' ] = sanitize_text_field( $_POST[ 'youtube_embed_width' ] );
 	$options[ 'height' ] = sanitize_text_field( $_POST[ 'youtube_embed_height' ] );
 
@@ -119,7 +119,7 @@ if ( ( float ) $wp_version >= 4.3 ) { $heading = '1'; } else { $heading = '2'; }
 
 // Output message text
 
-if ( $updated ) { echo '<div class="updated fade"><p><strong>' . __( $options[ 'name' ].' Profile Saved.' ) . "</strong></p></div>\n"; }
+if ( $updated ) { echo '<div class="updated fade"><p><strong>' . __( $options[ 'profile_name' ].' Profile Saved.' ) . "</strong></p></div>\n"; }
 
 // Video option button has been pressed
 
@@ -154,7 +154,7 @@ echo ' ' . __( 'Use the drop-down on the right hand side to swap between profile
 
 <tr>
 <th scope="row"><?php _e( 'Profile Name', 'youtube-embed' ); ?></th>
-<td><label for="youtube_embed_name"><input type="text" size="20" name="youtube_embed_name" value="<?php echo esc_attr( $options[ 'name' ] ); ?>"<?php if ( $profile_no == 0 ) { echo ' readonly="readonly"'; } ?>/>
+<td><label for="youtube_embed_name"><input type="text" size="20" name="youtube_embed_name" value="<?php echo esc_attr( $options[ 'profile_name' ] ); ?>"<?php if ( $profile_no == 0 ) { echo ' readonly="readonly"'; } ?>/>
 <?php if ( $profile_no != 0 ) { _e( 'The name you wish to give this profile', 'youtube-embed' ); } ?></label></td>
 </tr>
 
@@ -177,7 +177,7 @@ echo ' ' . __( 'Use the drop-down on the right hand side to swap between profile
 <!-- Window Mode -->
 
 <tr>
-<th scope="row"><?php _e( 'Window Mode', 'youtube-embed' ); ?>&nbsp;<img src='<?php echo plugins_url( 'images/flash.png', dirname(__FILE__) ); ?>' width='10px' align='top'></th>
+<th scope="row"><?php _e( 'Window Mode', 'youtube-embed' ); ?>&nbsp;<img src="<?php echo plugins_url( 'images/flash.png', dirname(__FILE__) ); ?>" alt="<?php _e( 'Flash', 'youtube-embed' ) ?>" width="10px" align="top"></th>
 <td><label for="youtube_embed_wmode"><select name="youtube_embed_wmode">
 <option value="opaque"<?php if ( $options[ 'wmode' ] == "opaque" ) { echo " selected='selected'"; } ?>><?php _e( 'Opaque', 'youtube-embed' ); ?></option>
 <option value="transparent"<?php if ( $options[ 'wmode' ] == "transparent" ) { echo " selected='selected'"; } ?>><?php _e( 'Transparent', 'youtube-embed' ); ?></option>
@@ -229,7 +229,7 @@ echo ' ' . __( 'Use the drop-down on the right hand side to swap between profile
 <!-- Playsinline -->
 
 <tr>
-<th scope="row"><?php _e( 'Plays Inline', 'youtube-embed' ); ?>&nbsp;<img src='<?php echo plugins_url( 'images/html5.png', dirname(__FILE__) ); ?>' width='10px' align='top'></th>
+<th scope="row"><?php _e( 'Plays Inline', 'youtube-embed' ); ?>&nbsp;<img src="<?php echo plugins_url( 'images/html5.png', dirname(__FILE__) ); ?>" alt="<?php _e( 'HTML5', 'youtube-embed' ) ?>" width="10px" align="top"></th>
 
 <td><label for="youtube_embed_playsinline"><input type="checkbox" name="youtube_embed_playsinline" value="1"<?php if ( $options[ 'playsinline' ] == "1" ) { echo ' checked="checked"'; } ?>/>
 <?php _e( 'Whether videos play inline or fullscreen in an HTML5 player on iOS. ', 'youtube-embed' ); ?></label></td>
@@ -316,7 +316,7 @@ echo ' ' . __( 'Use the drop-down on the right hand side to swap between profile
 <!-- Auto Hide -->
 
 <tr>
-<th scope="row"><?php _e( 'Auto hide', 'youtube-embed' ); ?>&nbsp;<img src='<?php echo plugins_url( 'images/flash.png', dirname(__FILE__) ); ?>' width='10px' align='top'></th>
+<th scope="row"><?php _e( 'Auto hide', 'youtube-embed' ); ?>&nbsp;<img src="<?php echo plugins_url( 'images/flash.png', dirname(__FILE__) ); ?>" alt="<?php _e( 'Flash', 'youtube-embed' ) ?>" width="10px" align="top"></th>
 <td><label for="youtube_embed_autohide"><select name="youtube_embed_autohide">
 <option value="0"<?php if ( $options[ 'autohide' ] == "0" ) { echo " selected='selected'"; } ?>><?php _e( 'Controls &amp; progress bar remain visible', 'youtube-embed' ); ?></option>
 <option value="1"<?php if ( $options[ 'autohide' ] == "1" ) { echo " selected='selected'"; } ?>><?php _e( 'Controls &amp; progress bar fade out', 'youtube-embed' ); ?></option>
@@ -356,7 +356,7 @@ echo ' ' . __( 'Use the drop-down on the right hand side to swap between profile
 <!-- Theme -->
 
 <tr>
-<th scope="row"><?php _e( 'Theme', 'youtube-embed' ); ?>&nbsp;<img src='<?php echo plugins_url( 'images/flash.png', dirname(__FILE__) ); ?>' width='10px' align='top'></th>
+<th scope="row"><?php _e( 'Theme', 'youtube-embed' ); ?>&nbsp;<img src="<?php echo plugins_url( 'images/flash.png', dirname(__FILE__) ); ?>" alt="<?php _e( 'Flash', 'youtube-embed' ) ?>" width="10px" align="top"></th>
 <td><label for="youtube_embed_theme"><select name="youtube_embed_theme">
 <option value="dark"<?php if ( $options[ 'theme' ] == "dark" ) { echo " selected='selected'"; } ?>><?php _e( 'Dark', 'youtube-embed' ); ?></option>
 <option value="light"<?php if ( $options[ 'theme' ] == "light" ) { echo " selected='selected'"; } ?>><?php _e( 'Light', 'youtube-embed' ); ?></option>
@@ -426,7 +426,7 @@ echo ' ' . __( 'Use the drop-down on the right hand side to swap between profile
 if ( $video_type == "d" ) { $id = $demo_video; }
 if ( $video_type == "3" ) { $id = 'NR5UoBY87GM'; }
 if ( $video_type == "l" ) { $id = '095393D5B42B2266'; }
-echo ye_generate_youtube_code( $id, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', $profile_no );
+echo ye_generate_youtube_code( array( 'id' => $id, 'profile' => $profile_no ) );
 ?></p>
 
 </form></div>

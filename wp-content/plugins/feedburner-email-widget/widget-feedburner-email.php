@@ -1,11 +1,11 @@
 <?php
 /*
   Plugin Name: Feedburner Email Widget
-  Version: 1.2.0
-  Plugin URI: http://wyrihaximus.net/projects/wordpress/feedburner-email-widget/?utm_source=wordpress_install&utm_medium=details&utm_campaign=feedburner-email-widget
+  Version: 1.2.1
+  Plugin URI: https://wyrihaximus.net/projects/wordpress/feedburner-email-widget/?utm_source=wordpress_install&utm_medium=details&utm_campaign=feedburner-email-widget
   Description: Allows you to add a Feedburner Email Subscription widget to one of your sidebars.
   Author: WyriHaximus
-  Author URI: http://wyrihaximus.net/
+  Author URI: https://wyrihaximus.net/
  */
 
 class FeedburnerEmailWidget extends WP_Widget {
@@ -13,7 +13,7 @@ class FeedburnerEmailWidget extends WP_Widget {
     /**
      * Constructor
      */
-    function __construct() {
+    public function __construct() {
         $widget_ops = array(
             'classname' => 'FeedburnerEmailWidget',
             'description' => 'Allows you to add a Feedburner Email Subscription widget to one of your sidebars.',
@@ -26,7 +26,7 @@ class FeedburnerEmailWidget extends WP_Widget {
      *
      * @param array $instance
      */
-    function form($instance) {
+    public function form($instance) {
         $instance = wp_parse_args((array) $instance, array(
                 'title' => '',
                 'uri' => '',
@@ -69,21 +69,21 @@ class FeedburnerEmailWidget extends WP_Widget {
         </div>
         <a id="<?php echo $this->get_field_id('form_id'); ?>_div_a" style="cursor: pointer;">+</a> <span id="<?php echo $this->get_field_id('form_id'); ?>_div_span" style="cursor: pointer;">Styling Options</span><br />
         <div id="<?php echo $this->get_field_id('form_id'); ?>_div" style="display: none;">
-            <p><label for="<?php echo $this->get_field_id('form_id'); ?>"><?php _e('Form CSS ID:'); ?> (<a href="http://wiki.wyrihaximus.net/wiki/Wordpress_Feedburner_Email_Widget_Styling" target="_blank">?</a>) <input class="widefat" id="<?php echo $this->get_field_id('form_id'); ?>" name="<?php echo $this->get_field_name('form_id'); ?>" type="text" value="<?php echo $form_id; ?>" /></label></p>
-            <p><label for="<?php echo $this->get_field_id('css_style_code'); ?>"><?php _e('CSS Styling:'); ?> (<a href="http://wiki.wyrihaximus.net/wiki/Wordpress_Feedburner_Email_Widget_Styling" target="_blank">?</a>) <textarea style="height:250px;" class="widefat" id="<?php echo $this->get_field_id('css_style_code'); ?>" name="<?php echo $this->get_field_name('css_style_code'); ?>"><?php echo $css_style_code; ?></textarea></label></p>
+            <p><label for="<?php echo $this->get_field_id('form_id'); ?>"><?php _e('Form CSS ID:'); ?> <input class="widefat" id="<?php echo $this->get_field_id('form_id'); ?>" name="<?php echo $this->get_field_name('form_id'); ?>" type="text" value="<?php echo $form_id; ?>" /></label></p>
+            <p><label for="<?php echo $this->get_field_id('css_style_code'); ?>"><?php _e('CSS Styling:'); ?> <textarea style="height:250px;" class="widefat" id="<?php echo $this->get_field_id('css_style_code'); ?>" name="<?php echo $this->get_field_name('css_style_code'); ?>"><?php echo $css_style_code; ?></textarea></label></p>
         </div>
         <a id="<?php echo $this->get_field_id('analytics_cat'); ?>_div_a" style="cursor: pointer;">+</a> <span id="<?php echo $this->get_field_id('analytics_cat'); ?>_div_span" style="cursor: pointer;">Analytic Options</span><br />
         <div id="<?php echo $this->get_field_id('analytics_cat'); ?>_div" style="display: none;">
-            <p><label for="<?php echo $this->get_field_id('analytics_cat'); ?>"><?php _e('Analytics Category:'); ?> (<a href="http://wiki.wyrihaximus.net/wiki/Wordpress_Feedburner_Email_Widget_Analytics" target="_blank">?</a>) <input class="widefat" id="<?php echo $this->get_field_id('analytics_cat'); ?>" name="<?php echo $this->get_field_name('analytics_cat'); ?>" type="text" value="<?php echo $analytics_cat; ?>" /></label></p>
-            <p><label for="<?php echo $this->get_field_id('analytics_act'); ?>"><?php _e('Analytics Action:'); ?> (<a href="http://wiki.wyrihaximus.net/wiki/Wordpress_Feedburner_Email_Widget_Analytics" target="_blank">?</a>) <input class="widefat" id="<?php echo $this->get_field_id('analytics_act'); ?>" name="<?php echo $this->get_field_name('analytics_act'); ?>" type="text" value="<?php echo $analytics_act; ?>" /></label></p>
-            <p><label for="<?php echo $this->get_field_id('analytics_lab'); ?>"><?php _e('Analytics Label:'); ?> (<a href="http://wiki.wyrihaximus.net/wiki/Wordpress_Feedburner_Email_Widget_Analytics" target="_blank">?</a>) <input class="widefat" id="<?php echo $this->get_field_id('analytics_lab'); ?>" name="<?php echo $this->get_field_name('analytics_lab'); ?>" type="text" value="<?php echo $analytics_lab; ?>" /></label></p>
-            <p><label for="<?php echo $this->get_field_id('analytics_val'); ?>"><?php _e('Analytics Value:'); ?> (<a href="http://wiki.wyrihaximus.net/wiki/Wordpress_Feedburner_Email_Widget_Analytics" target="_blank">?</a>) <input class="widefat" id="<?php echo $this->get_field_id('analytics_val'); ?>" name="<?php echo $this->get_field_name('analytics_val'); ?>" type="text" value="<?php echo $analytics_val; ?>" /></label></p>
+            <p><label for="<?php echo $this->get_field_id('analytics_cat'); ?>"><?php _e('Analytics Category:'); ?> <input class="widefat" id="<?php echo $this->get_field_id('analytics_cat'); ?>" name="<?php echo $this->get_field_name('analytics_cat'); ?>" type="text" value="<?php echo $analytics_cat; ?>" /></label></p>
+            <p><label for="<?php echo $this->get_field_id('analytics_act'); ?>"><?php _e('Analytics Action:'); ?> <input class="widefat" id="<?php echo $this->get_field_id('analytics_act'); ?>" name="<?php echo $this->get_field_name('analytics_act'); ?>" type="text" value="<?php echo $analytics_act; ?>" /></label></p>
+            <p><label for="<?php echo $this->get_field_id('analytics_lab'); ?>"><?php _e('Analytics Label:'); ?> <input class="widefat" id="<?php echo $this->get_field_id('analytics_lab'); ?>" name="<?php echo $this->get_field_name('analytics_lab'); ?>" type="text" value="<?php echo $analytics_lab; ?>" /></label></p>
+            <p><label for="<?php echo $this->get_field_id('analytics_val'); ?>"><?php _e('Analytics Value:'); ?> <input class="widefat" id="<?php echo $this->get_field_id('analytics_val'); ?>" name="<?php echo $this->get_field_name('analytics_val'); ?>" type="text" value="<?php echo $analytics_val; ?>" /></label></p>
         </div>
         <div style="margin-top: 10px;">
-            <a class="FlattrButton" style="display:none;" rev="flattr;button:compact;" href="http://wyrihaximus.net/projects/wordpress/feedburner-email-widget/"></a>
+            <a class="FlattrButton" style="display:none;" rev="flattr;button:compact;" href="https://wyrihaximus.net/projects/wordpress/feedburner-email-widget/"></a>
             <noscript>
-                <a href="http://flattr.com/thing/283885/Wordpress-Feedburner-Email-Widget" target="_blank">
-                    <img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" />
+                <a href="https://flattr.com/thing/283885/Wordpress-Feedburner-Email-Widget" target="_blank">
+                    <img src="https://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" />
                 </a>
             </noscript>
         </div>
@@ -125,7 +125,7 @@ class FeedburnerEmailWidget extends WP_Widget {
                 var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
                 s.type = 'text/javascript';
                 s.async = true;
-                s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
+                s.src = 'https://api.flattr.com/js/0.6/load.js?mode=auto';
                 t.parentNode.insertBefore(s, t);
             })();
         /* ]]> */
@@ -139,7 +139,7 @@ class FeedburnerEmailWidget extends WP_Widget {
      * @param unknown $old_instance
      * @return unknown
      */
-    function update($new_instance, $old_instance) {
+    public function update($new_instance, $old_instance) {
         return $new_instance;
     }
 
@@ -148,7 +148,7 @@ class FeedburnerEmailWidget extends WP_Widget {
      * @param array $args
      * @param array $instance
      */
-    function widget($args, $instance) {
+    public function widget($args, $instance) {
         echo $this->generate($args, $instance);
     }
 
@@ -159,7 +159,7 @@ class FeedburnerEmailWidget extends WP_Widget {
      * @param array $instance
      * @return string Generated HTML
      */
-    function generate($args, $instance) {
+    public function generate($args, $instance) {
         extract($args, EXTR_SKIP);
         $html = $before_widget;
         // Grab the settings from $instance and full them with default values if we can't find any
@@ -220,7 +220,7 @@ class FeedburnerEmailWidget extends WP_Widget {
             // Putting onSubmit code together
             $onsubmit = array();
             // Default feedburner window
-            $onsubmit[] = 'window.open(\'http://feedburner.google.com/fb/a/mailverify?' . $uri . '\', \'popupwindow\', \'scrollbars=yes,width=550,height=520\');';
+            $onsubmit[] = 'window.open(\'https://feedburner.google.com/fb/a/mailverify?' . $uri . '\', \'popupwindow\', \'scrollbars=yes,width=550,height=520\');';
             // Google Analytics support
             if ($analytics_cat && $analytics_act) {
                 $analytics_array = array();
@@ -236,7 +236,7 @@ class FeedburnerEmailWidget extends WP_Widget {
             }
             $onsubmit[] = 'return true;';
             // Open Form
-            $html .= '<form id="' . trim($form_id) . '" action="http://feedburner.google.com/fb/a/mailverify" method="post" onsubmit="' . implode('', $onsubmit) . '" target="popupwindow">';
+            $html .= '<form id="' . trim($form_id) . '" action="https://feedburner.google.com/fb/a/mailverify" method="post" onsubmit="' . implode('', $onsubmit) . '" target="popupwindow">';
             if ($above_email) {
                 $html .= '<label>' . trim($above_email) . '</label>';
             }
@@ -254,7 +254,7 @@ class FeedburnerEmailWidget extends WP_Widget {
             }
             $html .= '<input id="' . trim($form_id) . '_submit" type="submit" value="' . htmlentities(trim($subscribe_btn)) . '" />';
             if ($show_link) {
-                $html .= '<label>Delivered by <a href="http://feedburner.google.com" target="_blank">FeedBurner</a></label>';
+                $html .= '<label>Delivered by <a href="https://feedburner.google.com" target="_blank">FeedBurner</a></label>';
             }
             $html .= '</form>';
         }

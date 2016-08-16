@@ -20,24 +20,24 @@ $options = get_option( 'youtube_embed_general' );
 
 if ( is_array( $options ) ) {
 
-	delete_site_option( 'youtube_embed_general' );
+	delete_option( 'youtube_embed_general' );
 
 	// If the number of profiles field exists, delete each one in turn
 
-	if ( array_key_exists( 'profile_no', $options ) ) {
+	if ( isset( $options[ 'profile_no' ] ) ) {
 		$loop = 0;
 		while ( $loop <= $options[ 'profile_no' ] ) {
-			delete_site_option( 'youtube_embed_profile' . $loop );
+			delete_option( 'youtube_embed_profile' . $loop );
 			$loop ++;
 		}
 	}
 
 	// If the number of lists field exists, delete each one in turn
 
-	if ( !array_key_exists( 'list_no', $options ) ) {
+	if ( isset( $options[ 'list_no' ] ) ) {
 		$loop = 1;
 		while ( $loop <= $options[ 'list_no' ] ) {
-			delete_site_option( 'youtube_embed_list' . $loop );
+			delete_option( 'youtube_embed_list' . $loop );
 			$loop ++;
 		}
 	}
@@ -50,4 +50,10 @@ delete_option( 'youtube_embed_shortcode' );
 delete_option( 'youtube_embed_shortcode_admin' );
 delete_option( 'youtube_embed_shortcode_site' );
 delete_option( 'youtube_embed_version' );
+
+// Remove any transient data
+
+global $wpdb;
+$sql = "DELETE FROM $wpdb->options WHERE option_name LIKE '_transient_youtubeembed_%' OR option_name LIKE '_transient_timeout_youtubeembed_%'";
+$wipe = $wpdb -> query( $sql );
 ?>

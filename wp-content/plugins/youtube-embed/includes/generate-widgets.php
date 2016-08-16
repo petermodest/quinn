@@ -23,7 +23,9 @@ class YouTubeEmbedWidget extends WP_Widget {
 
 		parent::__construct( 'youtube_embed_widget',
 							__( 'YouTube Embed', 'youtube-embed' ),
-							array( 'description' => __( 'Embed YouTube Widget.', 'youtube-embed' ), 'class' => 'my-widget-class' )
+							array( 'description' => __( 'Embed YouTube Widget.', 'youtube-embed' ),
+							'class' => 'ye-widget',
+							'customize_selective_refresh' => true )
 							);
 	}
 
@@ -57,36 +59,20 @@ class YouTubeEmbedWidget extends WP_Widget {
 		if ( $instance[ 'id_type' ] == 's' ) { $search = 1; } else { $search = ''; }
 		if ( $instance[ 'id_type' ] == 'u' ) { $user = 1; } else { $user = ''; }
 
+		// Built the parameter array
+
+		$array = array(
+					'id' => $instance[ 'id' ],
+					'start' => $instance[ 'start' ],
+					'stop' => $instance[ 'start' ],
+					'profile' => $instance[ 'profile' ],
+					'list_style' => $instance[ 'list' ],
+					'search' => $instance[ 'search' ],
+					'user' => $instance[ 'start' ] );
+
 		// Generate the video and output it
 
-		echo apply_filters( 'a3_lazy_load_html',
-			ye_generate_youtube_code ( $instance[ 'id' ],
-										'',
-										'',
-										'',
-										'',
-										'',
-										'',
-										$instance[ 'start' ],
-										'',
-										'',
-										'',
-										'',
-										$instance[ 'stop' ],
-										'',
-										'',
-										'',
-										'',
-										$instance[ 'profile' ],
-										$instance[ 'list' ],
-										'',
-										'',
-										'',
-										'',
-										'',
-										$search,
-										$user,
-										'' ) );
+		echo apply_filters( 'a3_lazy_load_html', ye_generate_youtube_code ( $array ) );
 
 		// Output the trailer
 		echo $after_widget;

@@ -1,5 +1,5 @@
 var wwdith, wheight, headerheight, section_heights;
-
+var ajax_url = '/wp-content/themes/quinn_snacks/library/ajax/ajax.php';
 $(document).ready(function(){
 	resize_sections();
 	
@@ -52,6 +52,7 @@ $(document).ready(function(){
 		e.preventDefault();
 		$('[rel="nutrition"]:eq(0)').trigger('click');
 	})
+
 })
 
 $(window).load(function(){

@@ -16,7 +16,7 @@
 		);
 		$batches = new WP_Query( $args );
 		if( count( $batches->posts ) == 1 ) :
-			$batch = $batches->posts[0];
+			$batch = new Batch( $batches->posts[0] );
 		elseif( count( $batches->posts ) > 1 ) :
 			$snacks = array();
 			$blocks = array();
@@ -51,7 +51,6 @@
 ?>
 
 <? get_header() ?>
-	
 	<div class="row">
 		<div class="inner">
 			<h1><img src="<?= img_dir() ?>farm-to-bag.png" alt="Farm to Bag" /></h1>

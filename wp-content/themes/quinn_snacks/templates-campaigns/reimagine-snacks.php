@@ -5,7 +5,7 @@ Template Name: Campaign - Reimagine Snacks
 ?>
 
 <? get_header(); ?>
-<? print_a( $post ) ?>
+
 <style type="text/css">
 
 <?

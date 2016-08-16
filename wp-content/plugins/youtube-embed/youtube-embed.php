@@ -3,8 +3,8 @@
 Plugin Name: YouTube Embed
 Plugin URI: https://wordpress.org/plugins/youtube-embed/
 Description: Embed YouTube Videos in WordPress
-Version: 4.3.5
-Author: David Artiss
+Version: 5.0
+Author: dartiss
 Author URI: http://www.artiss.co.uk
 Text Domain: youtube-embed
 Domain Path: /languages
@@ -19,7 +19,7 @@ Domain Path: /languages
 * @since	2.0
 */
 
-define( 'youtube_embed_version', '4.3.5' );
+define( 'youtube_embed_version', '5.0' );
 
 $functions_dir = plugin_dir_path( __FILE__ ) . 'includes/';
 
@@ -34,6 +34,10 @@ include_once( $functions_dir . 'generate-embed-code.php' );				// Generate YouTu
 include_once( $functions_dir . 'generate-other-code.php' );				// Generate download & short URLs & thumbnails
 
 include_once( $functions_dir . 'generate-widgets.php' );				// Generate widgets
+
+include_once( $functions_dir . 'api-access.php' );						// Fetch video data from YouTube API
+
+include_once( $functions_dir . 'caching.php' );							// Data caching functions
 
 if ( is_admin() && !( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
 

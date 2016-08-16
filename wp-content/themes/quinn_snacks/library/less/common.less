@@ -891,3 +891,152 @@ body {
 		margin-bottom: 15px;
 	}
 }
+
+.discount-popup {
+	position: fixed;
+	width: 400px;
+	bottom: 35px;
+	right: 75px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	border: 7px solid @blue;
+	background: white;
+	padding: 28px;
+	text-align: center;
+	box-shadow: 7px 7px 0 rgba( 0, 0, 0, .1 );
+	transition: all .5s ease-in-out;
+	z-index: 999;
+
+	&.hide {
+		right: -500px;
+	}
+
+	.close {
+		transition: all .25s ease-in-out;
+		position: absolute;
+		top: 5px;
+		right: 8px;
+		font-size: 22px;
+		line-height: 22px;
+		color: @blue;
+		cursor: pointer;
+		&:hover {
+			color: #333;
+		}
+	}
+	
+	h2 {
+		font-size: 35px;
+		line-height: 42px;
+		text-transform: uppercase;
+		color: @blue;
+		font-weight: 600;
+	}
+	
+	p {
+		padding-top: 8px;
+		font-weight: 600;
+	}
+	
+	#mc_embed_signup {
+		padding-top: 15px;
+		
+		div#mce-responses {
+			padding: 0;
+			width: 100%;
+			margin: 0;
+			text-align: center;
+			.response {
+				width: 100%;
+				padding: 15px 0 0 0;
+				margin: 0;
+				font-size: 12px;
+			}
+		}
+		
+		.mc-field-group {
+			position: relative;
+			width: 100%;
+			margin: 0;
+			padding: 0;
+			min-height: 0;
+		}
+		
+		form {
+			padding: 0;
+		}
+		
+		#mc-embedded-subscribe-form div.mce_inline_error {
+			margin: 0;
+			padding: 5px 0 0 0;
+			display: none !important;
+		}
+		
+		input.email {
+			width: 100%;
+		    padding: 10px 12px 11px;
+		    text-align: left;
+		    border-radius: 0;
+		    -moz-border-radius: 0;
+		    border: 2px solid #e6e6e6;
+		    border-right-width: 66px !important;
+		    background: #e6e6e6;
+		    box-sizing: border-box;
+		}
+		
+		input.button {
+			transition: all .25s ease-in-out;
+			position: absolute;
+			right: 0;
+			top: 0;
+			background: @blue;
+			float: right;
+			margin: 0 !important;
+			padding: 5px 0 !important;
+			display: inline !important;
+			border-radius: 0 !important;
+			-moz-border-radius: 0 !important;
+			width: 64px !important;
+			font-size: 28px !important;
+			text-align: center;
+			box-sizing: border-box;
+			height: auto !important;
+			&:hover {
+				background: #333;
+			}
+		}
+	}
+}
+
+@media screen and ( max-width: 550px ) {
+	.discount-popup {
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		border-radius: 0;
+		-moz-border-radius: 0;
+		background: rgba( 255, 255, 255, .95 );
+		padding: 0;
+		
+		&.hide {
+			top: 2000px;
+		}
+		
+		.inner-content {
+			position: absolute;
+			padding: 28px;
+			top: 50%;
+			-ms-transform: translateY(-50%);
+			-webkit-transform: translateY(-50%);
+			transform: translateY(-50%);
+		}
+		
+		.close {
+			font-size: 32px;
+			line-height: 32px;
+		}
+	}
+}

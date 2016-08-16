@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=webmaste
 Tags: widget, feed, feedburner, subscription, email
 Requires at least: 4.3.0
 Tested up to: 3.5.1
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 
 Allows you to add a Feedburner Email Subscription widget to one of your sidebars.
 
@@ -35,7 +35,10 @@ In 1.2 a new admin widget will make it easier to managed your sidebar widget. Wi
 
 == Changelog ==
 
-= 1.2.0
+= 1.2.1 =
+* Changed all links to HTTPS to, as reported at https://wordpress.org/support/topic/use-https-for-form-action 
+
+= 1.2.0 =
 * Bumped minimum version to 4.3
 * Upgraded away from PHP4 style constructor
 

@@ -34,6 +34,7 @@
 		<link rel="stylesheet" type="text/css" href="//cloud.typography.com/661378/702364/css/fonts.css" />
 		<link rel="stylesheet" type="text/css" media="all" href="<?= js_dir() ?>/vendor/fancybox/jquery.fancybox.css" />
 		<link rel="stylesheet" type="text/css" media="all" href="<?= style_dir() ?>style.css" />
+		<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
 	
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
