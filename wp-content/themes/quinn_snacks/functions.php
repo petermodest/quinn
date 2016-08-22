@@ -407,4 +407,30 @@ endif;
 	}
 	add_filter('acf/load_field/name=batch_ids', 'acf_load_batch_ids_field_choices');
 
+	if( function_exists( 'acf_add_options_page' ) ) :
+	
+		acf_add_options_page(array(
+			'page_title' 	=> 'Global Settings',
+			'menu_title'	=> 'Global Settings',
+			'menu_slug' 	=> 'theme-settings',
+			'capability'	=> 'edit_posts',
+			'redirect'		=> false
+		));
+
+	endif;
+
+	function get_popup() {
+		if( get_field( 'popup_display', 'option' ) ) :
+			?>
+				<div class="discount-popup hide">
+					<div class="close">X</div>
+					<div class="inner-content">
+						<h2><?= get_field( 'popup_header', 'option' ) ?></h2>
+						<?= get_field( 'popup_text', 'option' ) ?>
+						<?= get_field( 'popup_form', 'option' ) ?>
+					</div>
+				</div>
+			<?
+		endif;
+	}
 ?>
